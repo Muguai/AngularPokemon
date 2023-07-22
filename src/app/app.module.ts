@@ -11,9 +11,9 @@ import { PokedexPage } from './pages/pokedex/pokedex.page';
 @NgModule({
   declarations: [
     AppComponent,
+    LoginPage,
     LoginFormComponent,
     TrainerPage,
-    LoginPage,
     PokedexPage
   ],
   imports: [

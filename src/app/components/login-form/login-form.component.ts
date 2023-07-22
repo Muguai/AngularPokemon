@@ -11,7 +11,7 @@ import { Router } from "@angular/router";
 
 )
 export class LoginFormComponent{
-    userName?:string = "not logged"
+    userName?:string = "";
 
     constructor(private readonly router:Router){}
 
@@ -23,7 +23,7 @@ export class LoginFormComponent{
     }
 
     userNameChange(event:any):void{
-        this.userName = event.target.value
+        this.userName = event.target.value;
     }
 
 

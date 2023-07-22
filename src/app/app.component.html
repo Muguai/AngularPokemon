@@ -1,3 +1,22 @@
-<h2>Big daddy compoent</h2>
-<a routerLink="">Login</a>
-<router-outlet></router-outlet>
+<header>
+  <h2>Pokemon page</h2>
+  
+    <ul class="nav navbar-nav">
+        <li>
+        <a routerLink="">Login</a>
+        </li>
+        <li>
+        <a routerLink="trainer">Trainer</a>
+        </li>
+        <li>
+        <a routerLink="pokedex">Pokedex</a>
+        </li>
+  </ul>
+</header>
+
+<main>
+  <!-- Your pages are rendered here -->
+  <router-outlet></router-outlet>
+</main>
+
+<footer>The footer</footer>

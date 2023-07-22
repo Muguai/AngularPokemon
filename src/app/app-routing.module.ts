@@ -1,30 +1,34 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginPage } from './pages/login/login.page';
 import { TrainerPage } from './pages/trainer/trainer.page';
 import { PokedexPage } from './pages/pokedex/pokedex.page';
-import { authGuard } from './guards/auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    pathMatch:"full",
-    component:LoginPage
+    pathMatch: 'full',
+    redirectTo: 'login'
+  },
+  {
+    path: 'login',
+    component: LoginPage
   },
   {
     path: 'trainer',
-    component:TrainerPage,
-    canActivate:[authGuard]
+    component: TrainerPage,
+    canActivate: [AuthGuard],
   },
   {
     path: 'pokedex',
-    component:PokedexPage,
-    canActivate:[authGuard]
+    component: PokedexPage,
+    canActivate: [AuthGuard]
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
