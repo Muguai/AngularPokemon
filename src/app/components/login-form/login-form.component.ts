@@ -18,7 +18,7 @@ export class LoginFormComponent{
     login(){
         localStorage.setItem('username',this.userName!)
         console.log("get here");
-        this.router.navigateByUrl("trainer");
+        this.router.navigateByUrl("pokedex");
 
     }
 

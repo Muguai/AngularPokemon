@@ -7,6 +7,9 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 import { TrainerPage } from './pages/trainer/trainer.page';
 import { LoginPage } from './pages/login/login.page';
 import { PokedexPage } from './pages/pokedex/pokedex.page';
+import { PokemonCardComponent } from './components/pokemon-card/pokemon-card.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PokemonCardListComponent } from './components/pokemon-card-list/pokemon-card-list.component';
 
 @NgModule({
   declarations: [
@@ -14,11 +17,14 @@ import { PokedexPage } from './pages/pokedex/pokedex.page';
     LoginPage,
     LoginFormComponent,
     TrainerPage,
-    PokedexPage
+    PokedexPage,
+    PokemonCardComponent,
+    PokemonCardListComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
