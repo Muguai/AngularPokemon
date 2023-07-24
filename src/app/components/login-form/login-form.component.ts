@@ -11,19 +11,19 @@ import { Router } from "@angular/router";
 
 )
 export class LoginFormComponent{
-    userName?:string = "not logged"
+    userName?:string = "";
 
     constructor(private readonly router:Router){}
 
     login(){
         localStorage.setItem('username',this.userName!)
         console.log("get here");
-        this.router.navigateByUrl("trainer");
+        this.router.navigateByUrl("pokedex");
 
     }
 
     userNameChange(event:any):void{
-        this.userName = event.target.value
+        this.userName = event.target.value;
     }
 
 

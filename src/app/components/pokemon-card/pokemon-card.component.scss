@@ -1,0 +1,112 @@
+
+  .cardFront {
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    border-radius:5%;
+    max-width: 350px;
+    width: 100%;
+    aspect-ratio: 7/9;
+    
+    background-color: white;
+    border: thick solid red;
+
+  }
+  .cardBack {
+    position: absolute;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    border-radius: 10px;
+    border-radius:5%;
+    max-width: 350px;
+    width: 100%;
+    aspect-ratio: 7/9;
+    
+    background-color: white;
+    border: thick solid green;
+  }
+
+  .cardContainer {
+    position: relative;
+    transition: transform 0.5s ease;
+
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    transform-style: preserve-3d;
+  }
+
+  .btn {
+    backface-visibility: hidden;
+    border: 5px solid green;
+    height: 50px;
+    width: 50px;
+  }
+  
+  .btn:hover {
+    backface-visibility: hidden;
+
+    border: 10px solid yellow;
+  }
+
+  .cardImg{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    width: 96px;
+    height: 96px;
+    user-select: none;
+    transform: translate(-50%, -50%);
+  }
+  
+  .pokemonNameCard{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .pokeBallButton {
+    position: absolute;
+    background-image: url('../../../assets/images/PokeballClosed.png');
+    background-position: center; 
+    background-size: cover;
+    border: none;
+    background-color: transparent;
+    height: 50px;
+    width: 50px;
+    bottom: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .pokeBallButton.animate {
+    animation: buttonAnimation 2s linear;
+    pointer-events: none; 
+  }
+
+  @keyframes buttonAnimation {
+    0% {
+      height: 50px;
+
+      pointer-events: none;
+      background-image: url('../../../assets/images/PokeballOpen1.png');
+    }
+    20% {
+      
+      height: 70px;
+      background-image: url('../../../assets/images/PokeballOpen2.png');
+
+    }
+    99%{
+      height: 70px;
+      background-image: url('../../../assets/images/PokeballOpen2.png');
+
+    }
+    100% {
+      background-image: url('../../../assets/images/PokeballClosed.png');
+
+      height: 50px;
+      pointer-events: all;
+    }
+  }
