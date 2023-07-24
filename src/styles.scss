@@ -5,3 +5,18 @@
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+
+@import url('https://fonts.googleapis.com/css?family=Fira Sans');
+
+html {
+    min-height: 100%;
+}
+
+body {
+    font-family: 'Fira-sans';
+    min-height: 100%;
+    background: linear-gradient(to bottom, #01003D, #825C9A)
+}
