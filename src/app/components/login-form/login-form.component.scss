@@ -1,0 +1,58 @@
+.login {
+    --dark-blue: #0077B9;
+    --light-blue: #58B9EF;
+}
+
+div.login-form-background {
+    background-image: url('../../../assets/images/LoginBackground.jpg');
+    background-size: 100%;
+    width: 900px;
+    height: 800px;
+    border-radius: 20px;
+    margin: 5rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form.login {
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 670px;
+    height: 450px;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+form.login h3{
+    font-weight: bold;
+}
+
+form.login img {
+    height: 55px;
+}
+
+form.login input, form.login button {
+    height: 40px;
+    border-radius: 50px;
+    min-width: 425px;
+}
+
+form.login input {
+    border: 1px solid #58B9EF;
+}
+
+form.login button {
+    background: linear-gradient(to right, #58B9EF, #0077B9);
+    border: 0;
+    color: white;
+}
+
+form.login button:hover {
+    background-color: white;
+    border: var(--light-blue);
+}
+
