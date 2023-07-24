@@ -1,9 +1,6 @@
 import { Component, Input, ViewChild, ElementRef } from '@angular/core';
+import { PokemonData } from 'src/app/models/pokemonResult';
 
-interface PokemonData {
-  name: string;
-  image: string;
-}
 
 @Component({
   selector: 'app-pokemon-card',
@@ -16,14 +13,14 @@ export class PokemonCardComponent {
   @ViewChild('pokeBallButton', { static: true }) pokeBallButtonRef!: ElementRef;
 
 
-  @Input() data: PokemonData = { name: "MissingNo", image: "assets/images/MissingNo.png" };
+  @Input() data: PokemonData = { name: "MissingNo", sprite: "assets/images/MissingNo.png" };
 
   animateButton = false;
   animateImage = false;
   animateDot = false;
 
   constructor() {
-    console.log(this.data.name);
+    //console.log(this.data.name);
   }
 
   onBackButtonClick() {

@@ -10,6 +10,7 @@ import { PokedexPage } from './pages/pokedex/pokedex.page';
 import { PokemonCardComponent } from './components/pokemon-card/pokemon-card.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PokemonCardListComponent } from './components/pokemon-card-list/pokemon-card-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PokemonCardListComponent } from './components/pokemon-card-list/pokemon
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
