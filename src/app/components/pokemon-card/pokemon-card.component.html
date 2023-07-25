@@ -2,7 +2,7 @@
     <div class="card card-front">
         <button class="btn btn-primary" (click)="onFrontButtonClick()"></button>
         <div class="card-Image-Container">
-            <img #cardImg draggable="false" class="card-img" [src]="data.sprite" alt="assets/images/MissingNo.png" [class.animate]="animateImage" (animationend)="onAnimationEndImage()" />
+            <img #cardImg draggable="false" class="card-image" [src]="data.sprite" alt="assets/images/MissingNo.png" [class.animate]="animateImage" (animationend)="onAnimationEndImage()" />
         </div>
         <h4 class="pokemon-name-card">{{ data.name }}</h4>
         <button #pokeBallButton class="poke-ball-button" (click)="catchPokemon()" (animationend)="onAnimationEnd($event)"

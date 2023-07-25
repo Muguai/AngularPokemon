@@ -43,7 +43,7 @@
   border: 10px solid yellow;
 }
 
-.card-img{
+.card-image{
   position: absolute;
   top: 40%;
   width: 96px;
@@ -68,41 +68,45 @@
   background-size: cover;
   border: none;
   background-color: transparent;
-  height: 50px;
-  width: 50px;
+  height: 75px;
+  width: 75px;
   bottom: 5%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: 39%;
 }
 
 .poke-ball-button.animate {
-  animation: buttonAnimation 2s, buttonAnimation2 1s, 2;
+  //  animation: throw-ball 2s 1, wiggle 1s 3 2s;
+  animation: buttonAnimation 3s 1, buttonAnimation2 1s 3 3s, buttonAnimation3 1s 1 6s;
   pointer-events: none; 
 }
 
 @keyframes buttonAnimation {
   0% {
-    height: 50px;
+    height: 75px;
 
     pointer-events: none;
     background-image: url('../../../assets/images/PokeballOpen1.png');
   }
   20% {
     
-    height: 70px;
+    height: 96px;
     background-image: url('../../../assets/images/PokeballOpen2.png');
 
   }
-  99%{
-    height: 70px;
+  65%{
+    height: 96px;
+    transform: translateY(0px);
+
     background-image: url('../../../assets/images/PokeballOpen2.png');
 
   }
-  100% {
+  66% {
     background-image: url('../../../assets/images/PokeballClosed.png');
-
-    height: 50px;
+    height: 75px;
     pointer-events: all;
+  }
+  70%{
+    transform: translateY(25px);
   }
 }
 
@@ -150,11 +154,11 @@
 }
 
 .pokeBallDot.animate{
-  animation: pokeBallDotAnimation 1s linear;
+  animation: pokeBallDotAnimation 0.8s linear;
 }
 
 @keyframes pokeBallDotAnimation {
-    50%{
+    30%{
       opacity: 0.9;
     }
 
@@ -164,7 +168,7 @@
 
 }
 
-.card-Img.animate{
+.card-image.animate{
   animation: pokemonCatchAnimation 3s linear;
 }
 
