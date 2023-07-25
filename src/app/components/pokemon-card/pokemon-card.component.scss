@@ -4,21 +4,28 @@
   border-radius: 5px;
   //border-radius:5%;
   width: 350px;
-  aspect-ratio: 7/9;
+  //max-width: 350px;
+  height: 450px;
+  height: 100%;
 }
 .card:hover {
   // box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-  width: 360px;
+  scale: 1.1;
 }
 
 .card-front {
   background-color: #255786;
   border: 10px solid #58B9EF;
+  aspect-ratio: 7/9;
 }
 
 .card-back {
   transform: rotateY(180deg);
   background-color: #FFFBEB;
+}
+
+.card-back > * {
+  // position: relative;
 }
 
 .card-container {
@@ -73,6 +80,96 @@
   bottom: 5%;
   left: 39%;
 }
+
+#poke-details-img-background {
+  height: 40%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient();
+}
+
+#poke-details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 60%;
+  //padding-top: 5px;
+}
+
+// details rows
+#poke-details-first-row, #poke-details-second-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 10px 0;
+}
+
+// first row
+
+#poke-details-name {
+  padding: 15px 0 0 0;
+}
+
+#poke-details-first-row {
+  width: 80%;
+  border-bottom: 1px solid black;
+}
+
+#poke-details-first-row div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 25%;
+}
+
+#poke-details-first-row p, #poke-details-first-row h5 {
+  margin: 0 auto;
+}
+
+#poke-details-first-row h5 {
+  font-size: 0.7em;
+  color: rgba(105, 105, 105, 0.5);
+}
+
+// Second row
+
+#poke-details-second-row {
+  width: 80%;
+}
+
+#poke-details-second-row h5 {
+  text-align: center;
+  font-size: 1.2em;
+}
+
+#poke-details-second-row p, .poke-type-container li span {
+  font-size: 0.8em;
+}
+
+.poke-abilities-container ul{
+  list-style: none;
+  padding: 0;
+}
+
+.poke-type-container ul {
+  list-style: none;
+}
+
+// .poke-type-container li::before {
+//   content: "•";
+//   color: red;
+//   display: inline-block;
+//   width: 1em;
+//   margin-left: -1em;
+// }
+
+// .poke-type-container li {
+//   font-size: 1.7em;
+// }
+
 
 .poke-ball-button.animate {
   //  animation: throw-ball 2s 1, wiggle 1s 3 2s;
