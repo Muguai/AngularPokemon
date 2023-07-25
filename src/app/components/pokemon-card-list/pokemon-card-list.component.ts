@@ -31,7 +31,7 @@ export class PokemonCardListComponent implements OnInit{
         // Here, 'responses' will be an array containing the responses from each URL
         // We need to extract the 'name' and 'sprites' properties from each 'Pokemon' object
         const pokemonDataArray = responses.map((pokemon) => {
-          return { name: pokemon.name, sprite: pokemon.sprites.front_default };
+          return { name: pokemon.name[0].toUpperCase() + pokemon.name.slice(1), sprite: pokemon.sprites.front_default };
         });
         return pokemonDataArray;
       })

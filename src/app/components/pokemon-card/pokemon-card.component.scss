@@ -76,7 +76,7 @@
 
 .poke-ball-button.animate {
   //  animation: throw-ball 2s 1, wiggle 1s 3 2s;
-  animation: buttonAnimation 3s 1, buttonAnimation2 1s 3 3s, buttonAnimation3 1s 1 6s;
+  animation: buttonAnimation 3s 1, buttonAnimation2 1s 3 3s, buttonAnimation3 1s 1 6.5s;
   pointer-events: none; 
 }
 
@@ -145,12 +145,15 @@
   position: relative;
   content: '';
   background-color: red;
-  border-radius:50%;
+  border-radius:10%;
   opacity: 0;
   height: 10px;
   width: 10px;
   left: 43%;
-  top: 7%;
+  top: 8%;
+  //text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  filter: drop-shadow(12px 12px 7px rgba(0,0,0,0.5));
+
 }
 
 .pokeBallDot.animate{

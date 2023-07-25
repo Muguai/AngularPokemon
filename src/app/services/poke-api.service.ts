@@ -16,7 +16,7 @@ export class PokeApiService {
   }
 
   getPokemons():Observable<PokemonResult>{
-    return this.http.get<PokemonResult>('https://pokeapi.co/api/v2/pokemon?limit=1000&offset=0');
+    return this.http.get<PokemonResult>('https://pokeapi.co/api/v2/pokemon?limit=30&offset=0');
 
   } 
 
