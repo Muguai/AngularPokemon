@@ -16,7 +16,7 @@ export class PokemonCardListComponent{
   constructor(private readonly pokeApiService:PokeApiService){
 
   }
-  /*
+  
   ngOnInit(): void {
     this.pokeApiService.getPokemons()
     .pipe(
@@ -47,5 +47,5 @@ export class PokemonCardListComponent{
       })
   })
   }
-  */
+  
 }
