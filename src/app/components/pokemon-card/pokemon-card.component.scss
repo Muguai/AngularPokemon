@@ -45,9 +45,9 @@
 
 .card-image{
   position: absolute;
-  top: 40%;
-  width: 96px;
-  height: 96px;
+  top: 15%;
+  width: 192px;
+  height: 192px;
   user-select: none;
 }
 
@@ -151,7 +151,6 @@
   width: 10px;
   left: 43%;
   top: 8%;
-  //text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
   filter: drop-shadow(12px 12px 7px rgba(0,0,0,0.5));
 
 }
@@ -177,10 +176,10 @@
 
 .card-Image-Container{
   position: relative;
-  left: 35%;
-  top: -11.7%;
-  height: 365px;
-  width: 100px;
+  left: 21%;
+  top: 0%;
+  height: 395px;
+  width: 200px;
   overflow: hidden;
 }
 
@@ -193,25 +192,25 @@
   }
 
   30%{
-    transform: translateY(-50px) scale(0.5, 1.2);
+    transform: translateY(-50px) scale(0.4, 1.2);
     
     filter: brightness(0) invert(1) drop-shadow(2px 1px 0 black) 
     drop-shadow(-1px -1px 0 black);
   }
   60% {
     
-    transform: translateY(-100px) scale(0.5, 1.2);
+    transform: translateY(-100px) scale(0.4, 1.2);
     filter: brightness(0) invert(1) drop-shadow(2px 1px 0 black) 
     drop-shadow(-1px -1px 0 black);
     overflow: hidden;
   }
   70%{
-    transform: translateY(500px) scale(0.5, 1.2);
+    transform: translateY(500px) scale(0.4, 1.2);
   }
   100% {
     z-index: 1;
     overflow: hidden;
-    transform: translateY(500px) scale(0.5, 1.2);
+    transform: translateY(500px) scale(0.4, 1.2);
     filter: brightness(0) invert(1) drop-shadow(2px 1px 0 black) 
     drop-shadow(-1px -1px 0 black);
 
