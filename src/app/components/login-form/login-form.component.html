@@ -1,14 +1,35 @@
 <div class="login-form-background">
-    <!-- <div class="login-form-container"> -->
-        <form class="login">
-            <h3>Welcome!</h3>
-            <p> Enter your trainer name:</p>
-            <div>
-                <img src="../../assets/images/PokeballLoginEnter.png">
-                <input type="text" placeholder="Ash Ketchum" (keydown)="userNameChange($event)"/>
-            </div>
-            <button (click)="login()" class="login-form-button">Login</button>
-        </form>
-    <!-- </div> -->
+  <form
+    #createLoginForm="ngForm"
+    (ngSubmit)="login(createLoginForm)"
+    class="login"
+  >
+    <h3>Welcome!</h3>
+    <p>Enter your trainer name:</p>
+    <div>
+      <img src="../../assets/images/PokeballLoginEnter.png" />
+      <input
+        type="text"
+        ngModel
+        name="trainerName"
+        #trainerName="ngModel"
+        required
+        minlength="3"
+        placeholder="Ash Ketchum"
+      />
+      <p *ngIf="trainerName.errors?.['required']" class="login-form-error">
+        Trainer name is required
+      </p>
+      <p *ngIf="trainerName.errors?.['minlength']" class="login-form-error">
+        Trainer name needs to be at least 3 characters
+      </p>
+    </div>
+    <button
+      type="submit"
+      [disabled]="createLoginForm.form.invalid"
+      class="login-form-button"
+    >
+      Login
+    </button>
+  </form>
 </div>
-

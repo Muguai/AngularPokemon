@@ -1,6 +1,5 @@
 <section #cardContainer class="card-container">
-    <div class="card card-front">
-        <button class="btn btn-primary" (click)="onFrontButtonClick()"></button>
+    <div class="card card-front" (click)="onFrontButtonClick()">
         <div class="card-Image-Container">
             <img #cardImg draggable="false" class="card-image" [src]="data.sprite" alt="assets/images/MissingNo.png" [class.animate]="animateImage" (animationend)="onAnimationEndImage()" />
         </div>
@@ -8,7 +7,40 @@
         <button #pokeBallButton class="poke-ball-button" (click)="catchPokemon()" (animationend)="onAnimationEnd($event)"
             [class.animate]="animateButton"><div [class.animate]="animateDot" class="pokeBallDot"></div></button>
     </div>
-    <div class="card card-back">
-        <button class="btn btn-primary" (click)="onBackButtonClick()"></button>
+    <div class="card card-back" (click)="onBackButtonClick()">
+        <h4 id="poke-details-name">Balbausaur</h4>
+        <div class="pokemon-details-img-container">
+            <img [src]="data.sprite" alt="assets/images/MissingNo.png">
+        </div>
+        <div id="poke-details-container">
+            <div class="poke-details-row">
+                <div class="poke-weight-container">
+                    <p>31.29kg</p>
+                    <p>Weight</p>
+                </div>
+                <div class="poke-height-container">
+                    <p>0.18m</p>
+                    <p>Height</p>
+                </div>
+                <div class="poke">
+
+                </div>
+            </div>
+            <div>
+                <div class="poke-abilities-container">
+                    <h5>Abilities</h5>
+                    <ul>
+                        <li>Overgrow</li>
+                        <li>Chloropyll</li>
+                    </ul>
+                </div>
+                <div class="poke-type-container">
+                    <ul>
+                        <li><div ></div></li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
     </div>
 </section>

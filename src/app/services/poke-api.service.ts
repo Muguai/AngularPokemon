@@ -9,11 +9,7 @@ import { Pokemon } from '../models/pokemonData';
 })
 export class PokeApiService {
 
-
-
-  constructor(private readonly http:HttpClient) { 
-
-  }
+  constructor(private readonly http:HttpClient) { }
 
   getPokemons():Observable<PokemonResult>{
     return this.http.get<PokemonResult>('https://pokeapi.co/api/v2/pokemon?limit=30&offset=0');
@@ -23,6 +19,8 @@ export class PokeApiService {
   getPokemonDataFromUrl(url: string): Observable<Pokemon> {
     return this.http.get<Pokemon>(url);
   }
+
+  getPokemonById() {}
 
 
 }
