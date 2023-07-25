@@ -6,7 +6,7 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    height: 6rem;
+    height: 10rem;
     width: 100%;
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     padding: 1rem 0;
@@ -39,8 +39,8 @@ div.catalogue, div.trainer {
 }
 
 .header-nav img {
-    height: 40px;
-    width: 40px;
+    height: 80px;
+    width: auto;
 }
 
 .catalogue a {
