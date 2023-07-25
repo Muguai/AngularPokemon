@@ -10,12 +10,13 @@ import { switchMap, forkJoin, map } from 'rxjs';
   templateUrl: './pokemon-card-list.component.html',
   styleUrls: ['./pokemon-card-list.component.scss']
 })
-export class PokemonCardListComponent implements OnInit{
+export class PokemonCardListComponent{
   public pokemonData:PokemonData[] = [];
 
   constructor(private readonly pokeApiService:PokeApiService){
 
   }
+  /*
   ngOnInit(): void {
     this.pokeApiService.getPokemons()
     .pipe(
@@ -46,4 +47,5 @@ export class PokemonCardListComponent implements OnInit{
       })
   })
   }
+  */
 }
