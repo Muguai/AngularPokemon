@@ -1,3 +1,32 @@
+.card-container {
+  position: relative;
+  transition: transform 0.5s ease, scale 0.6s ease;
+  height: 450px;
+  display: flex;
+  justify-content: center;
+  transform-style: preserve-3d;
+
+        // type colors:
+        --bug-type-color: #3B9950;
+        --dark-type-color: #5A5979;
+        --dragon-type-color: #61CADB;
+        --electric-type-color: #FBFB72;
+        --fairy-type-color: #EA1369;
+        --fighting-type-color: #EF6138;
+        --fire-type-color: #FD4C5A;
+        --flying-type-color: #93B2C7;
+        --ghost-type-color: #906790;
+        --grass-type-color: #29CA4F;
+        --ground-type-color: #A9702C;
+        --ice-type-color: #86D2F5;
+        --normal-type-color: #CC97A7;
+        --poison-type-color: #9B69D9;
+        --psychic-type-color: #F81C91;
+        --rock-type-color: #8B3E21;
+        --steel-type-color: #42BD94;
+        --water-type-color: #86A8FC;
+}
+
 .card {
   position: absolute;
   backface-visibility: hidden;
@@ -6,7 +35,9 @@
   height: 450px;
   height: 100%;
   width: 350px;
-  aspect-ratio: 7/9;
+  //max-width: 350px;
+  height: 450px;
+  height: 100%;
 }
 .card-container:hover {
   // box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
@@ -17,6 +48,7 @@
 .card-front {
   background-color: #255786;
   border: 10px solid #58B9EF;
+  aspect-ratio: 7/9;
 }
 
 .card-back {
@@ -24,13 +56,8 @@
   background-color: #FFFBEB;
 }
 
-.card-container {
-  position: relative;
-  transition: transform 0.5s ease, scale 0.6s ease;
-  height: 450px;
-  display: flex;
-  justify-content: center;
-  transform-style: preserve-3d;
+.card-back > * {
+  // position: relative;
 }
 
 .btn {
@@ -76,6 +103,106 @@
   bottom: 5%;
   left: 39%;
 }
+
+// Poke card back
+.card-back {
+
+}
+
+#poke-details-img-background {
+  height: 40%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+    background: linear-gradient(to bottom right, var(--grass-type-color), var(--poison-type-color));
+}
+
+
+
+#poke-details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 60%;
+  //padding-top: 5px;
+}
+
+// details rows
+#poke-details-first-row, #poke-details-second-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+// first row
+
+#poke-details-name {
+  padding: 15px 0 0 0;
+}
+
+#poke-details-first-row {
+  width: 80%;
+  border-bottom: 1px solid black;
+  padding: 10px 0;
+}
+
+#poke-details-first-row div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 25%;
+}
+
+#poke-details-first-row p, #poke-details-first-row h5 {
+  margin: 0 auto;
+}
+
+#poke-details-first-row h5 {
+  font-size: 0.7em;
+  color: rgba(105, 105, 105, 0.5);
+}
+
+// Second row
+
+#poke-details-second-row {
+  width: 80%;
+  padding: 20px 0;
+}
+
+#poke-details-second-row h5 {
+  text-align: center;
+  font-size: 1.2em;
+}
+
+#poke-details-second-row li{
+  font-size: 0.8em;
+  text-align: center;
+}
+
+.poke-abilities-container ul{
+  list-style: none;
+  padding: 0;
+}
+
+.poke-type-container img {
+  width: 40px;
+}
+
+// .poke-type-container li::before {
+//   content: "•";
+//   color: red;
+//   display: inline-block;
+//   width: 1em;
+//   margin-left: -1em;
+// }
+
+// .poke-type-container li {
+//   font-size: 1.7em;
+// }
+
 
 .poke-ball-button.animate {
   //  animation: throw-ball 2s 1, wiggle 1s 3 2s;

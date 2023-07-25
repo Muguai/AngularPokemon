@@ -8,25 +8,29 @@
             [class.animate]="animateButton"><div [class.animate]="animateDot" class="pokeBallDot"></div></button>
     </div>
     <div class="card card-back" (click)="onBackButtonClick()">
-        <h4 id="poke-details-name">Balbausaur</h4>
-        <div class="pokemon-details-img-container">
-            <img [src]="data.sprite" alt="assets/images/MissingNo.png">
+        <div id="poke-details-img-background">
+            <div class="pokemon-details-img-container">
+                <img [src]="data.sprite" alt="assets/images/MissingNo.png">
+            </div>
         </div>
+        
         <div id="poke-details-container">
-            <div class="poke-details-row">
+            <h4 id="poke-details-name">{{ data.name }}</h4>
+            <div id="poke-details-first-row">
                 <div class="poke-weight-container">
                     <p>31.29kg</p>
-                    <p>Weight</p>
+                    <h5>Weight</h5>
                 </div>
                 <div class="poke-height-container">
                     <p>0.18m</p>
-                    <p>Height</p>
+                    <h5>Height</h5>
                 </div>
-                <div class="poke">
-
+                <div class="poke-gender-container">
+                    <p>Girl</p>
+                    <h5>Gender</h5>
                 </div>
             </div>
-            <div>
+            <div id="poke-details-second-row">
                 <div class="poke-abilities-container">
                     <h5>Abilities</h5>
                     <ul>
@@ -36,10 +40,8 @@
                 </div>
                 <div class="poke-type-container">
                     <h5>Type</h5>
-                    <ul class="type-list">
-                        <li>Grass</li>
-                        <li>Poison</li>
-                    </ul>
+                    <img src="/assets/images/types/grass.png">
+                    <img src="/assets/images/types/poison.png">
                 </div>
             </div>
         </div>

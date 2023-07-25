@@ -20,7 +20,6 @@ export class PokemonCardListComponent implements OnInit{
   constructor(private readonly pokeApiService:PokeApiService){
 
   }
-
   
   ngOnInit(): void {
     this.totalPages = Math.ceil(this.maxPokemon / this.itemsPerPage);
