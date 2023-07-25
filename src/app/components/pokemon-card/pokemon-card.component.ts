@@ -15,15 +15,22 @@ export class PokemonCardComponent {
 
   @Input() data: PokemonData = { name: "MissingNo", sprite: "assets/images/MissingNo.png" };
 
-  animateButton = false;
-  animateImage = false;
-  animateDot = false;
+  canFlip:boolean;
+  animateDot:boolean;
+  animateImage:boolean;
+  animateButton:boolean;
 
   constructor() {
+    this.canFlip = true;
+    this.animateDot = false;
+    this.animateImage = false;
+    this.animateButton = false;
     //console.log(this.data.name);
   }
 
   onBackButtonClick() {
+    if(this.canFlip == false)
+      return;
     console.log('Back button clicked!');
     const cardContainer = this.cardContainerRef.nativeElement as HTMLElement;
     cardContainer.style.transform = 'rotateY(0deg)';
@@ -31,6 +38,8 @@ export class PokemonCardComponent {
   }
 
   onFrontButtonClick() {
+    if(this.canFlip == false)
+      return;
     console.log('Front button clicked!');
     const cardContainer = this.cardContainerRef.nativeElement as HTMLElement;
     cardContainer.style.transform = 'rotateY(180deg)';
