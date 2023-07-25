@@ -13,42 +13,7 @@ export class PokeApiService {
   constructor(private readonly http: HttpClient) {}
 
   getPokemonAtLogin(from: number, to: number) {
-    console.log("Session Storage item " , sessionStorage.getItem(`PokemonData-From${from}-To${to}`));
-    if(sessionStorage.getItem(`PokemonData-From${from}-To${to}`) == "" && sessionStorage.getItem(`PokemonData-From${from}-To${to}`) == null){
-      console.log(`DATA - PokemonData-From${from}-To${to} - ALREADY STORED`);
-      return;
-    }
-    this.getPokemonBetweenNum(from, to)
-      .pipe(
-        switchMap((pokemonResult) => {
-          const urls = pokemonResult.results.map((result) => result.url);
-          const observablesArray = urls.map((url) =>
-            this.getPokemonDataFromUrl(url)
-          );
-          console.log(observablesArray);
-          return forkJoin(observablesArray);
-        }),
-        map((responses: Pokemon[]) => {
-          const pokemonDataArray = responses.map((pokemon) => {
-            return {
-              name: pokemon.name[0].toUpperCase() + pokemon.name.slice(1),
-              sprite: pokemon.sprites.front_default,
-            };
-          });
-          return pokemonDataArray;
-        })
-      )
-      .subscribe({
-        next: (pokemonDataArray: { name: string; sprite: string }[]) => {
-          //this.pokemonData = pokemonDataArray;
-          console.log(`JUST GOT DATA - PokemonData-From${from}-To${to}`);
-
-          sessionStorage.setItem(`PokemonData-From${from}-To${to}`, JSON.stringify(pokemonDataArray));
-        },
-        error: (error) => {
-          console.log(error);
-        },
-      });
+    
   }
 
   getPokemons(): Observable<PokemonResult> {
@@ -61,9 +26,10 @@ export class PokeApiService {
     return this.http.get<Pokemon>(url);
   }
 
-  getPokemonBetweenNum(from: number, to: number): Observable<PokemonResult> {
+  getPokemonBetweenNum(limit: number, offset: number): Observable<PokemonResult> {
+    console.log(`THIS IS THE API URL https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`);
     return this.http.get<PokemonResult>(
-      `https://pokeapi.co/api/v2/pokemon?limit=${to}&offset=${from}`
+      `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
     );
   }
 

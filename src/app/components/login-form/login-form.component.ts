@@ -31,13 +31,8 @@ export class LoginFormComponent {
         this.userService.getUser(formUser)
         
         */
-    console.log("Load1");
-    for(let i = 0; i < 950; i += 50){
-        console.log("Start to get from " + i + " to " + i + 50);
-        this.pokeApiService.getPokemonAtLogin(i,i+50);
-    }
-    console.log("Load2");
-    console.log("Load3");
+    this.pokeApiService.getPokemonAtLogin(0, 40);
+
 
     
 

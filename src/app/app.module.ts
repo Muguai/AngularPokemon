@@ -12,6 +12,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PokemonCardListComponent } from './components/pokemon-card-list/pokemon-card-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     TrainerPage,
     PokedexPage,
     PokemonCardComponent,
-    PokemonCardListComponent
+    PokemonCardListComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,8 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges  } from '@angular/core';
 import { PokeApiService } from 'src/app/services/poke-api.service';
 import { PokemonResult, Result, PokemonData } from 'src/app/models/pokemonResult';
 import { Pokemon, Sprites } from 'src/app/models/pokemonData';
-import { switchMap, forkJoin, map } from 'rxjs';
+import { switchMap, forkJoin, map, of } from 'rxjs';
 
 
 @Component({
@@ -10,42 +10,74 @@ import { switchMap, forkJoin, map } from 'rxjs';
   templateUrl: './pokemon-card-list.component.html',
   styleUrls: ['./pokemon-card-list.component.scss']
 })
-export class PokemonCardListComponent{
+export class PokemonCardListComponent implements OnInit{
   public pokemonData:PokemonData[] = [];
+  public currentPage: number = 1;
+  public itemsPerPage: number = 39;
+  public totalPages: number = 30;
+  public maxPokemon: number = 1008;
 
   constructor(private readonly pokeApiService:PokeApiService){
 
   }
-  /*
+
+  
   ngOnInit(): void {
-    this.pokeApiService.getPokemons()
-    .pipe(
-      switchMap((pokemonResult) => {
-        const urls = pokemonResult.results.map((result) => result.url);
-
-        const observablesArray = urls.map((url) => this.pokeApiService.getPokemonDataFromUrl(url));
-        console.log(observablesArray);
-
-        return forkJoin(observablesArray);
-      }),
-      map((responses: Pokemon[]) => {
-        // Here, 'responses' will be an array containing the responses from each URL
-        // We need to extract the 'name' and 'sprites' properties from each 'Pokemon' object
-        const pokemonDataArray = responses.map((pokemon) => {
-          return { name: pokemon.name[0].toUpperCase() + pokemon.name.slice(1), sprite: pokemon.sprites.front_default };
-        });
-        return pokemonDataArray;
-      })
-    )
-    .subscribe({
-      next: (pokemonDataArray: { name: string; sprite: string }[])=> {
-        this.pokemonData = pokemonDataArray;
-        console.log(this.pokemonData);
-      },
-      error: (error => {
-          console.log(error)
-      })
-  })
+    this.totalPages = Math.ceil(this.maxPokemon / this.itemsPerPage);
+    console.log(this.totalPages);
+    this.fetchPokemonData();
   }
-  */
+
+  fetchPokemonData() {
+    let offset = (this.currentPage - 1) * this.itemsPerPage;
+    let limit = this.itemsPerPage;
+    if(offset > (this.maxPokemon - limit)){
+      limit = this.maxPokemon - offset;
+    }
+    offset = Math.min(offset, (this.maxPokemon - limit));
+    console.log("From " + offset + " to " + (offset + limit) );
+
+    const storedData = sessionStorage.getItem(`PokemonData-From${offset}-To${limit + offset}`);
+    if(storedData){
+      this.pokemonData = JSON.parse(storedData) as PokemonData[];
+      console.log(`DATA - PokemonData-From${offset}-To${offset + limit } - ALREADY STORED`);
+      return;
+    }
+    this.pokeApiService.getPokemonBetweenNum(limit, offset)
+      .pipe(
+        switchMap((pokemonResult) => {
+          const urls = pokemonResult.results.map((result) => result.url);
+          const observablesArray = urls.map((url) =>
+            this.pokeApiService.getPokemonDataFromUrl(url)
+          );
+          console.log(observablesArray);
+          return forkJoin(observablesArray);
+        }),
+        map((responses: Pokemon[]) => {
+          const pokemonDataArray = responses.map((pokemon) => {
+            return {
+              name: pokemon.name[0].toUpperCase() + pokemon.name.slice(1),
+              sprite: pokemon.sprites.front_default,
+            };
+          });
+          return pokemonDataArray;
+        })
+      )
+      .subscribe({
+        next: (pokemonDataArray: { name: string; sprite: string }[]) => {
+          this.pokemonData = pokemonDataArray;
+          this.totalPages = Math.ceil(this.maxPokemon / this.itemsPerPage);
+          console.log(`JUST GOT DATA - PokemonData-From${offset}-To${offset + limit}`);
+          sessionStorage.setItem(`PokemonData-From${offset}-To${offset + limit}`, JSON.stringify(pokemonDataArray));
+        },
+        error: (error) => {
+          console.log(error);
+        },
+      });
+  }
+  onPageChanged(page: number) {
+    this.currentPage = page;
+    this.fetchPokemonData();
+  }
+  
 }
