@@ -29,20 +29,29 @@ form.login {
 
 form.login h3{
     font-weight: bold;
+    margin: 2rem;
+}
+
+form.login p {
+    margin: 0;
 }
 
 form.login img {
     height: 55px;
+    position: absolute;
+
 }
 
 form.login input, form.login button {
     height: 40px;
     border-radius: 50px;
     min-width: 425px;
+    margin: 0.5rem;
 }
 
 form.login input {
     border: 1px solid #58B9EF;
+    padding-left: 50px;
 }
 
 form.login button {
@@ -52,7 +61,7 @@ form.login button {
 }
 
 form.login button:hover {
-    background-color: white;
-    border: var(--light-blue);
+    background: none;
+    border: 1px solid var(--light-blue);
 }
 

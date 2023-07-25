@@ -1,17 +1,16 @@
 
 
 .grid {
-    border: thick solid green;
     padding-top: 50px;
     padding-bottom: 75px;
-    background-color: aqua;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     grid-gap: 50px;
-   
+
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
  }
 
- 
 .grid > app-pokemon-card {
   }
 

@@ -1,32 +1,29 @@
-
-  .cardFront {
+  .card {
     position: absolute;
     backface-visibility: hidden;
-    border-radius: 10px;
-    border-radius:5%;
+    border-radius: 5px;
+    //border-radius:5%;
     max-width: 350px;
     width: 100%;
     aspect-ratio: 7/9;
-    
-    background-color: white;
-    border: thick solid red;
-
   }
-  .cardBack {
-    position: absolute;
+  .card:hover {
+    // box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    max-width: 360px;
+  }
+
+  .card-front {
+    background-color: #255786;
+    border: 10px solid #58B9EF;
+  }
+
+  .card-back {
     transform: rotateY(180deg);
-    backface-visibility: hidden;
-    border-radius: 10px;
-    border-radius:5%;
-    max-width: 350px;
-    width: 100%;
-    aspect-ratio: 7/9;
-    
-    background-color: white;
-    border: thick solid green;
+
+    background-color: #FFFBEB;
   }
 
-  .cardContainer {
+  .card-container {
     position: relative;
     transition: transform 0.5s ease;
 
@@ -49,7 +46,7 @@
     border: 10px solid yellow;
   }
 
-  .cardImg{
+  .card-img{
     position: absolute;
     top: 45%;
     left: 50%;
@@ -59,14 +56,17 @@
     transform: translate(-50%, -50%);
   }
   
-  .pokemonNameCard{
+  .pokemon-name-card{
     position: absolute;
     top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    color: #FFCC00;
+    text-shadow: -2.5px 0 #2D6AB3, 0 2.5px #2D6AB3, 2.5px 0 #2D6AB3, 0 -2.5px #2D6AB3;
   }
 
-  .pokeBallButton {
+  .poke-ball-button {
     position: absolute;
     background-image: url('../../../assets/images/PokeballClosed.png');
     background-position: center; 
@@ -80,7 +80,7 @@
     transform: translate(-50%, -50%);
   }
 
-  .pokeBallButton.animate {
+  .poke-ball-button.animate {
     animation: buttonAnimation 2s linear;
     pointer-events: none; 
   }

@@ -3,11 +3,16 @@
   <div class="header-nav">
     <nav class="header-nav">
       <div class="catalogue">
-          <a href=""><img src="../../assets/images/PokeBag.png"></a>
+        <!-- routerLinkActive="active" ariaCurrentWhenActive="page" -->
+          <a routerLink="/pokedex" routerLinkActive="active" ariaCurrentWhenActive="page">
+            <img src="../../assets/images/PokeBag.png">
+          </a>
           <p>Catalogue</p>
       </div>
-      <div class="pokedex">
-          <a href=""><img src="../../assets/images/Pikachu.png"></a>
+      <div class="trainer">
+          <a routerLink="/trainer">
+            <img src="../../assets/images/Pikachu.png">
+          </a>
           <p>Pokémons</p>
       </div>
   </nav>
@@ -15,8 +20,10 @@
 </header>
 
 <main>
-  <!-- Your pages are rendered here -->
-  <router-outlet></router-outlet>
+
 </main>
 
-<footer>the footer</footer>
+<!-- <footer>the footer</footer> -->
+
+<!-- Your pages are rendered here -->
+<router-outlet></router-outlet>
