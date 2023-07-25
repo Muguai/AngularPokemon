@@ -1,14 +1,14 @@
-<section #cardContainer class="cardContainer">
-    <div class="cardFront">
+<section #cardContainer class="card-container">
+    <div class="card card-front">
         <button class="btn btn-primary" (click)="onFrontButtonClick()"></button>
-        <div class="cardImageContainer">
-            <img #cardImg draggable="false" class="cardImg" [src]="data.sprite" alt="assets/images/MissingNo.png" [class.animate]="animateImage" (animationend)="onAnimationEndImage()" />
+        <div class="card-Image-Container">
+            <img #cardImg draggable="false" class="card-Img" [src]="data.sprite" alt="assets/images/MissingNo.png" [class.animate]="animateImage" (animationend)="onAnimationEndImage()" />
         </div>
-        <h4 class="pokemonNameCard">{{ data.name }}</h4>
-        <button #pokeBallButton class="pokeBallButton" (click)="catchPokemon()" (animationend)="onAnimationEnd($event)"
+        <h4 class="pokemon-name-card">{{ data.name }}</h4>
+        <button #pokeBallButton class="poke-ball-button" (click)="catchPokemon()" (animationend)="onAnimationEnd($event)"
             [class.animate]="animateButton"><div [class.animate]="animateDot" class="pokeBallDot"></div></button>
     </div>
-    <div class="cardBack">
+    <div class="card card-back">
         <button class="btn btn-primary" (click)="onBackButtonClick()"></button>
     </div>
 </section>

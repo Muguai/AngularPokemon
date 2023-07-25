@@ -1,18 +1,29 @@
 <header>
-  
-  <nav className="navbar navbar-dark bg-dark">
-    <div className="container">
-      <ul className="navItems">
-       
-      </ul>
-      <h1 className="navBarTitle">Pokemon Page</h1>
-    </div>
+  <img id="pokemon-logo" src="../../assets/images/PokemonLogo.png">
+  <div class="header-nav">
+    <nav class="header-nav">
+      <div class="catalogue">
+        <!-- routerLinkActive="active" ariaCurrentWhenActive="page" -->
+          <a routerLink="/pokedex" routerLinkActive="active" ariaCurrentWhenActive="page">
+            <img src="../../assets/images/PokeBag.png">
+          </a>
+          <p>Catalogue</p>
+      </div>
+      <div class="trainer">
+          <a routerLink="/trainer">
+            <img src="../../assets/images/Pikachu.png">
+          </a>
+          <p>Pokémons</p>
+      </div>
   </nav>
+  </div>
 </header>
 
 <main>
-  <!-- Your pages are rendered here -->
-  <router-outlet></router-outlet>
+
 </main>
 
-<footer>the footer</footer>
+<!-- <footer>the footer</footer> -->
+
+<!-- Your pages are rendered here -->
+<router-outlet></router-outlet>

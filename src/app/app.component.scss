@@ -1,0 +1,55 @@
+/* Header */
+
+header {
+    display: flex;
+    justify-content: flex-start;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6rem;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 1rem 0;
+}
+
+div.header-nav {
+    float: right; /* Funkar ej :( */
+}
+
+nav.header-nav {
+    display: flex;
+    align-items: center;
+    float: right;
+    height: 100%;
+}
+
+#logo {
+    height: 85px;
+}
+
+div.catalogue, div.trainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-nav a {
+    display: flex;
+    // justify-content: center;
+}
+
+.header-nav img {
+    height: 40px;
+    width: 40px;
+}
+
+.catalogue a {
+}
+
+.trainer a {
+}
+
+nav.header-nav p {
+    color: white;
+    margin: 0;
+}

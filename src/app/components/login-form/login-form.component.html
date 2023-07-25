@@ -1,3 +1,14 @@
-<h3>login form works totally!</h3>
-<input type="text" placeholder="username" (keydown)="userNameChange($event)"/>
-<button (click)="login()">Login</button>
+<div class="login-form-background">
+    <!-- <div class="login-form-container"> -->
+        <form class="login">
+            <h3>Welcome!</h3>
+            <p> Enter your trainer name:</p>
+            <div>
+                <img src="../../assets/images/PokeballLoginEnter.png">
+                <input type="text" placeholder="Ash Ketchum" (keydown)="userNameChange($event)"/>
+            </div>
+            <button (click)="login()" class="login-form-button">Login</button>
+        </form>
+    <!-- </div> -->
+</div>
+
