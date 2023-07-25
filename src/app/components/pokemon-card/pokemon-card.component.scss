@@ -1,40 +1,36 @@
-  .card {
-    position: absolute;
-    backface-visibility: hidden;
-    border-radius: 5px;
-    //border-radius:5%;
-    max-width: 350px;
-    width: 100%;
-    aspect-ratio: 7/9;
-  }
-  .card:hover {
-    // box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    max-width: 360px;
-  }
+.card {
+  position: absolute;
+  backface-visibility: hidden;
+  border-radius: 5px;
+  //border-radius:5%;
+  width: 350px;
+  aspect-ratio: 7/9;
+}
+.card:hover {
+  // box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  width: 360px;
+}
 
-  .card-front {
-    background-color: #255786;
-    border: 10px solid #58B9EF;
-  }
+.card-front {
+  background-color: #255786;
+  border: 10px solid #58B9EF;
+}
 
-  .card-back {
-    transform: rotateY(180deg);
+.card-back {
+  transform: rotateY(180deg);
+  background-color: #FFFBEB;
+}
 
-    background-color: #FFFBEB;
-  }
-
-  .cardContainer {
-    position: relative;
-    transition: transform 0.5s ease;
-
-    height: 450px;
-    display: flex;
-    justify-content: center;
-    transform-style: preserve-3d;
-  }
+.card-container {
+  position: relative;
+  transition: transform 0.5s ease;
+  height: 450px;
+  display: flex;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
 
 .btn {
-  position: absolute;
   backface-visibility: hidden;
   border: 5px solid green;
   height: 50px;
@@ -47,66 +43,66 @@
   border: 10px solid yellow;
 }
 
-  .cardImg{
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    width: 96px;
-    height: 96px;
-    user-select: none;
-    transform: translate(-50%, -50%);
-  }
-  
-  .pokemonNameCard{
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+.card-img{
+  position: absolute;
+  top: 40%;
+  width: 96px;
+  height: 96px;
+  user-select: none;
+}
 
-  .pokeBallButton {
-    position: absolute;
-    background-image: url('../../../assets/images/PokeballClosed.png');
-    background-position: center; 
-    background-size: cover;
-    border: none;
-    background-color: transparent;
-    height: 50px;
-    width: 50px;
-    bottom: 5%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+.pokemon-name-card{
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
-  .pokeBallButton.animate {
-    animation: buttonAnimation 2s linear;
-    pointer-events: none; 
-  }
+  color: #FFCC00;
+  text-shadow: -2.5px 0 #2D6AB3, 0 2.5px #2D6AB3, 2.5px 0 #2D6AB3, 0 -2.5px #2D6AB3;
+}
+
+.poke-ball-button {
+  position: absolute;
+  background-image: url('../../../assets/images/PokeballClosed.png');
+  background-position: center; 
+  background-size: cover;
+  border: none;
+  background-color: transparent;
+  height: 50px;
+  width: 50px;
+  bottom: 5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.poke-ball-button.animate {
+  animation: buttonAnimation 2s, buttonAnimation2 1s, 2;
+  pointer-events: none; 
+}
 
 @keyframes buttonAnimation {
   0% {
-    height: 75px;
+    height: 50px;
 
     pointer-events: none;
-    background-image: url("../../../assets/images/PokeballOpen1.png");
+    background-image: url('../../../assets/images/PokeballOpen1.png');
   }
-  10% {
-    height: 96px;
-    background-image: url("../../../assets/images/PokeballOpen2.png");
-  }
-  65% {
-    height: 96px;
-    transform: translateY(0px);
+  20% {
+    
+    height: 70px;
+    background-image: url('../../../assets/images/PokeballOpen2.png');
 
-    background-image: url("../../../assets/images/PokeballOpen2.png");
   }
-  66% {
-    background-image: url("../../../assets/images/PokeballClosed.png");
-    transform: translateY(25px);
-    height: 75px;
+  99%{
+    height: 70px;
+    background-image: url('../../../assets/images/PokeballOpen2.png');
+
   }
-  100%{
-    pointer-events: none;
+  100% {
+    background-image: url('../../../assets/images/PokeballClosed.png');
+
+    height: 50px;
+    pointer-events: all;
   }
 }
 
@@ -168,13 +164,14 @@
 
 }
 
-.cardImg.animate{
+.card-Img.animate{
   animation: pokemonCatchAnimation 3s linear;
 }
 
-.cardImageContainer{
+.card-Image-Container{
   position: relative;
   left: 35%;
+  top: -11.7%;
   height: 365px;
   width: 100px;
   overflow: hidden;
