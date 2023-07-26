@@ -83,3 +83,16 @@ form.login button:hover {
 form.login input, .login-form-error {
     padding-left: 50px;
 }
+
+.load-Image.animate {
+    animation: spin 0.5s linear infinite;
+}
+
+@keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }

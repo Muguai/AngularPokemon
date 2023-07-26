@@ -1,0 +1,56 @@
+
+header {
+    display: flex;
+    height: 10rem;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 10px 10%;
+    padding-bottom: 20px;
+    margin-bottom: 60px;
+}
+
+nav.header-nav {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    justify-self: end;
+    margin-left: auto;
+}
+
+#logo {
+    height: 85px;
+}
+
+a.trainer, a.catalogue {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div.catalogue:hover p, div.trainer:hover p {
+    color: rgb(170, 170, 170);
+}
+
+div.catalogue:hover img, div.trainer:hover img {
+    scale: 1.1;
+    -webkit-filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+}
+
+.header-nav a {
+    display: flex;
+    margin: 5px;
+    padding: 0 1.5rem;
+    text-decoration: none;
+}
+
+.header-nav img {
+    height: 80px;
+    width: auto;
+}
+
+nav.header-nav p {
+    color: white;
+    margin: 0;
+    font-size: 1.5rem;
+}

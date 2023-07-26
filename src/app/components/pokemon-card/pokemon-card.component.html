@@ -75,7 +75,15 @@
         <div class="poke-type-container">
           <h5>Type</h5>
           <ng-container *ngFor="let type of data.type">
-            <img draggable="false" [src]="getTypeImageUrl(type.type.name)"  data-bs-toggle="tooltip" data-bs-placement="top" title={{type.type.name}} />
+            <img
+              draggable="false"
+              [src]="getTypeImageUrl(type.type.name)"
+              data-bs-toggle="tooltip"
+              data-bs-placement="top"
+              title="{{type.type.name[0].toUpperCase()
+              +
+              type.type.name.slice(1)}}"
+            />
           </ng-container>
         </div>
       </div>

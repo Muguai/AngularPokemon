@@ -10,36 +10,52 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss'],
 })
-export class LoginFormComponent {
+export class LoginFormComponent{
   userName?: string = '';
+  animateLoad: boolean = false;
+
 
   constructor(
     private readonly router: Router,
     private readonly userService: UserService,
     private readonly pokeApiService: PokeApiService
-  ) {}
+  ) {
+  }
 
 
-  login(form: NgForm) {
-    /*
-        let formUser:User= {
-            id: 1,
-            username: form.value.trainerName,
-            pokemon: []
-        }
-
-        this.userService.getUser(formUser)
-        
-        */
-    this.pokeApiService.getPokemonAtLogin(0, 40);
-
-
+  async login(form: NgForm) {
+    this.animateLoad = true;
     
-
-
-    localStorage.setItem('username', this.userName!);
-    console.log("get here");
-    this.router.navigateByUrl('trainer');
+    this.userService.getUser2(form.value.trainerName).subscribe({
+      next: (user) => {
+        console.log(user.username);
+        if (user.username == null) {
+          console.log("--- User doesn't exist --- create user---> ", form.value.trainerName);
+          this.userService.postUser2(JSON.stringify({
+            username: form.value.trainerName,
+            pokemon: [],
+          })).subscribe({
+            next: (user) => {
+              console.log(user);
+              this.router.navigateByUrl('trainer');
+            },
+            error: (error) => {
+              console.log(error);
+              // Handle postUser error if needed
+            }
+          });
+        } else {
+          this.userService.setUser(user);
+          console.log('--- User already exist --- Login in --->', user);
+          this.router.navigateByUrl('trainer');
+        }
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+    //this.pokeApiService.getPokemonAtLogin(0, 40);
+    //localStorage.setItem('username', this.userName!);
   }
 
   userNameChange(event: any): void {
