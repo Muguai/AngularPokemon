@@ -1,3 +1,4 @@
+
 .card-container {
   position: relative;
   transition: transform 0.5s ease, scale 0.6s ease;
@@ -39,14 +40,19 @@
   height: 450px;
   height: 100%;
 }
+
 .card-container:hover {
-  // box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
   scale: 1.1;
 }
 
+.card-container:hover div.card {
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
 
 .card-front {
-  background-color: #255786;
+  // background-color: #255786;
+  background-color: #4991d4;
   border: 10px solid #58B9EF;
   aspect-ratio: 7/9;
 }
@@ -87,6 +93,7 @@
   transform: translate(-50%, -50%);
 
   color: #FFCC00;
+  //text-shadow: #2D6AB3;
   text-shadow: -2.5px 0 #2D6AB3, 0 2.5px #2D6AB3, 2.5px 0 #2D6AB3, 0 -2.5px #2D6AB3;
 }
 
@@ -108,9 +115,6 @@
 }
 
 // Poke card back
-.card-back {
-
-}
 
 #poke-details-img-background {
   height: 40%;
