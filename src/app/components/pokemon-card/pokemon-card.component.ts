@@ -20,6 +20,8 @@ export class PokemonCardComponent {
   animateImage: boolean;
   animateButton: boolean;
   isMetricSystem: boolean;
+  orgWeight: number;
+  orgHeight: number;
 
   pokedexRoute: Boolean = false;
   trainerRoute: Boolean = false;
@@ -30,6 +32,8 @@ export class PokemonCardComponent {
     this.animateImage = false;
     this.animateButton = false;
     this.isMetricSystem = false;
+    this.orgWeight = -1;
+    this.orgHeight = -1;
 
     this.pokedexRoute = (this.route.url === '/pokedex')
     this.trainerRoute = (this.route.url === '/trainer')
@@ -43,6 +47,10 @@ export class PokemonCardComponent {
 
   onFrontButtonClick() {
     if (this.canFlip == false) return;
+
+    if(this.orgHeight == -1)
+      this.convertWeightAndHeight();
+
     const cardContainer = this.cardContainerRef.nativeElement as HTMLElement;
     cardContainer.style.transform = 'rotateY(180deg)';
   }
@@ -86,33 +94,39 @@ export class PokemonCardComponent {
   }
 
   convertWeightAndHeight() {
-    const tempWeight = this.data.weight;
-    const tempHeight = this.data.height;
-    if(!this.isMetricSystem){
-      this.data.height = this.feetToMeters(tempHeight);
-      this.data.weight = this.lbsToKgs(tempWeight);
-    }else{
-      this.data.height = this.data.heightAlt;
-      this.data.weight = this.data.weightAlt;
+
+    if(this.orgHeight == -1){
+      console.log("yes");
+      this.orgHeight = this.data.height;
+      this.orgWeight = this.data.weight;
+      this.data.weight = this.orgWeight / 10
+      this.data.height = this.orgHeight / 10
+    }
+
+    if (this.isMetricSystem) {
+      // Convert from metric to imperial
+      this.data.height = this.metersToFeet(this.orgHeight / 10);
+      this.data.weight = this.kgsToLbs(this.orgWeight / 10);
+  
+    } else {
+      // Convert from imperial to metric
+      this.data.height = this.orgHeight / 10;
+      this.data.weight = this.orgWeight / 10;
+  
     }
     
-    this.data.heightAlt = tempHeight;
-    this.data.weightAlt = tempWeight;
-      
     this.isMetricSystem = !this.isMetricSystem;
   }
 
-  
-  lbsToKgs(lbs: number): number {
-    // 1 lb is approximately equal to 0.45359237 kg
-    return parseFloat((lbs * 0.45359237).toFixed(1));
-  }
-  feetToMeters(feet: number): number {
-    // 1 foot is equal to 0.3048 meters
-    
-    return parseFloat((feet * 0.3048).toFixed(1));
+  kgsToLbs(kgs: number): number {
+    // 1 kg is approximately equal to 2.20462262 lbs
+    return parseFloat((kgs * 2.20462262).toFixed(1));
   }
 
+  metersToFeet(meters: number): number {
+    // 1 meter is equal to 3.28084 feet
+    return parseFloat((meters * 3.28084).toFixed(1));
+  }
 
 
 }

@@ -42,15 +42,23 @@
 
     <div id="poke-details-container">
       <h4 id="poke-details-name">{{ data.name }}</h4>
-      <div id="poke-details-first-row" 
-      (mouseover)="canFlip = false"
-      (mouseout)="canFlip = true">
-        <div class="poke-weight-container" (click)="convertWeightAndHeight()">
-          <p>{{ data.weight }}  {{ isMetricSystem  ? 'kg' : 'lb' }}</p>
+      <div id="poke-details-first-row">
+        <div
+          (mouseover)="canFlip = false"
+          (mouseout)="canFlip = true"
+          class="poke-weight-container pointer"
+          (click)="convertWeightAndHeight()"
+        >
+          <p>{{ data.weight }} {{ isMetricSystem ? "kg" : "lb" }}</p>
           <h5>Weight</h5>
         </div>
-        <div class="poke-height-container" (click)="convertWeightAndHeight()">
-          <p>{{ data.height }} {{ isMetricSystem  ? 'm' : 'feet' }}</p>
+        <div
+          (mouseover)="canFlip = false"
+          (mouseout)="canFlip = true"
+          class="poke-height-container pointer"
+          (click)="convertWeightAndHeight()"
+        >
+          <p>{{ data.height }} {{ isMetricSystem ? "m" : "feet" }}</p>
           <h5>Height</h5>
         </div>
         <div class="poke-gender-container">
@@ -73,7 +81,7 @@
         <div class="poke-type-container">
           <h5>Type</h5>
           <ng-container *ngFor="let type of data.type">
-            <img draggable="false" [src]="getTypeImageUrl(type.type.name)" />
+            <img draggable="false" [src]="getTypeImageUrl(type.type.name)"  data-bs-toggle="tooltip" data-bs-placement="top" title={{type.type.name}} />
           </ng-container>
         </div>
       </div>

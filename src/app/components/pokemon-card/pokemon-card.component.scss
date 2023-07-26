@@ -83,6 +83,7 @@
 .card-back {
   transform: rotateY(180deg);
   background-color: #FFFBEB;
+  user-select: none;
 }
 
 .btn {
@@ -240,6 +241,9 @@
   width: 40px;
 }
 
+.pointer {
+  cursor: pointer;
+}
 // .poke-type-container li::before {
 //   content: "•";
 //   color: red;
