@@ -9,9 +9,9 @@
 
         // type colors:
         --bug-type-color: #3B9950;
-        --dark-type-color: #5A5979;
+        --dark-type-color: #46455d;
         --dragon-type-color: #61CADB;
-        --electric-type-color: #FBFB72;
+        --electric-type-color: #eeee4d;
         --fairy-type-color: #EA1369;
         --fighting-type-color: #EF6138;
         --fire-type-color: #FD4C5A;
@@ -20,12 +20,33 @@
         --grass-type-color: #29CA4F;
         --ground-type-color: #A9702C;
         --ice-type-color: #86D2F5;
-        --normal-type-color: #CC97A7;
+        --normal-type-color: #caa0ad;
         --poison-type-color: #9B69D9;
         --psychic-type-color: #F81C91;
         --rock-type-color: #8B3E21;
-        --steel-type-color: #42BD94;
+        --steel-type-color: #737575;
         --water-type-color: #86A8FC;
+
+          /* Darker shades for each type color */
+        --bug-type-color-dark: hsl(121, 36%, 23%);
+        --dark-type-color-dark: hsl(240, 13%, 5%);
+        --dragon-type-color-dark: hsl(192, 55%, 50%);
+        --electric-type-color-dark: hsl(60, 91%, 26%);
+        --fairy-type-color-dark: hsl(336, 82%, 22%);
+        --fighting-type-color-dark: hsl(13, 67%, 32%);
+        --fire-type-color-dark: hsl(5, 73%, 23%);
+        --flying-type-color-dark: hsl(210, 8%, 85%);
+        --ghost-type-color-dark: hsl(291, 12%, 34%);
+        --grass-type-color-dark: hsl(122, 65%, 20%);
+        --ground-type-color-dark: hsl(35, 58%, 22%);
+        --ice-type-color-dark: hsl(193, 38%, 85%);
+        --normal-type-color-dark: hsl(336, 11%, 57%);
+        --poison-type-color-dark: hsl(255, 56%, 43%);
+        --psychic-type-color-dark: hsl(330, 85%, 26%);
+        --rock-type-color-dark: hsl(19, 62%, 13%);
+        --steel-type-color-dark: hsl(150, 1%, 33%);
+        --water-type-color-dark: hsl(216, 69%, 40%);
+        --color-stop-1: 50%;
 }
 
 .card {
@@ -62,10 +83,6 @@
   background-color: #FFFBEB;
 }
 
-.card-back > * {
-  // position: relative;
-}
-
 .btn {
   backface-visibility: hidden;
   border: 5px solid green;
@@ -80,6 +97,7 @@
 
 .card-image{
   position: absolute;
+  backface-visibility: hidden;
   top: 15%;
   width: 192px;
   height: 192px;
@@ -110,11 +128,12 @@
   left: 39%;
 }
 
+.pokemon-details-img-container{
+  user-select: none;
+}
 .poke-ball-button:hover {
   outline: 3px 
 }
-
-// Poke card back
 
 #poke-details-img-background {
   height: 40%;
@@ -123,7 +142,7 @@
   justify-content: center;
   align-items: center;
 
-    background: linear-gradient(to bottom right, var(--grass-type-color), var(--poison-type-color));
+  background: linear-gradient(to bottom right, var(--grass-type-color), var(--poison-type-color));
 }
 
 

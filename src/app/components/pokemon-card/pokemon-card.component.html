@@ -1,49 +1,76 @@
 <section #cardContainer class="card-container">
-    <div class="card card-front" (click)="onFrontButtonClick()">
-        <div class="card-Image-Container">
-            <img #cardImg draggable="false" class="card-image" [src]="data.sprite" alt="assets/images/MissingNo.png" [class.animate]="animateImage" (animationend)="onAnimationEndImage()" />
-        </div>
-        <h4 class="pokemon-name-card">{{ data.name }}</h4>
-        <button #pokeBallButton class="poke-ball-button" (mouseover)="canFlip=false" (mouseout)="canFlip=true" (click)="catchPokemon()" (animationend)="onAnimationEnd($event)"
-            [class.animate]="animateButton"><div [class.animate]="animateDot" class="pokeBallDot"></div></button>
+  <div class="card card-front" (click)="onFrontButtonClick()">
+    <div class="card-Image-Container">
+      <img
+        #cardImg
+        draggable="false"
+        class="card-image"
+        [src]="data.sprite"
+        [alt]="data.name"
+        [class.animate]="animateImage"
+        (animationend)="onAnimationEndImage()"
+      />
     </div>
-    <div class="card card-back" (click)="onBackButtonClick()">
-        <div id="poke-details-img-background">
-            <div class="pokemon-details-img-container">
-                <img [src]="data.sprite" alt="assets/images/MissingNo.png">
-            </div>
-        </div>
-        
-        <div id="poke-details-container">
-            <h4 id="poke-details-name">{{ data.name }}</h4>
-            <div id="poke-details-first-row">
-                <div class="poke-weight-container">
-                    <p>31.29kg</p>
-                    <h5>Weight</h5>
-                </div>
-                <div class="poke-height-container">
-                    <p>0.18m</p>
-                    <h5>Height</h5>
-                </div>
-                <div class="poke-gender-container">
-                    <p>Girl</p>
-                    <h5>Gender</h5>
-                </div>
-            </div>
-            <div id="poke-details-second-row">
-                <div class="poke-abilities-container">
-                    <h5>Abilities</h5>
-                    <ul>
-                        <li>Overgrow</li>
-                        <li>Chloropyll</li>
-                    </ul>
-                </div>
-                <div class="poke-type-container">
-                    <h5>Type</h5>
-                    <img src="/assets/images/types/grass.png">
-                    <img src="/assets/images/types/poison.png">
-                </div>
-            </div>
-        </div>
+    <h4 class="pokemon-name-card">{{ data.name }}</h4>
+    <button
+      #pokeBallButton
+      class="poke-ball-button"
+      (mouseover)="canFlip = false"
+      (mouseout)="canFlip = true"
+      (click)="catchPokemon()"
+      (animationend)="onAnimationEnd($event)"
+      [class.animate]="animateButton"
+    >
+      <div [class.animate]="animateDot" class="pokeBallDot"></div>
+    </button>
+  </div>
+  <div class="card card-back" (click)="onBackButtonClick()">
+    <div
+      [style.background]="getGradientStyle()"
+      id="poke-details-img-background"
+    >
+      <div class="pokemon-details-img-container">
+        <img draggable="false" [src]="data.sprite" [alt]="data.name" />
+      </div>
     </div>
+
+    <div id="poke-details-container">
+      <h4 id="poke-details-name">{{ data.name }}</h4>
+      <div id="poke-details-first-row" 
+      (mouseover)="canFlip = false"
+      (mouseout)="canFlip = true">
+        <div class="poke-weight-container" (click)="convertWeightAndHeight()">
+          <p>{{ data.weight }}  {{ isMetricSystem  ? 'kg' : 'lb' }}</p>
+          <h5>Weight</h5>
+        </div>
+        <div class="poke-height-container" (click)="convertWeightAndHeight()">
+          <p>{{ data.height }} {{ isMetricSystem  ? 'm' : 'feet' }}</p>
+          <h5>Height</h5>
+        </div>
+        <div class="poke-gender-container">
+          <p>{{ data.id }}#</p>
+          <h5>Id</h5>
+        </div>
+      </div>
+      <div id="poke-details-second-row">
+        <div class="poke-abilities-container">
+          <h5>Abilities</h5>
+          <ul>
+            <li *ngFor="let ability of data.abilities">
+              {{
+                ability.ability.name[0].toUpperCase() +
+                  ability.ability.name.slice(1).replace("-", " ")
+              }}
+            </li>
+          </ul>
+        </div>
+        <div class="poke-type-container">
+          <h5>Type</h5>
+          <ng-container *ngFor="let type of data.type">
+            <img draggable="false" [src]="getTypeImageUrl(type.type.name)" />
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
