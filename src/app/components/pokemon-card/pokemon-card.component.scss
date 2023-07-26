@@ -86,7 +86,6 @@
 
 .btn:hover {
   backface-visibility: hidden;
-
   border: 10px solid yellow;
 }
 
@@ -124,6 +123,8 @@
 
 .pokemon-details-img-container{
   user-select: none;
+.poke-ball-button:hover {
+  outline: 3px 
 }
 
 #poke-details-img-background {

@@ -1,12 +1,13 @@
-<div id="cardContainer" class="align-content-center">
-    <div class="row">
-        <div ngFor="let pokemon of pokemonData" class="grid">
-            <app-pokemon-card *ngFor="let pokemon of pokemonData"  [data]="pokemon" ></app-pokemon-card>
+
+    <div id="cardContainer" class="align-content-center">
+        <div class="row">
+            <div ngFor="let pokemon of pokemonData" class="grid">
+                <app-pokemon-card *ngFor="let pokemon of pokemonData"  [data]="pokemon" ></app-pokemon-card>
+            </div>
         </div>
     </div>
-</div>
-<app-pagination
-[currentPage]="currentPage"
-[totalPages]="totalPages"
-(pageChanged)="onPageChanged($event)"
- ></app-pagination>
+    <app-pagination
+    [currentPage]="currentPage"
+    [totalPages]="totalPages"
+    (pageChanged)="onPageChanged($event)"
+     ></app-pagination>
