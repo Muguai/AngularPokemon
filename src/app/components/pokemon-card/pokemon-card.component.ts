@@ -1,4 +1,5 @@
 import { Component, Input, ViewChild, ElementRef } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { PokemonData, defaultPokemonData } from 'src/app/models/pokemonResult';
 
 @Component({
@@ -22,7 +23,10 @@ export class PokemonCardComponent {
   orgWeight: number;
   orgHeight: number;
 
-  constructor() {
+  pokedexRoute: Boolean = false;
+  trainerRoute: Boolean = false;
+
+  constructor(public route: Router) {
     this.canFlip = true;
     this.animateDot = false;
     this.animateImage = false;
@@ -30,7 +34,9 @@ export class PokemonCardComponent {
     this.isMetricSystem = false;
     this.orgWeight = -1;
     this.orgHeight = -1;
-    //console.log(this.data.name);
+
+    this.pokedexRoute = (this.route.url === '/pokedex')
+    this.trainerRoute = (this.route.url === '/trainer')
   }
 
   onBackButtonClick() {

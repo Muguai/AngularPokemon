@@ -5,7 +5,7 @@
 
 div.login-form-background {
     //background-image: url('../../../assets/images/LoginBackground.jpg');
-    background-image: url('../../../assets/images/pngwing.com.png');
+    background-image: url('../../../assets/images/PokeCharacters.png');
     background-size: 1000px;
     background-repeat: no-repeat;
     width: 1000px;
@@ -19,6 +19,7 @@ div.login-form-background {
 
 form.login {
     background-color: rgba(255, 255, 255, 0.9);
+    background: linear-gradient(to bottom right, rgba(233, 235, 207, 0.9), rgba(153, 149, 204, 0.9));
     width: 670px;
     height: 350px;
     border-radius: 50px;
@@ -61,7 +62,7 @@ form.login input {
 }
 
 form.login input:focus {
-    border: 2px solid #58B9EF;
+    outline-color: #58B9EF;
 }
 
 form.login button {
