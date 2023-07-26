@@ -17,6 +17,8 @@ export class PokemonCardListComponent implements OnInit{
   public itemsPerPage: number = 39;
   public totalPages: number = 30;
   public maxPokemon: number = 1008;
+  private speciesUrl: string = "https://pokeapi.co/api/v2/pokemon-species/";
+  private spriteUrl: string = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
 
   pokedexRoute: Boolean = false;
   trainerRoute: Boolean = false;
@@ -49,25 +51,15 @@ export class PokemonCardListComponent implements OnInit{
     }
     this.pokeApiService.getPokemonBetweenNum(limit, offset)
       .pipe(
-        switchMap((pokemonResult) => {
-          const urls = pokemonResult.results.map((result) => result.url);
-          const observablesArray = urls.map((url) =>
-            this.pokeApiService.getPokemonDataFromUrl(url)
-          );
-          console.log(observablesArray);
-          return forkJoin(observablesArray);
-        }),
-        map((responses: Pokemon[]) => {
-          const pokemonDataArray: PokemonData[] = responses.map((pokemon) => {
+        map((response: PokemonResult) => {
+          const pokemonDataArray: PokemonData[] = response.results.map((pokemon) => {
+            const splitUrl = pokemon.url.split("/");
+            const calculateId = splitUrl[splitUrl.length - 2];
             return {
               name: pokemon.name[0].toUpperCase() + pokemon.name.slice(1),
-              id: pokemon.id,
-              sprite: pokemon.sprites.front_default,
-              height: pokemon.height,
-              weight: pokemon.weight,
-              abilities: pokemon.abilities,
-              type: pokemon.types,
-              additionalInfoUrl: pokemon.species.url,
+              id: parseInt(calculateId),
+              sprite: (this.spriteUrl + calculateId + '.png'),
+              additionalInfoUrl: pokemon.url,
             };
           });
           return pokemonDataArray;
@@ -85,8 +77,6 @@ export class PokemonCardListComponent implements OnInit{
           console.log(error);
         },
       });
-
-      
 
   }
   onPageChanged(page: number) {

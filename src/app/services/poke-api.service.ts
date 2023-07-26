@@ -27,11 +27,14 @@ export class PokeApiService {
   }
 
   getPokemonBetweenNum(limit: number, offset: number): Observable<PokemonResult> {
-    console.log(`THIS IS THE API URL https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`);
     return this.http.get<PokemonResult>(
       `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
     );
   }
 
-  getPokemonById() {}
+  getPokemonById(id: number): Observable<Pokemon> {
+    return this.http.get<Pokemon>(
+      `https://pokeapi.co/api/v2/pokemon/${id}`
+    );
+  }
 }

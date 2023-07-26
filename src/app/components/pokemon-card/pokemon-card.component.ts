@@ -1,6 +1,15 @@
 import { Component, Input, ViewChild, ElementRef } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { PokemonData, defaultPokemonData } from 'src/app/models/pokemonResult';
+import { map } from 'rxjs';
+import { Pokemon } from 'src/app/models/pokemonData';
+import { PokemonData, defaultPokemonData, AdditionalPokemonData, defaultAdditionalPokemonData } from 'src/app/models/pokemonResult';
+import { PokeApiService } from 'src/app/services/poke-api.service';
+
+
+interface storeAdditionalData {
+  name: string;
+  additionalData: AdditionalPokemonData;
+}
 
 @Component({
   selector: 'app-pokemon-card',
@@ -11,9 +20,9 @@ export class PokemonCardComponent {
   @ViewChild('cardContainer', { static: true }) cardContainerRef!: ElementRef;
   @ViewChild('cardImg', { static: true }) cardImgRef!: ElementRef;
   @ViewChild('pokeBallButton', { static: true }) pokeBallButtonRef!: ElementRef;
-  //@ViewChild('pokedetailsimgbackground', { static: true }) pokedetailsimgbackgroundRef!: ElementRef;
 
   @Input() data: PokemonData = defaultPokemonData;
+  @Input() additionalData: AdditionalPokemonData = defaultAdditionalPokemonData;
 
   canFlip: boolean;
   animateDot: boolean;
@@ -26,7 +35,7 @@ export class PokemonCardComponent {
   pokedexRoute: Boolean = false;
   trainerRoute: Boolean = false;
 
-  constructor(public route: Router) {
+  constructor(public route: Router, public readonly pokeApi:PokeApiService) {
     this.canFlip = true;
     this.animateDot = false;
     this.animateImage = false;
@@ -46,13 +55,64 @@ export class PokemonCardComponent {
   }
 
   onFrontButtonClick() {
-    if (this.canFlip == false) return;
+    if (this.canFlip == false || this.data.id == null) return;
 
-    if(this.orgHeight == -1)
-      this.convertWeightAndHeight();
+    const additionalPokemonDataListStr = sessionStorage.getItem("Additional-Poke-Data");
 
-    const cardContainer = this.cardContainerRef.nativeElement as HTMLElement;
-    cardContainer.style.transform = 'rotateY(180deg)';
+    let additionalPokemonDataList: storeAdditionalData[] = [];
+    if (additionalPokemonDataListStr) {
+      additionalPokemonDataList = JSON.parse(additionalPokemonDataListStr);
+    }
+
+    const storedData = additionalPokemonDataList.find((additionalData) => additionalData.name === this.data.name);
+
+    if (storedData) {
+      this.additionalData = storedData.additionalData;
+      console.log(`FOUND STORED DATA FOR ${this.data.name}`, this.additionalData);
+      
+      if (this.orgHeight == -1)
+        this.convertWeightAndHeight();
+
+      const cardContainer = this.cardContainerRef.nativeElement as HTMLElement;
+      cardContainer.style.transform = 'rotateY(180deg)';
+      return;
+    }
+
+    this.pokeApi.getPokemonById(this.data.id)
+    .pipe(
+      map((response: Pokemon) => {
+        return {
+          height: response.height,
+          weight: response.weight,
+          abilities: response.abilities,
+          type: response.types,
+          pokeDexEntry: ""
+        };
+      })
+    ).subscribe({
+      next: (additionalData: AdditionalPokemonData) => {      
+        this.additionalData = additionalData;
+        console.log(`JUST GOT DATA FROM POKEMON - ${this.data.name}'` , additionalData);   
+
+        if(this.orgHeight == -1)
+          this.convertWeightAndHeight();
+
+        const cardContainer = this.cardContainerRef.nativeElement as HTMLElement;
+        cardContainer.style.transform = 'rotateY(180deg)';
+
+        const newAdditionalPokemonData: storeAdditionalData = {
+          name: this.data.name,
+          additionalData: additionalData,
+        };
+        additionalPokemonDataList.push(newAdditionalPokemonData);
+
+        sessionStorage.setItem("Additional-Poke-Data", JSON.stringify(additionalPokemonDataList));
+      },
+      error: (error: any) => {
+        console.log(error);
+      },
+    });
+
   }
 
   catchPokemon() {
@@ -82,12 +142,12 @@ export class PokemonCardComponent {
   }
 
   getGradientStyle(): string {
-    if (this.data.type.length === 2) {
-      const type1 = this.data.type[0].type.name;
-      const type2 = this.data.type[1].type.name;
+    if (this.additionalData.type.length === 2) {
+      const type1 = this.additionalData.type[0].type.name;
+      const type2 = this.additionalData.type[1].type.name;
       return `linear-gradient(to bottom right, var(--${type1}-type-color), var(--${type2}-type-color))`;
-    } else if (this.data.type.length === 1) {
-      const type = this.data.type[0].type.name;
+    } else if (this.additionalData.type.length === 1) {
+      const type = this.additionalData.type[0].type.name;
       return `linear-gradient(to bottom right, var(--${type}-type-color), var(--${type}-type-color-dark)`;
     }
     return ''; 
@@ -95,24 +155,21 @@ export class PokemonCardComponent {
 
   convertWeightAndHeight() {
 
+    //Initialize Values
     if(this.orgHeight == -1){
-      console.log("yes");
-      this.orgHeight = this.data.height;
-      this.orgWeight = this.data.weight;
-      this.data.weight = this.orgWeight / 10
-      this.data.height = this.orgHeight / 10
+      this.orgHeight = this.additionalData.height;
+      this.orgWeight = this.additionalData.weight;
+      this.additionalData.weight = this.orgWeight / 10
+      this.additionalData.height = this.orgHeight / 10
     }
 
     if (this.isMetricSystem) {
-      // Convert from metric to imperial
-      this.data.height = this.metersToFeet(this.orgHeight / 10);
-      this.data.weight = this.kgsToLbs(this.orgWeight / 10);
-  
+      this.additionalData.height = this.metersToFeet(this.orgHeight / 10);
+      this.additionalData.weight = this.kgsToLbs(this.orgWeight / 10);
+
     } else {
-      // Convert from imperial to metric
-      this.data.height = this.orgHeight / 10;
-      this.data.weight = this.orgWeight / 10;
-  
+      this.additionalData.height = this.orgHeight / 10;
+      this.additionalData.weight = this.orgWeight / 10;
     }
     
     this.isMetricSystem = !this.isMetricSystem;

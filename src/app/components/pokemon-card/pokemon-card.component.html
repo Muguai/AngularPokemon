@@ -49,7 +49,7 @@
           class="poke-weight-container pointer"
           (click)="convertWeightAndHeight()"
         >
-          <p>{{ data.weight }} {{ isMetricSystem ? "kg" : "lb" }}</p>
+          <p>{{ additionalData.weight }} {{ isMetricSystem ? "kg" : "lb" }}</p>
           <h5>Weight</h5>
         </div>
         <div
@@ -58,7 +58,7 @@
           class="poke-height-container pointer"
           (click)="convertWeightAndHeight()"
         >
-          <p>{{ data.height }} {{ isMetricSystem ? "m" : "feet" }}</p>
+          <p>{{ additionalData.height }} {{ isMetricSystem ? "m" : "feet" }}</p>
           <h5>Height</h5>
         </div>
         <div class="poke-gender-container">
@@ -70,7 +70,7 @@
         <div class="poke-abilities-container">
           <h5>Abilities</h5>
           <ul>
-            <li *ngFor="let ability of data.abilities">
+            <li *ngFor="let ability of additionalData.abilities">
               {{
                 ability.ability.name[0].toUpperCase() +
                   ability.ability.name.slice(1).replace("-", " ")
@@ -80,7 +80,7 @@
         </div>
         <div class="poke-type-container">
           <h5>Type</h5>
-          <ng-container *ngFor="let type of data.type">
+          <ng-container *ngFor="let type of additionalData.type">
             <img
               draggable="false"
               [src]="getTypeImageUrl(type.type.name)"

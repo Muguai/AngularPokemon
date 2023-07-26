@@ -13,13 +13,17 @@ export type PokemonResult = {
   
   export type PokemonData = {
     name: string 
-    id: number 
-    sprite: string 
+    id: number
+    sprite: string
+    additionalInfoUrl: string
+  }
+
+  export type AdditionalPokemonData = {
     height: number
     weight: number
     abilities: Ability[]
     type: Type[]
-    additionalInfoUrl: string
+    pokeDexEntry: string
   }
 
   // Very ugly to copy in these twice. need to fix later
@@ -48,11 +52,15 @@ export type PokemonResult = {
     name: "MissingNo" ,
     id: -1,
     sprite:  "assets/images/MissingNo.png",
-    height: 0,
-    weight: 0,
+    additionalInfoUrl: ""
+  };
+
+  export const defaultAdditionalPokemonData: AdditionalPokemonData = {
+    height: -1,
+    weight: -1,
     abilities: [],
     type: [],
-    additionalInfoUrl: ""
+    pokeDexEntry: ""
   };
 
   const defaultAblity: Ability = {
@@ -67,10 +75,10 @@ export type PokemonResult = {
   const defaultType: Type = {
     slot: 1,
     type: {
-      name: "Normal",
+      name: "normal",
       url: "",
     },
   };
   
-  defaultPokemonData.abilities.push(defaultAblity);
-  defaultPokemonData.type.push(defaultType);
+  defaultAdditionalPokemonData.abilities.push(defaultAblity);
+  defaultAdditionalPokemonData.type.push(defaultType);
