@@ -1,9 +1,9 @@
 import { Component, OnChanges, OnInit, SimpleChanges  } from '@angular/core';
 import { PokeApiService } from 'src/app/services/poke-api.service';
 import { PokemonResult, Result, PokemonData } from 'src/app/models/pokemonResult';
-import { Pokemon, Sprites } from 'src/app/models/pokemonData';
+import { Ability, Pokemon, Sprites,Ability2, Type } from 'src/app/models/pokemonData';
 import { switchMap, forkJoin, map, of } from 'rxjs';
-
+import { MetricConverterService } from 'src/app/services/metric-converter.service';
 
 @Component({
   selector: 'app-pokemon-card-list',
@@ -53,17 +53,26 @@ export class PokemonCardListComponent implements OnInit{
           return forkJoin(observablesArray);
         }),
         map((responses: Pokemon[]) => {
-          const pokemonDataArray = responses.map((pokemon) => {
+          const pokemonDataArray: PokemonData[] = responses.map((pokemon) => {
             return {
               name: pokemon.name[0].toUpperCase() + pokemon.name.slice(1),
+              id: pokemon.id,
               sprite: pokemon.sprites.front_default,
+              height: pokemon.height,
+              heightAlt: pokemon.height,
+              weight: pokemon.weight,
+              weightAlt: pokemon.weight,
+              abilities: pokemon.abilities,
+              type: pokemon.types,
+              additionalInfoUrl: pokemon.species.url,
             };
           });
           return pokemonDataArray;
         })
       )
       .subscribe({
-        next: (pokemonDataArray: { name: string; sprite: string }[]) => {
+        next: (pokemonDataArray: PokemonData[]) => {
+         
           this.pokemonData = pokemonDataArray;
           this.totalPages = Math.ceil(this.maxPokemon / this.itemsPerPage);
           console.log(`JUST GOT DATA - PokemonData-From${offset}-To${offset + limit}`);
@@ -73,10 +82,14 @@ export class PokemonCardListComponent implements OnInit{
           console.log(error);
         },
       });
+
+      
+
   }
   onPageChanged(page: number) {
     this.currentPage = page;
     this.fetchPokemonData();
   }
+
   
 }
