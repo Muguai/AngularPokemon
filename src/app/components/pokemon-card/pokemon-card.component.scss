@@ -73,8 +73,10 @@
 
 .card-front {
   // background-color: #255786;
-  background-color: #4991d4;
-  border: 10px solid #58B9EF;
+  //background-color: #4991d4;
+  background: linear-gradient(to bottom right, #4991d4, #296092);
+  //border: 10px solid #58B9EF;
+  border: 10px solid #c8ce77; //8ea04d
   aspect-ratio: 7/9;
 }
 
@@ -99,38 +101,59 @@
   position: absolute;
   backface-visibility: hidden;
   top: 15%;
-  width: 192px;
-  height: 192px;
+  height: 200px;
   user-select: none;
 }
 
 .pokemon-name-card{
   position: absolute;
-  top: 60%;
+  top: 65%;
   left: 50%;
   transform: translate(-50%, -50%);
 
   color: #FFCC00;
   //text-shadow: #2D6AB3;
-  text-shadow: -2.5px 0 #2D6AB3, 0 2.5px #2D6AB3, 2.5px 0 #2D6AB3, 0 -2.5px #2D6AB3;
+  text-shadow: 2px 0 #2D6AB3, -2px 0 #2D6AB3, 0 2px #2D6AB3, 0 -2px #2D6AB3,
+             1px 1px #2D6AB3, -1px -1px #2D6AB3, 1px -1px #2D6AB3, -1px 1px #2D6AB3;
+  //text-shadow: -2.5px 0 #2D6AB3, 0 2.5px #2D6AB3, 2.5px 0 #2D6AB3, 0 -2.5px #2D6AB3;
+  //-webkit-text-stroke: 1px #2D6AB3;
 }
 
-.poke-ball-button {
+.card-button {
   position: absolute;
-  background-image: url('../../../assets/images/PokeballClosed.png');
   background-position: center; 
   background-size: cover;
   border: none;
   background-color: transparent;
+  bottom: 5%;
   height: 75px;
   width: 75px;
-  bottom: 5%;
   left: 39%;
+}
+
+.poke-ball-button {
+  background-image: url('../../../assets/images/PokeballClosed.png');
+}
+
+.delete-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 10%;
+}
+
+.delete-button img {
+  height: 30px;
 }
 
 .pokemon-details-img-container{
   user-select: none;
 }
+
+.pokemon-details-img-container img {
+  height: 170px;
+}
+
 .poke-ball-button:hover {
   outline: 3px 
 }

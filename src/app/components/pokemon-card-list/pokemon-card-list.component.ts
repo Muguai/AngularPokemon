@@ -4,6 +4,7 @@ import { PokemonResult, Result, PokemonData } from 'src/app/models/pokemonResult
 import { Ability, Pokemon, Sprites,Ability2, Type } from 'src/app/models/pokemonData';
 import { switchMap, forkJoin, map, of } from 'rxjs';
 import { MetricConverterService } from 'src/app/services/metric-converter.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-card-list',
@@ -17,8 +18,12 @@ export class PokemonCardListComponent implements OnInit{
   public totalPages: number = 30;
   public maxPokemon: number = 1008;
 
-  constructor(private readonly pokeApiService:PokeApiService){
+  pokedexRoute: Boolean = false;
+  trainerRoute: Boolean = false;
 
+  constructor(private readonly pokeApiService:PokeApiService, public readonly route: Router){
+    this.pokedexRoute = (this.route.url === '/pokedex')
+    this.trainerRoute = (this.route.url === '/trainer')
   }
   
   ngOnInit(): void {

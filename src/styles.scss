@@ -9,7 +9,7 @@
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
 
-@import url('https://fonts.googleapis.com/css?family=Fira Sans');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
 
 html {
     min-height: 100%;
@@ -17,7 +17,7 @@ html {
 }
 
 body {
-    font-family: 'Fira-sans';
+    font-family: 'Fira Sans', sans-serif;
     min-height: 100%;
     margin-bottom: 5%;
     // background: linear-gradient(to bottom, #01003D, #825C9A)

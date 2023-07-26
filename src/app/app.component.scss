@@ -28,7 +28,7 @@ a.trainer, a.catalogue {
     align-items: center;
 }
 
-div.catalogue:hover p, div.trainer:hover p {
+div.catalogue:hover p, div.trainer:hover p, a.link-active p {
     color: rgb(170, 170, 170);
 }
 
