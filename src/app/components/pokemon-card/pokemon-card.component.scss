@@ -69,7 +69,6 @@
 
 .btn:hover {
   backface-visibility: hidden;
-
   border: 10px solid yellow;
 }
 
@@ -102,6 +101,10 @@
   width: 75px;
   bottom: 5%;
   left: 39%;
+}
+
+.poke-ball-button:hover {
+  outline: 3px 
 }
 
 // Poke card back

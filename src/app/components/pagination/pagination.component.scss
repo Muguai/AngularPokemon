@@ -1,0 +1,22 @@
+.pagination-container {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination-button {
+    background-color: transparent;
+    border: 0;
+}
+
+.pagination-button img {
+    height: 50px;
+}
+
+#first-button, #previous-button {
+    transform: scaleX(-1)
+}
+
+.pagination-button:hover {
+    -webkit-filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+}
