@@ -16,9 +16,7 @@ export type PokemonResult = {
     id: number 
     sprite: string 
     height: number
-    heightAlt: number
     weight: number
-    weightAlt: number
     abilities: Ability[]
     type: Type[]
     additionalInfoUrl: string
@@ -51,9 +49,7 @@ export type PokemonResult = {
     id: -1,
     sprite:  "assets/images/MissingNo.png",
     height: 0,
-    heightAlt: 0,
     weight: 0,
-    weightAlt: 0,
     abilities: [],
     type: [],
     additionalInfoUrl: ""

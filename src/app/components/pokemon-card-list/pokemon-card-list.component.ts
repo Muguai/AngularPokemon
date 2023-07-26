@@ -59,9 +59,7 @@ export class PokemonCardListComponent implements OnInit{
               id: pokemon.id,
               sprite: pokemon.sprites.front_default,
               height: pokemon.height,
-              heightAlt: pokemon.height,
               weight: pokemon.weight,
-              weightAlt: pokemon.weight,
               abilities: pokemon.abilities,
               type: pokemon.types,
               additionalInfoUrl: pokemon.species.url,
@@ -90,6 +88,8 @@ export class PokemonCardListComponent implements OnInit{
     this.currentPage = page;
     this.fetchPokemonData();
   }
+
+  
 
   
 }
