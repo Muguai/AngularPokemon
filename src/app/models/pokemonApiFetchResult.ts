@@ -1,22 +1,63 @@
 export interface Pokemon {
     abilities: Ability[]
     base_experience: number
-    forms: Form[]
-    game_indices: Index[]
+    forms: any[]
+    game_indices: any[]
     height: number
-    held_items: HeldItem[]
+    held_items: any[]
     id: number
     is_default: boolean
     location_area_encounters: string
-    moves: Mfe[]
+    moves: any[]
     name: string
     order: number
     past_types: any[]
     species: Species
-    sprites: Sprites
-    stats: Stat[]
+    sprites: any
+    stats: any[]
     types: Type[]
     weight: number;
+  }
+
+  export interface PokemonSpecies {
+    base_happiness: number
+    capture_rate: number
+    color: any
+    egg_groups: any[]
+    evolution_chain: any
+    evolves_from_species: any
+    flavor_text_entries: FlavorTextEntry[]
+    form_descriptions: any[]
+    forms_switchable: boolean
+    gender_rate: number
+    genera: any[]
+    generation: any
+    growth_rate: any
+    habitat: any
+    has_gender_differences: any
+    hatch_counter: any
+    id: any
+    is_baby: any
+    is_legendary: any
+    is_mythical: any
+    name: any
+    names: any[]
+    order: any
+    pal_park_encounters: any[]
+    pokedex_numbers: any[]
+    shape: any
+    varieties: any[]
+  }
+
+  export interface FlavorTextEntry {
+    flavor_text: string
+    language: Language
+    version: any
+  }
+
+  export interface Language {
+    name: string
+    url: string
   }
   
   export interface Ability {
@@ -30,318 +71,7 @@ export interface Pokemon {
     url: string
   }
   
-  export interface Form {
-    name: string
-    url: string
-  }
-  
-  export interface Index {
-    game_index: number
-    version: Version
-  }
-  
-  export interface Version {
-    name: string
-    url: string
-  }
-  
-  export interface HeldItem {
-    item: Item
-    version_details: VersionDetail[]
-  }
-  
-  export interface Item {
-    name: string
-    url: string
-  }
-  
-  export interface VersionDetail {
-    rarity: number
-    version: Version2
-  }
-  
-  export interface Version2 {
-    name: string
-    url: string
-  }
-  
-  export interface Mfe {
-    move: Move
-    version_group_details: VersionGroupDetail[]
-  }
-  
-  export interface Move {
-    name: string
-    url: string
-  }
-  
-  export interface VersionGroupDetail {
-    level_learned_at: number
-    move_learn_method: MoveLearnMethod
-    version_group: VersionGroup
-  }
-  
-  export interface MoveLearnMethod {
-    name: string
-    url: string
-  }
-  
-  export interface VersionGroup {
-    name: string
-    url: string
-  }
-  
   export interface Species {
-    name: string
-    url: string
-  }
-  
-  export interface Sprites {
-    back_default: string
-    back_female: any
-    back_shiny: string
-    back_shiny_female: any
-    front_default: string
-    front_female: any
-    front_shiny: string
-    front_shiny_female: any
-    other: Other
-    versions: Versions
-  }
-  
-  export interface Other {
-    dream_world: DreamWorld
-    home: Home
-    "official-artwork": OfficialArtwork
-  }
-  
-  export interface DreamWorld {
-    front_default: string
-    front_female: any
-  }
-  
-  export interface Home {
-    front_default: string
-    front_female: any
-    front_shiny: string
-    front_shiny_female: any
-  }
-  
-  export interface OfficialArtwork {
-    front_default: string
-    front_shiny: string
-  }
-  
-  export interface Versions {
-    "generation-i": GenerationI
-    "generation-ii": GenerationIi
-    "generation-iii": GenerationIii
-    "generation-iv": GenerationIv
-    "generation-v": GenerationV
-    "generation-vi": GenerationVi
-    "generation-vii": GenerationVii
-    "generation-viii": GenerationViii
-  }
-  
-  export interface GenerationI {
-    "red-blue": RedBlue
-    yellow: Yellow
-  }
-  
-  export interface RedBlue {
-    back_default: string
-    back_gray: string
-    back_transparent: string
-    front_default: string
-    front_gray: string
-    front_transparent: string
-  }
-  
-  export interface Yellow {
-    back_default: string
-    back_gray: string
-    back_transparent: string
-    front_default: string
-    front_gray: string
-    front_transparent: string
-  }
-  
-  export interface GenerationIi {
-    crystal: Crystal
-    gold: Gold
-    silver: Silver
-  }
-  
-  export interface Crystal {
-    back_default: string
-    back_shiny: string
-    back_shiny_transparent: string
-    back_transparent: string
-    front_default: string
-    front_shiny: string
-    front_shiny_transparent: string
-    front_transparent: string
-  }
-  
-  export interface Gold {
-    back_default: string
-    back_shiny: string
-    front_default: string
-    front_shiny: string
-    front_transparent: string
-  }
-  
-  export interface Silver {
-    back_default: string
-    back_shiny: string
-    front_default: string
-    front_shiny: string
-    front_transparent: string
-  }
-  
-  export interface GenerationIii {
-    emerald: Emerald
-    "firered-leafgreen": FireredLeafgreen
-    "ruby-sapphire": RubySapphire
-  }
-  
-  export interface Emerald {
-    front_default: string
-    front_shiny: string
-  }
-  
-  export interface FireredLeafgreen {
-    back_default: string
-    back_shiny: string
-    front_default: string
-    front_shiny: string
-  }
-  
-  export interface RubySapphire {
-    back_default: string
-    back_shiny: string
-    front_default: string
-    front_shiny: string
-  }
-  
-  export interface GenerationIv {
-    "diamond-pearl": DiamondPearl
-    "heartgold-soulsilver": HeartgoldSoulsilver
-    platinum: Platinum
-  }
-  
-  export interface DiamondPearl {
-    back_default: string
-    back_female: any
-    back_shiny: string
-    back_shiny_female: any
-    front_default: string
-    front_female: any
-    front_shiny: string
-    front_shiny_female: any
-  }
-  
-  export interface HeartgoldSoulsilver {
-    back_default: string
-    back_female: any
-    back_shiny: string
-    back_shiny_female: any
-    front_default: string
-    front_female: any
-    front_shiny: string
-    front_shiny_female: any
-  }
-  
-  export interface Platinum {
-    back_default: string
-    back_female: any
-    back_shiny: string
-    back_shiny_female: any
-    front_default: string
-    front_female: any
-    front_shiny: string
-    front_shiny_female: any
-  }
-  
-  export interface GenerationV {
-    "black-white": BlackWhite
-  }
-  
-  export interface BlackWhite {
-    animated: Animated
-    back_default: string
-    back_female: any
-    back_shiny: string
-    back_shiny_female: any
-    front_default: string
-    front_female: any
-    front_shiny: string
-    front_shiny_female: any
-  }
-  
-  export interface Animated {
-    back_default: string
-    back_female: any
-    back_shiny: string
-    back_shiny_female: any
-    front_default: string
-    front_female: any
-    front_shiny: string
-    front_shiny_female: any
-  }
-  
-  export interface GenerationVi {
-    "omegaruby-alphasapphire": OmegarubyAlphasapphire
-    "x-y": XY
-  }
-  
-  export interface OmegarubyAlphasapphire {
-    front_default: string
-    front_female: any
-    front_shiny: string
-    front_shiny_female: any
-  }
-  
-  export interface XY {
-    front_default: string
-    front_female: any
-    front_shiny: string
-    front_shiny_female: any
-  }
-  
-  export interface GenerationVii {
-    icons: Icons
-    "ultra-sun-ultra-moon": UltraSunUltraMoon
-  }
-  
-  export interface Icons {
-    front_default: string
-    front_female: any
-  }
-  
-  export interface UltraSunUltraMoon {
-    front_default: string
-    front_female: any
-    front_shiny: string
-    front_shiny_female: any
-  }
-  
-  export interface GenerationViii {
-    icons: Icons2
-  }
-  
-  export interface Icons2 {
-    front_default: string
-    front_female: any
-  }
-  
-  export interface Stat {
-    base_stat: number
-    effort: number
-    stat: Stat2
-  }
-  
-  export interface Stat2 {
     name: string
     url: string
   }

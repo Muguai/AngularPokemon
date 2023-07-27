@@ -132,7 +132,7 @@
 }
 
 .poke-ball-button {
-  background-image: url('../../../assets/images/PokeballClosed.png');
+  background-image: url('../../../assets/images/AltPokeballClosed2.png');
 }
 
 .poke-ball-button.disabled{
@@ -278,23 +278,23 @@ img.catched {
 
 @keyframes buttonAnimation {
   0% {
-    height: 75px;
+    height: 100px;
 
     pointer-events: none;
-    background-image: url("../../../assets/images/PokeballOpen1.png");
+    background-image: url("../../../assets/images/AltPokeballOpen.png");
   }
   20% {
-    height: 96px;
-    background-image: url("../../../assets/images/PokeballOpen2.png");
+    height: 110px;
+    background-image: url("../../../assets/images/AltPokeballOpen.png");
   }
   65% {
-    height: 96px;
+    height: 110px;
     transform: translateY(0px);
 
-    background-image: url("../../../assets/images/PokeballOpen2.png");
+    background-image: url("../../../assets/images/AltPokeballOpen.png");
   }
   66% {
-    background-image: url("../../../assets/images/PokeballClosed.png");
+    background-image: url("../../../assets/images/AltPokeballClosed2.png");
     height: 75px;
     pointer-events: all;
   }
@@ -337,12 +337,12 @@ img.catched {
   position: relative;
   content: "";
   background-color: red;
-  border-radius: 10%;
+  border-radius: 50%;
   opacity: 0;
   height: 10px;
   width: 10px;
-  left: 43%;
-  top: 8%;
+  left: 42%;
+  top: 7%;
   filter: drop-shadow(12px 12px 7px rgba(0, 0, 0, 0.5));
 }
 

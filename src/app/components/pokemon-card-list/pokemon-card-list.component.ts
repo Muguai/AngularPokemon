@@ -1,7 +1,6 @@
 import { Component, OnChanges, Input, OnInit, SimpleChanges  } from '@angular/core';
 import { PokeApiService } from 'src/app/services/poke-api.service';
 import { PokemonResult, Result, PokemonData } from 'src/app/models/pokemonComponentData';
-import { Ability, Pokemon, Sprites,Ability2, Type } from 'src/app/models/pokemonApiFetchResult';
 import { switchMap, forkJoin, map, of } from 'rxjs';
 import { MetricConverterService } from 'src/app/services/metric-converter.service';
 import { Router } from '@angular/router';
@@ -18,7 +17,8 @@ export class PokemonCardListComponent implements OnInit{
   @Input() itemsPerPage: number = 39;
   @Input() maxPokemon: number = 1008;
   private speciesUrl: string = "https://pokeapi.co/api/v2/pokemon-species/";
-  private spriteUrl: string = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
+  private spriteUrl: string =   "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/"
+ // private spriteUrl: string = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
 
   pokedexRoute: Boolean = false;
   trainerRoute: Boolean = false;
