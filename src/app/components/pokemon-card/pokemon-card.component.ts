@@ -3,6 +3,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { map } from 'rxjs';
 import { Pokemon } from 'src/app/models/pokemonApiFetchResult';
 import { PokemonData, defaultPokemonData, AdditionalPokemonData, defaultAdditionalPokemonData } from 'src/app/models/pokemonComponentData';
+import { User } from 'src/app/models/user';
 import { PokeApiService } from 'src/app/services/poke-api.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -35,8 +36,8 @@ export class PokemonCardComponent implements OnInit {
   orgHeight: number;
   isDisabled: boolean;
 
-  pokedexRoute: Boolean = false;
-  trainerRoute: Boolean = false;
+  pokedexRoute: boolean = false;
+  trainerRoute: boolean = false;
 
   constructor(public route: Router, 
               public readonly pokeApi:PokeApiService,
@@ -60,6 +61,8 @@ export class PokemonCardComponent implements OnInit {
     
     this.orgWeight = -1;
     this.orgHeight = -1;
+    this.isDisabled = this.isCatched();
+    console.log(this.isDisabled)
   }
 
   onBackButtonClick() {
@@ -134,12 +137,53 @@ export class PokemonCardComponent implements OnInit {
 
   }
 
+  isCatched(): boolean {
+    for (let pokemon of this.userService.getUserDetails().pokemon){
+      console.log(this.data)
+      console.log(pokemon.id +  " VS " + this.data.id);
+
+      if (pokemon.id === this.data.id){
+        console.log("yes its caught");
+        return true
+      }
+    }
+
+    return false;
+  }
+
   catchPokemon() {
     this.animateButton = true;
     this.animateImage = true;
     console.log('Catching ' + this.data.name);
 
-    this.userService.postPokemon(this.data);
+    this.userService.postPokemon(this.data).subscribe({
+      next: (updatedUser: User) => {
+        this.userService.setUser(updatedUser)
+      },
+      error: (error: any)  => {
+        console.log(error)
+      }
+    })
+  }
+
+  removePokemon() {
+    console.log("Clicking remove" + this.data.name)
+    this.userService.getUser(this.userService.getUserDetails().username).subscribe({
+      next: (user: User[]) => {
+        this.userService.removePokemon(this.data, user[0].pokemon).subscribe({
+          next: (updatedUser: User) => {
+            console.log("could remove");
+            this.userService.setUser(updatedUser)
+          },
+          error: (error: any) => {
+            console.log(error)
+          }
+        })
+      },
+      error: (error: any) => {
+        console.log(error)
+      }
+    })
   }
 
   onAnimationEnd(event: AnimationEvent) {

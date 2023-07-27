@@ -20,11 +20,11 @@ export class UserService {
 
   constructor(private readonly http: HttpClient) {}
 
-  getUser(name: string): Observable<User> {
+  getUser(name: string): Observable<User[]> {
     
     console.log('user', name);
 
-    return this.http.get<User>(
+    return this.http.get<User[]>(
       `${this.API_URL}/trainers?username=${name}`,
       { headers: this.httpHeaders }
     );
@@ -46,22 +46,23 @@ export class UserService {
     return this._user;
   }
 
-  postPokemon(catchedPokemon: PokemonData) {
-    // console.log(this._user)
-    // const updatedPokemons = this._user.pokemon;
-    // updatedPokemons.push(catchedPokemon);
-    
-    // console.log(updatedPokemons)
-
-    console.log(this.http.patch(`${this.API_URL}/trainers/${this._user.id}`, 
-      `pokemon: ${[...this._user.pokemon, catchedPokemon]}`,
-      {headers: this.httpHeaders})); 
-    
-    //this._user.pokemon.push(catchedPokemon);
-    console.log()
+  postPokemon(catchedPokemon: PokemonData): Observable<User> {
+    return this.http.patch<User>(`${this.API_URL}/trainers/${this._user.id}`, 
+      JSON.stringify({pokemon: [...this._user.pokemon, catchedPokemon],}),
+      {headers: this.httpHeaders}
+      ); 
   }
 
-  removePokemon(catchedPokemon: PokemonData) {
-    
+  removePokemon(catchedPokemon: PokemonData, userPokemons: PokemonData[]): Observable<User> {
+    for(let pokemon of userPokemons) {
+      if(pokemon.id === catchedPokemon.id)
+        userPokemons.splice(pokemon.id, 1)
+      else
+        console.log("No such pokemon to remove")
+    }
+      return this.http.patch<User>(`${this.API_URL}/trainers/${this._user.id}`,
+      JSON.stringify({pokemon: userPokemons,}),
+        {headers: this.httpHeaders}
+        );
   }
 }

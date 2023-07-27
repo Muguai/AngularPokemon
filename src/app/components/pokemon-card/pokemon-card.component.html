@@ -10,6 +10,7 @@
         [alt]="data.name"
         [class.animate]="animateImage"
         (animationend)="onAnimationEndImage()"
+        [class.catched]="isDisabled && pokedexRoute"
       />
     </div>
     <h4 class="pokemon-name-card">{{ data.name }}</h4>
@@ -25,7 +26,10 @@
     >
       <div [class.animate]="animateDot" class="pokeBallDot"></div>
     </button>
-    <button *ngIf=trainerRoute class="card-button delete-button">
+    <button 
+      *ngIf=trainerRoute 
+      class="card-button delete-button"
+      (click)="removePokemon()">
         <img src="/assets/images/delete.png">
     </button>
   </div>

@@ -140,6 +140,10 @@
   pointer-events: none;
 }
 
+img.catched {
+  opacity: 0;
+}
+
 .delete-button {
   display: flex;
   justify-content: center;
