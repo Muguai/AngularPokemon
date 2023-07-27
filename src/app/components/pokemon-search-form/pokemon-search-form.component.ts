@@ -1,0 +1,65 @@
+import { Component, EventEmitter, Output } from '@angular/core';
+import { NgForm, NgModel } from '@angular/forms';
+import { map } from 'rxjs';
+import { PokemonData, PokemonResult, Result } from 'src/app/models/pokemonComponentData';
+import { PokeApiService } from 'src/app/services/poke-api.service';
+
+
+@Component({
+  selector: 'app-pokemon-search-form',
+  templateUrl: './pokemon-search-form.component.html',
+  styleUrls: ['./pokemon-search-form.component.scss']
+})
+export class PokemonSearchFormComponent {
+
+  private spriteUrl: string = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
+  @Output() searchMade: EventEmitter<PokemonData[]> = new EventEmitter<PokemonData[]>();
+  @Output() resetSearchClick: EventEmitter<any> = new EventEmitter();
+
+  constructor(private readonly pokeApiService:PokeApiService){
+
+  }
+
+  search (form: NgForm){
+    this.pokeApiService.getPokemons()
+    .pipe(
+      map((responses: PokemonResult)=> {
+        const searchedPokemon: Result[] = responses.results.filter((pokemon) => {
+          const pokemonName = pokemon.name.toLowerCase();
+          const searchTerm = form.value.searchBar.toLowerCase();
+        
+          return pokemonName.startsWith(searchTerm);
+        });
+        return searchedPokemon;
+      }),
+      map((filteredResults: Result[]) => {
+        const pokemonDataArray: PokemonData[] = filteredResults.map((pokemon: Result) => {
+          const splitUrl = pokemon.url.split("/");
+          const calculateId = splitUrl[splitUrl.length - 2];    
+          return {
+            name: pokemon.name[0].toUpperCase() + pokemon.name.slice(1),
+            id: parseInt(calculateId),
+            sprite: (this.spriteUrl + calculateId + '.png'),
+            additionalInfoUrl: pokemon.url,
+          };
+        });
+        return pokemonDataArray;
+      })
+    )
+    .subscribe({
+      next: (value) => {
+        this.searchMade.emit(value);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    })
+  }
+
+  resetSearch(){
+    console.log("reset");
+    this.resetSearchClick.emit();
+  }
+
+
+}

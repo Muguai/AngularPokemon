@@ -1,4 +1,3 @@
-
     <div id="cardContainer" class="align-content-center">
         <div class="row">
             <div ngFor="let pokemon of pokemonData" class="grid">
@@ -6,8 +5,3 @@
             </div>
         </div>
     </div>
-    <app-pagination
-    [currentPage]="currentPage"
-    [totalPages]="totalPages"
-    (pageChanged)="onPageChanged($event)"
-     ></app-pagination>

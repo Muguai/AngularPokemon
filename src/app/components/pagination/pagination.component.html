@@ -1,4 +1,4 @@
-<div class="pagination-container">
+<div *ngIf="!isDisabled" class="pagination-container">
     <button id="first-button" class="pagination-button" (click)="goToPage(1)" [disabled]="currentPage === 1"><img src='../../../assets/images/RightDoubleArrows.png' alt="First"></button>
     <button id="previous-button" class="pagination-button" (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1"><img src='../../../assets/images/RightArrow.png' alt="Previous"></button>
     <button id="next-button" class="pagination-button" (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages"><img src='../../../assets/images/RightArrow.png' alt="Next"></button>

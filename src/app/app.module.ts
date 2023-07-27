@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TrainerPokemonCardListComponent } from './components/trainer-pokemon-card-list/trainer-pokemon-card-list.component';
+import { PokemonSearchFormComponent } from './components/pokemon-search-form/pokemon-search-form.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { TrainerPokemonCardListComponent } from './components/trainer-pokemon-ca
     PokemonCardListComponent,
     PaginationComponent,
     NavbarComponent,
-    TrainerPokemonCardListComponent
+    TrainerPokemonCardListComponent,
+    PokemonSearchFormComponent
 
   ],
   imports: [
