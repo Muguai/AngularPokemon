@@ -13,6 +13,7 @@ import { UserService } from 'src/app/services/user.service';
 export class LoginFormComponent{
   userName?: string = '';
   animateLoad: boolean = false;
+  STORAGE_KEY_USER: string = 'trainer-user'
 
 
   constructor(
@@ -37,6 +38,7 @@ export class LoginFormComponent{
             next: (user) => {
               console.log(user);   
               this.userService.setUser(user);
+              sessionStorage.setItem(this.STORAGE_KEY_USER, JSON.stringify(user.id))
               this.router.navigateByUrl('trainer');
             },
             error: (error) => {
@@ -48,6 +50,7 @@ export class LoginFormComponent{
         } else {
           this.userService.setUser(user[0]);
           console.log('--- User already exist --- Login in --->', user);
+          sessionStorage.setItem(this.STORAGE_KEY_USER, JSON.stringify(user[0].id))
           this.router.navigateByUrl('trainer');
         }
       },

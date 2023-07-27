@@ -17,31 +17,22 @@ import { UserService } from 'src/app/services/user.service';
 
 export class TrainerPokemonCardListComponent implements OnInit{
   public pokemonData:PokemonData[] = [];
-  public currentPage: number = 1;
-  public itemsPerPage: number = 39;
-  public totalPages: number = 30;
-  public maxPokemon: number = 1008;
-  private speciesUrl: string = "https://pokeapi.co/api/v2/pokemon-species/";
-  private spriteUrl: string = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
 
   pokedexRoute: Boolean = false;
   trainerRoute: Boolean = false;
 
-  constructor(private readonly pokeApiService:PokeApiService, 
-    public readonly route: Router,
-    public userService: UserService){
+  constructor(public readonly route: Router,
+              public userService: UserService){
     this.pokedexRoute = (this.route.url === '/pokedex')
     this.trainerRoute = (this.route.url === '/trainer')
   }
   
   ngOnInit(): void {
-    this.totalPages = Math.ceil(this.maxPokemon / this.itemsPerPage);
-    console.log(this.totalPages);
     this.getTrainerPokemons();
   }
 
   getTrainerPokemons() {
-    //pokemonData = 
+    this.pokemonData = this.userService.getUserDetails().pokemon
   }
 
 }
