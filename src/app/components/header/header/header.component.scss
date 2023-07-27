@@ -1,0 +1,30 @@
+/* Header */
+
+nav.header-nav {
+    display: flex;
+}
+
+#logo {
+    height: 85px;
+}
+
+div.catalogue {
+
+}
+
+nav.header-nav button {
+    height: 40px;
+}
+
+.catalogue button {
+    background-image: url('../../../assets/images/PokeBag.png');
+}
+
+.pokedex button {
+    background-image: url('../../../assets/images/Pikachu.png');
+}
+
+nav.header-nav p {
+    color: white;
+
+}

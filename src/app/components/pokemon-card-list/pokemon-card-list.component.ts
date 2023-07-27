@@ -5,6 +5,7 @@ import { Ability, Pokemon, Sprites,Ability2, Type } from 'src/app/models/pokemon
 import { switchMap, forkJoin, map, of } from 'rxjs';
 import { MetricConverterService } from 'src/app/services/metric-converter.service';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-pokemon-card-list',
@@ -23,7 +24,9 @@ export class PokemonCardListComponent implements OnInit{
   pokedexRoute: Boolean = false;
   trainerRoute: Boolean = false;
 
-  constructor(private readonly pokeApiService:PokeApiService, public readonly route: Router){
+  constructor(private readonly pokeApiService:PokeApiService, 
+    public readonly route: Router,
+    public userService: UserService){
     this.pokedexRoute = (this.route.url === '/pokedex')
     this.trainerRoute = (this.route.url === '/trainer')
   }
