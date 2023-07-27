@@ -32,6 +32,7 @@ export class PokemonCardComponent implements OnInit {
   isLoading: boolean;
   orgWeight: number;
   orgHeight: number;
+  isDisabled: boolean;
 
   pokedexRoute: Boolean = false;
   trainerRoute: Boolean = false;
@@ -45,9 +46,11 @@ export class PokemonCardComponent implements OnInit {
     this.orgWeight = -1;
     this.orgHeight = -1;
     this.isLoading = false;
+    this.isDisabled = false;
 
     this.pokedexRoute = (this.route.url === '/pokedex')
     this.trainerRoute = (this.route.url === '/trainer')
+  
   }
 
   ngOnInit(): void {
@@ -95,8 +98,8 @@ export class PokemonCardComponent implements OnInit {
     .pipe(
       map((response: Pokemon) => {
         return {
-          height: response.height,
-          weight: response.weight,
+          height: response.height / 10,
+          weight: response.weight / 10,
           abilities: response.abilities,
           type: response.types,
           pokeDexEntry: ""
@@ -139,9 +142,7 @@ export class PokemonCardComponent implements OnInit {
       this.animateDot = true;
     }
     if (event.animationName.split('_')[2] == 'buttonAnimation3') {
-      const pokeBallButton = this.pokeBallButtonRef
-        .nativeElement as HTMLElement;
-      pokeBallButton.style.filter = 'brightness(0.6)';
+      this.isDisabled = true;
     }
   }
 
@@ -173,17 +174,15 @@ export class PokemonCardComponent implements OnInit {
     if(this.orgHeight == -1){
       this.orgHeight = this.additionalData.height;
       this.orgWeight = this.additionalData.weight;
-      this.additionalData.weight = this.orgWeight / 10
-      this.additionalData.height = this.orgHeight / 10
     }
 
     if (this.isMetricSystem) {
-      this.additionalData.height = this.metersToFeet(this.orgHeight / 10);
-      this.additionalData.weight = this.kgsToLbs(this.orgWeight / 10);
+      this.additionalData.height = this.metersToFeet(this.orgHeight);
+      this.additionalData.weight = this.kgsToLbs(this.orgWeight);
 
     } else {
-      this.additionalData.height = this.orgHeight / 10;
-      this.additionalData.weight = this.orgWeight / 10;
+      this.additionalData.height = this.orgHeight;
+      this.additionalData.weight = this.orgWeight;
     }
     
     this.isMetricSystem = !this.isMetricSystem;

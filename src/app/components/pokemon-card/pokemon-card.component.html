@@ -13,14 +13,15 @@
       />
     </div>
     <h4 class="pokemon-name-card">{{ data.name }}</h4>
-    <button *ngIf=pokedexRoute
-      #pokeBallButton
+    <button 
+      *ngIf=pokedexRoute
       class="card-button poke-ball-button"
       (mouseover)="canFlip = false"
       (mouseout)="canFlip = true"
       (click)="catchPokemon()"
       (animationend)="onAnimationEnd($event)"
       [class.animate]="animateButton"
+      [class.disabled]="isDisabled"
     >
       <div [class.animate]="animateDot" class="pokeBallDot"></div>
     </button>
