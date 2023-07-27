@@ -135,6 +135,11 @@
   background-image: url('../../../assets/images/PokeballClosed.png');
 }
 
+.poke-ball-button.disabled{
+  filter: brightness(0.6);
+  pointer-events: none;
+}
+
 .delete-button {
   display: flex;
   justify-content: center;

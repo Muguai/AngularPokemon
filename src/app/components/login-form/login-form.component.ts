@@ -17,8 +17,7 @@ export class LoginFormComponent{
 
   constructor(
     private readonly router: Router,
-    private readonly userService: UserService,
-    private readonly pokeApiService: PokeApiService
+    private readonly userService: UserService
   ) {
   }
 
