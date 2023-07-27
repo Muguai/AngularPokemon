@@ -65,6 +65,9 @@ export class PokemonCardComponent {
     }
 
     const storedData = additionalPokemonDataList.find((additionalData) => additionalData.name === this.data.name);
+    
+    const cardContainer = this.cardContainerRef.nativeElement as HTMLElement;
+    cardContainer.style.transform = 'rotateY(180deg)';
 
     if (storedData) {
       this.additionalData = storedData.additionalData;
@@ -97,8 +100,6 @@ export class PokemonCardComponent {
         if(this.orgHeight == -1)
           this.convertWeightAndHeight();
 
-        const cardContainer = this.cardContainerRef.nativeElement as HTMLElement;
-        cardContainer.style.transform = 'rotateY(180deg)';
 
         const newAdditionalPokemonData: storeAdditionalData = {
           name: this.data.name,
