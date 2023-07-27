@@ -13,7 +13,7 @@ export class UserService {
 
   constructor(private readonly http: HttpClient) {}
 
-  getUser2(loginUser: string): Observable<User> {
+  getUser(loginUser: string): Observable<User> {
     const httpHeaders: HttpHeaders = new HttpHeaders({
       'Content-Type': 'application/json',
       'x-api-key': this.apiKey,
@@ -26,7 +26,7 @@ export class UserService {
     );
   }
 
-  postUser2(newUser: string): Observable<User> {
+  postUser(newUser: string): Observable<User> {
     const httpHeaders: HttpHeaders = new HttpHeaders({
       'Content-Type': 'application/json',
       'x-api-key': this.apiKey,
@@ -39,61 +39,6 @@ export class UserService {
     );
   }
 
-
-  getUser(loginUser: string): void {
-    const httpHeaders: HttpHeaders = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'x-api-key': this.apiKey,
-    });
-
-    console.log('user', loginUser);
-
-    this.http
-      .get<User>(
-        `https://fh-noroff-assignment-api-production.up.railway.app/trainers?username=${loginUser}`,
-        { headers: httpHeaders }
-      )
-      .subscribe({
-        next: (user) => {
-          console.log(user.username);
-          if (user.username == null) {
-            console.log("--- User doesn't exist --- create user---> ", loginUser);
-            this.postUser(JSON.stringify({
-              username: loginUser,
-              pokemon: [],
-            }));
-          } else {
-            this._user = user;
-            console.log('--- User already exist --- Login in --->', user);
-          }
-        },
-        error: (error) => {
-          console.log(error);
-        },
-      });
-  }
-
-  postUser(newUser: string) {
-    const httpHeaders: HttpHeaders = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'x-api-key': this.apiKey,
-    });
-
-    this.http.post<User>(
-      `https://fh-noroff-assignment-api-production.up.railway.app/trainers`,
-      newUser,
-      { headers: httpHeaders }
-    ).subscribe({
-      next: (user) => {
-        this._user = user;
-        console.log(user);
-
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
-  }
 
   setUser(user: User): void{
     this._user = user;

@@ -26,20 +26,22 @@ export class LoginFormComponent{
   async login(form: NgForm) {
     this.animateLoad = true;
     
-    this.userService.getUser2(form.value.trainerName).subscribe({
+    this.userService.getUser(form.value.trainerName).subscribe({
       next: (user) => {
         console.log(user.username);
         if (user.username == null) {
           console.log("--- User doesn't exist --- create user---> ", form.value.trainerName);
-          this.userService.postUser2(JSON.stringify({
+          this.userService.postUser(JSON.stringify({
             username: form.value.trainerName,
             pokemon: [],
           })).subscribe({
             next: (user) => {
-              console.log(user);
+              console.log(user);   
+              this.userService.setUser(user);
               this.router.navigateByUrl('trainer');
             },
             error: (error) => {
+              this.animateLoad = false;
               console.log(error);
               // Handle postUser error if needed
             }
@@ -51,6 +53,7 @@ export class LoginFormComponent{
         }
       },
       error: (error) => {
+        this.animateLoad = false;
         console.log(error);
       }
     });

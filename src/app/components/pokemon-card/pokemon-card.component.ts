@@ -1,8 +1,8 @@
 import { Component, Input, ViewChild, ElementRef } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { map } from 'rxjs';
-import { Pokemon } from 'src/app/models/pokemonData';
-import { PokemonData, defaultPokemonData, AdditionalPokemonData, defaultAdditionalPokemonData } from 'src/app/models/pokemonResult';
+import { Pokemon } from 'src/app/models/pokemonApiFetchResult';
+import { PokemonData, defaultPokemonData, AdditionalPokemonData, defaultAdditionalPokemonData } from 'src/app/models/pokemonComponentData';
 import { PokeApiService } from 'src/app/services/poke-api.service';
 
 

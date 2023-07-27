@@ -1,4 +1,4 @@
-import { PokemonData } from "./pokemonResult"
+import { PokemonData } from "./pokemonComponentData"
 
 export interface User {
     id: number
