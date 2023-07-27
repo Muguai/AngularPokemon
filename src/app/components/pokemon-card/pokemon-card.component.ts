@@ -29,6 +29,7 @@ export class PokemonCardComponent {
   animateImage: boolean;
   animateButton: boolean;
   isMetricSystem: boolean;
+  isLoading: boolean;
   orgWeight: number;
   orgHeight: number;
 
@@ -43,6 +44,7 @@ export class PokemonCardComponent {
     this.isMetricSystem = false;
     this.orgWeight = -1;
     this.orgHeight = -1;
+    this.isLoading = false;
 
     this.pokedexRoute = (this.route.url === '/pokedex')
     this.trainerRoute = (this.route.url === '/trainer')
@@ -68,7 +70,7 @@ export class PokemonCardComponent {
     
     const cardContainer = this.cardContainerRef.nativeElement as HTMLElement;
     cardContainer.style.transform = 'rotateY(180deg)';
-
+    
     if (storedData) {
       this.additionalData = storedData.additionalData;
       console.log(`FOUND STORED DATA FOR ${this.data.name}`, this.additionalData);
@@ -80,6 +82,7 @@ export class PokemonCardComponent {
       cardContainer.style.transform = 'rotateY(180deg)';
       return;
     }
+    this.isLoading = true;
 
     this.pokeApi.getPokemonById(this.data.id)
     .pipe(
@@ -106,6 +109,7 @@ export class PokemonCardComponent {
           additionalData: additionalData,
         };
         additionalPokemonDataList.push(newAdditionalPokemonData);
+        this.isLoading = false;
 
         sessionStorage.setItem("Additional-Poke-Data", JSON.stringify(additionalPokemonDataList));
       },

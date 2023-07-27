@@ -28,18 +28,20 @@
         <img src="/assets/images/delete.png">
     </button>
   </div>
-
-  <!-- Card back-->
+  
+  <!-- ALT Card back-->
   <div class="card card-back" (click)="onBackButtonClick()">
-    <div
-      [style.background]="getGradientStyle()"
-      id="poke-details-img-background"
-    >
+    <div [style.background]="getGradientStyle()" id="poke-details-img-background">
       <div class="pokemon-details-img-container">
-        <img draggable="false" [src]="data.sprite" [alt]="data.name" />
+        <img
+          draggable="false"
+          [src]="isLoading ? '../../assets/images/PokeballLoginEnter.png' : data.sprite"
+          [alt]="data.name"
+          [ngClass]="{ 'loading-image': isLoading }"
+        />
       </div>
     </div>
-
+  
     <div id="poke-details-container">
       <h4 id="poke-details-name">{{ data.name }}</h4>
       <div id="poke-details-first-row">
@@ -49,7 +51,7 @@
           class="poke-weight-container pointer"
           (click)="convertWeightAndHeight()"
         >
-          <p>{{ additionalData.weight }} {{ isMetricSystem ? "kg" : "lb" }}</p>
+          <p [ngClass]="{ 'loading-dots': isLoading }">{{ isLoading ? '' : additionalData.weight }} {{isLoading ? '' : isMetricSystem ? 'kg' : 'lb' }}</p>
           <h5>Weight</h5>
         </div>
         <div
@@ -58,41 +60,47 @@
           class="poke-height-container pointer"
           (click)="convertWeightAndHeight()"
         >
-          <p>{{ additionalData.height }} {{ isMetricSystem ? "m" : "feet" }}</p>
+          <p [ngClass]="{ 'loading-dots': isLoading }" >{{ isLoading ? '' : additionalData.height }} {{isLoading ? '' : isMetricSystem ? 'm' : 'feet'}}</p>
           <h5>Height</h5>
         </div>
         <div class="poke-gender-container">
-          <p>{{ data.id }}#</p>
+          <p [ngClass]="{ 'loading-dots': isLoading }" >{{ isLoading ? '' : data.id }}{{ isLoading ? '' : '#' }}</p>
           <h5>Id</h5>
         </div>
       </div>
       <div id="poke-details-second-row">
         <div class="poke-abilities-container">
           <h5>Abilities</h5>
-          <ul>
+          <ul *ngIf="!isLoading">
             <li *ngFor="let ability of additionalData.abilities">
               {{
                 ability.ability.name[0].toUpperCase() +
-                  ability.ability.name.slice(1).replace("-", " ")
+                ability.ability.name.slice(1).replace('-', ' ')
               }}
             </li>
           </ul>
+          <p *ngIf="isLoading" class="loading-dots"></p>
         </div>
         <div class="poke-type-container">
           <h5>Type</h5>
-          <ng-container *ngFor="let type of additionalData.type">
-            <img
-              draggable="false"
-              [src]="getTypeImageUrl(type.type.name)"
-              data-bs-toggle="tooltip"
-              data-bs-placement="top"
-              title="{{type.type.name[0].toUpperCase()
-              +
-              type.type.name.slice(1)}}"
-            />
+          <ng-container *ngIf="!isLoading; else loadingDotsTemplate">
+            <ng-container *ngFor="let type of additionalData.type">
+              <img
+                draggable="false"
+                [src]="getTypeImageUrl(type.type.name)"
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                title="{{ type.type.name[0].toUpperCase() + type.type.name.slice(1) }}"
+              />
+            </ng-container>
           </ng-container>
         </div>
       </div>
     </div>
   </div>
+  
+  <ng-template #loadingDotsTemplate>
+    <p class="loading-dots"></p>
+  </ng-template>
+  
 </section>
