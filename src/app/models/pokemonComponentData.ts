@@ -15,6 +15,7 @@ export type PokemonResult = {
     name: string 
     id: number
     sprite: string
+    altSprite: string
     additionalInfoUrl: string
   }
 
@@ -51,7 +52,8 @@ export type PokemonResult = {
  export const defaultPokemonData: PokemonData = {
     name: "MissingNo" ,
     id: -1,
-    sprite:  "assets/images/MissingNo.png",
+    sprite:  "assets/images/MissingNo.png",  
+    altSprite:  "assets/images/MissingNo.png",
     additionalInfoUrl: ""
   };
 

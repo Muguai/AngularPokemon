@@ -4,6 +4,8 @@ import { PokemonResult, Result, PokemonData } from 'src/app/models/pokemonCompon
 import { switchMap, forkJoin, map, of } from 'rxjs';
 import { MetricConverterService } from 'src/app/services/metric-converter.service';
 import { Router } from '@angular/router';
+import { spriteUrl, altSpriteUrl} from 'src/app/const/pokeUrl';
+
 
 @Component({
   selector: 'app-pokemon-card-list',
@@ -17,8 +19,6 @@ export class PokemonCardListComponent implements OnInit{
   @Input() itemsPerPage: number = 39;
   @Input() maxPokemon: number = 1008;
   private speciesUrl: string = "https://pokeapi.co/api/v2/pokemon-species/";
-  private spriteUrl: string =   "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/"
- // private spriteUrl: string = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
 
   pokedexRoute: Boolean = false;
   trainerRoute: Boolean = false;
@@ -58,7 +58,8 @@ export class PokemonCardListComponent implements OnInit{
             return {
               name: pokemon.name[0].toUpperCase() + pokemon.name.slice(1),
               id: parseInt(calculateId),
-              sprite: (this.spriteUrl + calculateId + '.png'),
+              sprite: (spriteUrl + calculateId + '.png'),
+              altSprite: (altSpriteUrl + calculateId + '.png'),
               additionalInfoUrl: pokemon.url,
             };
           });

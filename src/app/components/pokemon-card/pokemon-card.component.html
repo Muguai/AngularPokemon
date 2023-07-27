@@ -6,7 +6,7 @@
         #cardImg
         draggable="false"
         class="card-image"
-        [src]="data.sprite"
+        [src]="isPixel ? data.sprite : data.altSprite"        
         [alt]="data.name"
         [class.animate]="animateImage"
         (animationend)="onAnimationEndImage()"
@@ -17,6 +17,10 @@
     <button 
       *ngIf=pokedexRoute
       class="card-button poke-ball-button"
+      [ngClass]="{
+        'poke-ball-button-pixel': isPixel,
+        'poke-ball-button-drawn': !isPixel
+      }"
       (mouseover)="canFlip = false"
       (mouseout)="canFlip = true"
       (click)="catchPokemon()"
@@ -24,7 +28,10 @@
       [class.animate]="animateButton"
       [class.disabled]="isDisabled"
     >
-      <div [class.animate]="animateDot" class="pokeBallDot"></div>
+      <div [class.animate]="animateDot" class="pokeBallDot" [ngClass]="{
+        'poke-ball-dot-pixel': isPixel,
+        'poke-ball-dot-drawn': !isPixel
+      }"></div>
     </button>
     <button 
       *ngIf=trainerRoute 
@@ -40,7 +47,7 @@
       <div class="pokemon-details-img-container">
         <img
           draggable="false"
-          [src]="isLoading ? '../../assets/images/PokeballLoginEnter.png' : data.sprite"
+          [src]="isLoading ? '../../assets/images/PokeballLoginEnter.png' : isPixel ? data.sprite : data.altSprite"
           [alt]="data.name"
           [ngClass]="{ 'loading-image': isLoading }"
         />

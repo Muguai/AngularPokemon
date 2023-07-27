@@ -3,6 +3,7 @@ import { NgForm, NgModel } from '@angular/forms';
 import { map } from 'rxjs';
 import { PokemonData, PokemonResult, Result } from 'src/app/models/pokemonComponentData';
 import { PokeApiService } from 'src/app/services/poke-api.service';
+import { spriteUrl, altSpriteUrl} from 'src/app/const/pokeUrl';
 
 
 @Component({
@@ -12,7 +13,6 @@ import { PokeApiService } from 'src/app/services/poke-api.service';
 })
 export class PokemonSearchFormComponent {
 
-  private spriteUrl: string = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
   @Output() searchMade: EventEmitter<PokemonData[]> = new EventEmitter<PokemonData[]>();
   @Output() resetSearchClick: EventEmitter<any> = new EventEmitter();
 
@@ -39,7 +39,8 @@ export class PokemonSearchFormComponent {
           return {
             name: pokemon.name[0].toUpperCase() + pokemon.name.slice(1),
             id: parseInt(calculateId),
-            sprite: (this.spriteUrl + calculateId + '.png'),
+            sprite: (spriteUrl + calculateId + '.png'),
+            altSprite: (altSpriteUrl + calculateId + '.png'),
             additionalInfoUrl: pokemon.url,
           };
         });
