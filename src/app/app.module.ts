@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { PokemonSearchFormComponent } from './components/pokemon-search-form/pokemon-search-form.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     PokemonCardComponent,
     PokemonCardListComponent,
     PaginationComponent,
-    NavbarComponent
+    NavbarComponent,
+    PokemonSearchFormComponent
 
   ],
   imports: [

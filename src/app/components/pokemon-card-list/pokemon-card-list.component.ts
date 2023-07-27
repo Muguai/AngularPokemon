@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges  } from '@angular/core';
+import { Component, OnChanges, Input, OnInit, SimpleChanges  } from '@angular/core';
 import { PokeApiService } from 'src/app/services/poke-api.service';
 import { PokemonResult, Result, PokemonData } from 'src/app/models/pokemonComponentData';
 import { Ability, Pokemon, Sprites,Ability2, Type } from 'src/app/models/pokemonApiFetchResult';
@@ -13,10 +13,10 @@ import { Router } from '@angular/router';
 })
 export class PokemonCardListComponent implements OnInit{
   public pokemonData:PokemonData[] = [];
-  public currentPage: number = 1;
-  public itemsPerPage: number = 39;
-  public totalPages: number = 30;
-  public maxPokemon: number = 1008;
+  @Input() currentPage: number = 1;
+  @Input() totalPages: number = 10;
+  @Input() itemsPerPage: number = 39;
+  @Input() maxPokemon: number = 1008;
   private speciesUrl: string = "https://pokeapi.co/api/v2/pokemon-species/";
   private spriteUrl: string = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
 
@@ -79,9 +79,9 @@ export class PokemonCardListComponent implements OnInit{
       });
 
   }
-  onPageChanged(page: number) {
-    this.currentPage = page;
-    this.fetchPokemonData();
+
+  updateBasedOnSearch(event: PokemonData[]) {
+    this.pokemonData = event;
   }
 
   

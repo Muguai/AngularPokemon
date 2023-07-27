@@ -1,1 +1,8 @@
+<app-pokemon-search-form
+(searchMade)="onSearchMade($event)" (resetSearchClick)="resetSearch()"></app-pokemon-search-form>
 <app-pokemon-card-list></app-pokemon-card-list>
+<app-pagination
+[currentPage]="currentPage"
+[totalPages]="totalPages"
+(pageChanged)="onPageChanged($event)"
+ ></app-pagination>

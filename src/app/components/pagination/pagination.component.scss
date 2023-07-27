@@ -20,3 +20,7 @@
     filter: brightness(0) invert(1) drop-shadow(1px 1px 0 black) drop-shadow(-1px 1px 0 black)
     drop-shadow(1px -1px 0 black) drop-shadow(-1px -1px 0 black);
 }
+
+.pagination-button:disabled {
+    opacity: 0.2;
+}
