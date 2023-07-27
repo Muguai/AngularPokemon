@@ -1,6 +1,6 @@
 import { CanActivateFn } from '@angular/router';
 
-export const AuthGuard: CanActivateFn = (route, state) => {
+export const AuthGuard: CanActivateFn = (route, state) => { // todo
   return true;
   console.log(localStorage.getItem('username'));
   if(localStorage.getItem('username') == null){

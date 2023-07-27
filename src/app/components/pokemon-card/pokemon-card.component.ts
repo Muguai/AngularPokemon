@@ -4,6 +4,7 @@ import { map } from 'rxjs';
 import { Pokemon } from 'src/app/models/pokemonApiFetchResult';
 import { PokemonData, defaultPokemonData, AdditionalPokemonData, defaultAdditionalPokemonData } from 'src/app/models/pokemonComponentData';
 import { PokeApiService } from 'src/app/services/poke-api.service';
+import { UserService } from 'src/app/services/user.service';
 
 
 interface storeAdditionalData {
@@ -35,7 +36,9 @@ export class PokemonCardComponent {
   pokedexRoute: Boolean = false;
   trainerRoute: Boolean = false;
 
-  constructor(public route: Router, public readonly pokeApi:PokeApiService) {
+  constructor(public route: Router, 
+              public readonly pokeApi:PokeApiService,
+              private userService: UserService) {
     this.canFlip = true;
     this.animateDot = false;
     this.animateImage = false;
@@ -120,6 +123,8 @@ export class PokemonCardComponent {
     this.animateButton = true;
     this.animateImage = true;
     console.log('Catching ' + this.data.name);
+
+    this.userService.postPokemon(this.data);
   }
 
   onAnimationEnd(event: AnimationEvent) {
