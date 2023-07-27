@@ -13,14 +13,14 @@ export class UserService {
 
   constructor(private readonly http: HttpClient) {}
 
-  getUser(loginUser: string): Observable<User> {
+  getUser(loginUser: string): Observable<User[]> {
     const httpHeaders: HttpHeaders = new HttpHeaders({
       'Content-Type': 'application/json',
       'x-api-key': this.apiKey,
     });
     console.log('user', loginUser);
 
-    return this.http.get<User>(
+    return this.http.get<User[]>(
       `https://fh-noroff-assignment-api-production.up.railway.app/trainers?username=${loginUser}`,
       { headers: httpHeaders }
     );

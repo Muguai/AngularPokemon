@@ -28,8 +28,8 @@ export class LoginFormComponent{
     
     this.userService.getUser(form.value.trainerName).subscribe({
       next: (user) => {
-        console.log(user.username);
-        if (user.username == null) {
+        console.log("Username ", user[0]);
+        if (user.length == 0) {
           console.log("--- User doesn't exist --- create user---> ", form.value.trainerName);
           this.userService.postUser(JSON.stringify({
             username: form.value.trainerName,
@@ -47,7 +47,7 @@ export class LoginFormComponent{
             }
           });
         } else {
-          this.userService.setUser(user);
+          this.userService.setUser(user[0]);
           console.log('--- User already exist --- Login in --->', user);
           this.router.navigateByUrl('trainer');
         }

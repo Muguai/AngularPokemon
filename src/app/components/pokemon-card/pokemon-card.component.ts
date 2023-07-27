@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { map } from 'rxjs';
 import { Pokemon } from 'src/app/models/pokemonApiFetchResult';
@@ -16,7 +16,7 @@ interface storeAdditionalData {
   templateUrl: './pokemon-card.component.html',
   styleUrls: ['./pokemon-card.component.scss'],
 })
-export class PokemonCardComponent {
+export class PokemonCardComponent implements OnInit {
   @ViewChild('cardContainer', { static: true }) cardContainerRef!: ElementRef;
   @ViewChild('cardImg', { static: true }) cardImgRef!: ElementRef;
   @ViewChild('pokeBallButton', { static: true }) pokeBallButtonRef!: ElementRef;
@@ -50,6 +50,12 @@ export class PokemonCardComponent {
     this.trainerRoute = (this.route.url === '/trainer')
   }
 
+  ngOnInit(): void {
+    
+    this.orgWeight = -1;
+    this.orgHeight = -1;
+  }
+
   onBackButtonClick() {
     if (this.canFlip == false) return;
     const cardContainer = this.cardContainerRef.nativeElement as HTMLElement;
@@ -74,9 +80,8 @@ export class PokemonCardComponent {
     if (storedData) {
       this.additionalData = storedData.additionalData;
       console.log(`FOUND STORED DATA FOR ${this.data.name}`, this.additionalData);
-      
-      if (this.orgHeight == -1)
-        this.convertWeightAndHeight();
+      if(this.isMetricSystem == false)
+        this.isMetricSystem = true;
 
       const cardContainer = this.cardContainerRef.nativeElement as HTMLElement;
       cardContainer.style.transform = 'rotateY(180deg)';
@@ -84,6 +89,8 @@ export class PokemonCardComponent {
     }
     this.isLoading = true;
 
+    if (this.orgHeight == -1)
+      this.convertWeightAndHeight();
     this.pokeApi.getPokemonById(this.data.id)
     .pipe(
       map((response: Pokemon) => {
@@ -100,9 +107,6 @@ export class PokemonCardComponent {
         this.additionalData = additionalData;
         console.log(`JUST GOT DATA FROM POKEMON - ${this.data.name}'` , additionalData);   
 
-        if(this.orgHeight == -1)
-          this.convertWeightAndHeight();
-
 
         const newAdditionalPokemonData: storeAdditionalData = {
           name: this.data.name,
@@ -110,6 +114,10 @@ export class PokemonCardComponent {
         };
         additionalPokemonDataList.push(newAdditionalPokemonData);
         this.isLoading = false;
+
+        
+        if(this.orgHeight == -1)
+          this.convertWeightAndHeight();
 
         sessionStorage.setItem("Additional-Poke-Data", JSON.stringify(additionalPokemonDataList));
       },
@@ -159,7 +167,8 @@ export class PokemonCardComponent {
   }
 
   convertWeightAndHeight() {
-
+    if(this.isLoading)
+      return;
     //Initialize Values
     if(this.orgHeight == -1){
       this.orgHeight = this.additionalData.height;

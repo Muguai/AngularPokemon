@@ -3,7 +3,7 @@
  
 <img id="pokemon-logo" src="../../assets/images/PokemonLogo.png">
 <!-- <div class="header-nav"> -->
-  <nav class="header-nav">
+  <nav *ngIf=!loginUrl class="header-nav">
     <div class="catalogue">
       <!-- routerLinkActive="active" ariaCurrentWhenActive="page" -->
         <a class="catalogue" routerLink="/pokedex" routerLinkActive="active" ariaCurrentWhenActive="page">
@@ -11,7 +11,7 @@
           <p>Catalogue</p>
         </a>
     </div>
-    <div class="trainer">
+    <div *ngIf=!loginUrl class="trainer">
         <a class="trainer" routerLink="/trainer">
           <img src="../../assets/images/PokeballLogo.png">
           <p>Pokémons</p>
