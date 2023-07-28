@@ -1,7 +1,6 @@
 import { Component, OnChanges, OnInit, SimpleChanges  } from '@angular/core';
 import { PokeApiService } from 'src/app/services/poke-api.service';
 import { PokemonResult, Result, PokemonData } from 'src/app/models/pokemonComponentData';
-import { Ability, Pokemon, Sprites,Ability2, Type } from 'src/app/models/pokemonApiFetchResult';
 import { switchMap, forkJoin, map, of } from 'rxjs';
 import { MetricConverterService } from 'src/app/services/metric-converter.service';
 import { Router } from '@angular/router';

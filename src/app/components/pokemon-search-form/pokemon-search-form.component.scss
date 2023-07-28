@@ -1,5 +1,67 @@
-#resetImage{
+#reset-image{
     width: 40px;
     height: 40px;
     cursor: pointer;
+    filter: brightness(0) invert(1);
+}
+
+#reset-image:hover {
+    filter: grayscale(1) invert(1);
+}
+
+#search-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-bottom: 5%;
+}
+
+#search-form-container h3 {
+    font-size: 1rem;
+    padding-left: 10px;
+}
+
+#search-form {
+    display: flex;
+    flex-direction: column; 
+}
+
+#search-container {
+    display: flex;
+    align-items: center;
+}
+
+#search-container input, #search-container button {
+    height: 50px;
+    border-radius: 40px;
+    margin: 5px 10px;
+    color: white;
+}
+
+#search-container input {
+    background-color: transparent;
+    width: 500px;
+    padding: 20px;
+    border: 1px solid white;
+}
+
+#search-container input::placeholder {
+    color: rgb(165, 165, 165);
+}
+
+#search-container input:focus {
+    background: transparent;
+    outline-color: #58B9EF;
+    border-color: #58B9EF;
+}
+
+#search-container button {
+    background: linear-gradient(to right, #58B9EF, #0077B9);
+    border: 1px solid #58B9EF;
+    width: 100px;
+}
+
+#search-container button:hover {
+    background: none;
 }
