@@ -6,7 +6,8 @@ import { PokemonData, defaultPokemonData, AdditionalPokemonData, defaultAddition
 import { User } from 'src/app/models/user';
 import { PokeApiService } from 'src/app/services/poke-api.service';
 import { UserService } from 'src/app/services/user.service';
-
+import { UpdateCardService } from 'src/app/services/update-card.service';
+import { Subscription } from 'rxjs';
 
 interface storeAdditionalData {
   name: string;
@@ -38,13 +39,17 @@ export class PokemonCardComponent implements OnInit {
   orgWeight: number;
   orgHeight: number;
   isDisabled: boolean;
+  isPixel: boolean;
 
   pokedexRoute: boolean = false;
   trainerRoute: boolean = false;
 
+  private eventSubscription: Subscription;
+
   constructor(public route: Router, 
               public readonly pokeApi:PokeApiService,
-              private userService: UserService) {
+              private userService: UserService,
+              private updateCardService: UpdateCardService) {
     this.canFlip = true;
     this.animateDot = false;
     this.animateImage = false;
@@ -54,9 +59,15 @@ export class PokemonCardComponent implements OnInit {
     this.orgHeight = -1;
     this.isLoading = false;
     this.isDisabled = false;
+    this.isPixel = false
 
     this.pokedexRoute = (this.route.url === '/pokedex')
     this.trainerRoute = (this.route.url === '/trainer')
+
+    this.eventSubscription = this.updateCardService.getEvent().subscribe((eventData) => {
+      this.isPixel = eventData;
+      console.log('Event data received:', eventData);
+    });
   
   }
 
@@ -64,6 +75,8 @@ export class PokemonCardComponent implements OnInit {
     this.orgWeight = -1;
     this.orgHeight = -1;
     this.isDisabled = this.isCatched();
+    this.isPixel = this.updateCardService.getIsPixel();
+
     console.log(this.isDisabled)
   }
 
@@ -137,6 +150,10 @@ export class PokemonCardComponent implements OnInit {
       },
     });
 
+  }
+
+  getPokedexEntryInfo(){
+    
   }
 
   isCatched(): boolean {

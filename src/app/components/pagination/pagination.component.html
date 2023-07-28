@@ -1,6 +1,12 @@
 <div *ngIf="!isDisabled" class="pagination-container">
     <button id="first-button" class="pagination-button" (click)="goToPage(1)" [disabled]="currentPage === 1"><img src='../../../assets/images/RightDoubleArrows.png' alt="First"></button>
     <button id="previous-button" class="pagination-button" (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1"><img src='../../../assets/images/RightArrow.png' alt="Previous"></button>
+    <button *ngFor="let pageNumber of getDisplayedPages()"
+    class="page-number-button"
+    [class.active]="pageNumber === currentPage"
+    (click)="goToPage(pageNumber)">
+    {{  (((pageNumber - 1)  * itemsPerPage) + 1) + "-" + pageNumber * itemsPerPage }} 
+    </button>
     <button id="next-button" class="pagination-button" (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages"><img src='../../../assets/images/RightArrow.png' alt="Next"></button>
     <button id="last-button" class="pagination-button" (click)="goToPage(totalPages)" [disabled]="currentPage === totalPages"><img src='../../../assets/images/RightDoubleArrows.png' alt="Last"></button>
   </div>
