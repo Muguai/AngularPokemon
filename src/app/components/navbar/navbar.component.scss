@@ -5,7 +5,8 @@ header {
     width: 100%;
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     padding: 10px 10%;
-    padding-bottom: 20px;
+    padding-bottom: 25px;
+    margin-top: 20px;
     margin-bottom: 60px;
 }
 
@@ -21,17 +22,17 @@ nav.header-nav {
     height: 85px;
 }
 
-a.trainer, a.catalogue {
+a.trainer, a.catalogue, a.art-change, a.logout {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-div.catalogue:hover p, div.trainer:hover p {
+div.catalogue:hover p, div.trainer:hover p, div.art-change:hover p, div.logout:hover p {
     color: rgb(170, 170, 170);
 }
 
-div.catalogue:hover img, div.trainer:hover img {
+div.catalogue:hover img, div.trainer:hover img, div.art-change:hover img, div.logout:hover img {
     scale: 1.1;
     -webkit-filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
     filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
@@ -49,8 +50,25 @@ div.catalogue:hover img, div.trainer:hover img {
     width: auto;
 }
 
+a.trainer-action img {
+    height: 50px;
+    margin: 15px 0;
+    width: auto;
+}
+
+div.art-change {
+    border-left: 1px solid rgba(255, 255, 255, 0.4);
+    padding-left: 20px;
+}
+
+div.trainer {
+    padding-right: 20px;
+}
+
+
 nav.header-nav p {
     color: white;
     margin: 0;
     font-size: 1.5rem;
+    margin-top: 10px;
 }

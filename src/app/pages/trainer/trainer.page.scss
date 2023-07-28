@@ -1,8 +1,10 @@
 #top-container {
     margin-bottom: 70px;
+    display: flex;
+    justify-content: center;
 }
 
-#top-container, #trainer-welcoming-container {
+#trainer-welcoming-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,13 +12,15 @@
 
 #trainer-welcoming-container {
     margin-bottom: 120px;
-    margin-top: 50px;
+    //margin-top: 50px;
     font-weight: bold;
+    padding-left: 250px;
 }
 
 #trainer-welcoming-container h2 {
     color: #c8ce77;
-    margin-bottom: 40px;
+    margin-bottom: 75px;
+    margin-top: 10px;
     font-size: 2.2rem;
 }
 
@@ -24,21 +28,3 @@
     color: black;
 }
 
-.brushImage{
-    width: 94px;
-    height: 106px; 
-    cursor: pointer;
-    align-self: end;
-    margin: 0 50px;
-}
-
-.brushImage:hover {
-    filter: drop-shadow(2px 2px 0 rgba(255, 255, 255, 0.5)) drop-shadow(-2px 2px 0 rgba(255, 255, 255, 0.5))
-      drop-shadow(2px -2px 0 rgba(255, 255, 255, 0.5)) drop-shadow(-2px -2px 0 rgba(255, 255, 255, 0.5));
-}
-
-.logout-button{
-
-    width: 150px;
-    height: 106px; 
-}

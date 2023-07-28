@@ -17,6 +17,18 @@
           <p>Pokémons</p>
         </a>
     </div>
+    <div class="art-change">
+      <a (click)="changeArt()" class="art-change trainer-action">
+        <img id="brush-image" [src]="isPixel ? '/assets/images/pixelBrush.png' : '/assets/images/handDrawnBrush.png'"alt="Change Art">
+        <p>Click me!</p>
+      </a>
+    </div>
+    <div *ngIf=!loginUrl class="logout">
+      <a class="logout trainer-action" role="button" (click)=logoutClick()>
+        <img src="/assets/images/logout.png">
+        <p>Logout</p>
+      </a>
+    </div>
   </nav>
 
 </header>
