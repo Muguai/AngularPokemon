@@ -56,7 +56,6 @@
         />
       </div>
     </div>
-  
     <div id="poke-details-container">
       <h4 id="poke-details-name">{{ data.name }}</h4>
       <div id="poke-details-first-row">
@@ -82,9 +81,23 @@
           <p [ngClass]="{ 'loading-dots': isLoading }" >{{ isLoading ? '' : data.id }}{{ isLoading ? '' : '#' }}</p>
           <h5>Id</h5>
         </div>
+        <button
+        (mouseover)="canFlip = false"
+        (mouseout)="canFlip = true"
+        (click)="getPokedexEntries()">
+          ->
+        </button>
       </div>
       <div id="poke-details-second-row">
-        <div class="poke-abilities-container">
+        
+        <!-- Pokedex entry-->
+        <div *ngIf="pokedexShown" class="text-center">
+          <p [ngClass]="{ 'loading-dots': isPokedexLoading }" >
+            {{ isPokedexLoading ? '' :additionalData.pokeDexEntry }}
+          </p>
+        </div>
+        <!-- Abilities and type -->
+        <div *ngIf="!pokedexShown" class="poke-abilities-container">
           <h5>Abilities</h5>
           <ul *ngIf="!isLoading">
             <li *ngFor="let ability of additionalData.abilities">
@@ -96,7 +109,7 @@
           </ul>
           <p *ngIf="isLoading" class="loading-dots"></p>
         </div>
-        <div class="poke-type-container">
+        <div *ngIf="!pokedexShown" class="poke-type-container">
           <h5>Type</h5>
           <ng-container *ngIf="!isLoading; else loadingDotsTemplate">
             <ng-container *ngFor="let type of additionalData.type">
