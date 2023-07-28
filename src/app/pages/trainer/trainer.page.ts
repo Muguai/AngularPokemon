@@ -11,7 +11,7 @@ export class TrainerPage {
   isPixel:boolean;
 
   constructor(private readonly updateCardService:UpdateCardService ){
-    this.isPixel = true;
+    this.isPixel = this.updateCardService.getIsPixel();
   }
 
   changeArt(){
