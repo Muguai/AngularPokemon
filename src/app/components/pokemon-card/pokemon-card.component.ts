@@ -1,5 +1,5 @@
 import { Component, Input, ViewChild, ElementRef, OnInit, EventEmitter, Output } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { map } from 'rxjs';
 import { Pokemon } from 'src/app/models/pokemonApiFetchResult';
 import { PokemonData, defaultPokemonData, AdditionalPokemonData, defaultAdditionalPokemonData } from 'src/app/models/pokemonComponentData';
@@ -8,6 +8,8 @@ import { PokeApiService } from 'src/app/services/poke-api.service';
 import { UserService } from 'src/app/services/user.service';
 import { UpdateCardService } from 'src/app/services/update-card.service';
 import { Subscription } from 'rxjs';
+import { speciesUrl } from 'src/app/const/pokeUrl';
+
 
 interface storeAdditionalData {
   name: string;
@@ -153,7 +155,47 @@ export class PokemonCardComponent implements OnInit {
   }
 
   getPokedexEntryInfo(){
-    
+
+    if(!this.data.additionalInfoUrl.startsWith(speciesUrl)){
+      console.log("Already got Pokedex entry");
+      return;
+    }
+    /*
+    this.pokeApi.getPokemonDataFromUrl(this.data.additionalInfoUrl)
+    .pipe(
+      map((response: Pokemon) => {
+        return {
+          height: response.height / 10,
+          weight: response.weight / 10,
+          abilities: response.abilities,
+          type: response.types,
+          pokeDexEntry: ""
+        };
+      })
+    ).subscribe({
+      next: (additionalData: AdditionalPokemonData) => {      
+        this.additionalData = additionalData;
+        console.log(`JUST GOT DATA FROM POKEMON - ${this.data.name}'` , additionalData);   
+
+
+        const newAdditionalPokemonData: storeAdditionalData = {
+          name: this.data.name,
+          additionalData: additionalData,
+        };
+        additionalPokemonDataList.push(newAdditionalPokemonData);
+        this.isLoading = false;
+
+        
+        if(this.orgHeight == -1)
+          this.convertWeightAndHeight();
+
+        sessionStorage.setItem("Additional-Poke-Data", JSON.stringify(additionalPokemonDataList));
+      },
+      error: (error: any) => {
+        console.log(error);
+      },
+    });
+    */
   }
 
   isCatched(): boolean {

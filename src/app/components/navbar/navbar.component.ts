@@ -14,7 +14,7 @@ export class NavbarComponent {
     this.loginUrl = (this.router.url === '/') 
     console.log(this.loginUrl);
     router.events.subscribe((event) => 
-      this.loginUrl = (this.router.url === '/login')  
+      this.loginUrl = (this.router.url === '/')  
     )
   }
 
