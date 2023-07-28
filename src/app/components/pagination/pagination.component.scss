@@ -22,21 +22,23 @@
 }
 
 .pagination-button:disabled {
-    pointer-events: none;
     opacity: 0.2;
+    font-weight: bold;
 }
 .page-number-button{
   padding: 5px 10px;
   margin: 2px;
+  background-color: transparent;
+  border: none;
+  color: white;
 }
+
 .page-number-button.active {
     font-weight: bold;
-    color: blue;
-    border: thick solid blue;
-    
-  }
+    scale: 1.2;
+}
 
-  .page-number-button:hover {
+.page-number-button:hover {
     scale: 1.1;    
-  }
+}
 
