@@ -37,7 +37,6 @@ export class TrainerPokemonCardListComponent implements OnInit{
     const userData = sessionStorage.getItem(STORAGE_KEY_USER)
     if (userData) {
       this.user = JSON.parse(userData);
-      console.log("This is the user alt" , this.user.pokemon[0].altSprite);
       this.pokemonData = this.user.pokemon;
     }
   }

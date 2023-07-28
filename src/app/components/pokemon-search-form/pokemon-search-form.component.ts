@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { NgForm, NgModel } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { map } from 'rxjs';
 import { PokemonData, PokemonResult, Result } from 'src/app/models/pokemonComponentData';
 import { PokeApiService } from 'src/app/services/poke-api.service';
@@ -16,8 +16,10 @@ export class PokemonSearchFormComponent {
   @Output() searchMade: EventEmitter<PokemonData[]> = new EventEmitter<PokemonData[]>();
   @Output() resetSearchClick: EventEmitter<any> = new EventEmitter();
 
-  constructor(private readonly pokeApiService:PokeApiService){
+  hasSearched: boolean;
 
+  constructor(private readonly pokeApiService:PokeApiService){
+    this.hasSearched = false;
   }
 
   search (form: NgForm){
@@ -55,6 +57,7 @@ export class PokemonSearchFormComponent {
     )
     .subscribe({
       next: (value) => {
+        this.hasSearched = true;
         this.searchMade.emit(value);
       },
       error: (error) => {
@@ -65,6 +68,7 @@ export class PokemonSearchFormComponent {
 
   resetSearch(){
     console.log("reset");
+    this.hasSearched = false;
     this.resetSearchClick.emit();
   }
 

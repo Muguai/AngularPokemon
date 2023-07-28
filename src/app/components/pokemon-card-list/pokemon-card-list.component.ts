@@ -6,7 +6,6 @@ import { MetricConverterService } from 'src/app/services/metric-converter.servic
 import { Router } from '@angular/router';
 import { spriteUrl, altSpriteUrl} from 'src/app/const/pokeUrl';
 
-
 @Component({
   selector: 'app-pokemon-card-list',
   templateUrl: './pokemon-card-list.component.html',
@@ -18,7 +17,6 @@ export class PokemonCardListComponent implements OnInit{
   @Input() totalPages: number = 10;
   @Input() itemsPerPage: number = 39;
   @Input() maxPokemon: number = 1008;
-  private speciesUrl: string = "https://pokeapi.co/api/v2/pokemon-species/";
 
   pokedexRoute: Boolean = false;
   trainerRoute: Boolean = false;

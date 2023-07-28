@@ -25,7 +25,7 @@
         >
           search
         </button>
-        <img id="reset-image"src="/assets/images/refresh.png" alt="R"
+        <img *ngIf="hasSearched"  id="reset-image"src="/assets/images/refresh.png" alt="R"
         (click)="resetSearch()"
         />
       </div>
