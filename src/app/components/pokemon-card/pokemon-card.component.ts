@@ -61,7 +61,6 @@ export class PokemonCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
     this.orgWeight = -1;
     this.orgHeight = -1;
     this.isDisabled = this.isCatched();
