@@ -198,9 +198,8 @@ export class PokemonCardComponent implements OnInit {
     }
 
     const pokedexUrl = this.additionalData.pokeDexEntry;
-    console.log(pokedexUrl);
+
     if (!pokedexUrl.startsWith(speciesUrl)) {
-      
       this.isPokedexLoading = false;
       console.log('Already got Pokedex entry');
       return;
@@ -341,6 +340,7 @@ export class PokemonCardComponent implements OnInit {
 
   convertWeightAndHeight() {
     if (this.isLoading) return;
+
     //Initialize Values
     if (this.orgHeight == -1) {
       this.orgHeight = this.additionalData.height;
@@ -359,12 +359,10 @@ export class PokemonCardComponent implements OnInit {
   }
 
   kgsToLbs(kgs: number): number {
-    // 1 kg is approximately equal to 2.20462262 lbs
     return parseFloat((kgs * 2.20462262).toFixed(1));
   }
 
   metersToFeet(meters: number): number {
-    // 1 meter is equal to 3.28084 feet
     return parseFloat((meters * 3.28084).toFixed(1));
   }
 }

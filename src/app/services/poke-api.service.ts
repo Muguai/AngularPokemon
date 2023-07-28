@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { PokemonData, PokemonResult } from '../models/pokemonComponentData';
+import { PokemonResult } from '../models/pokemonComponentData';
 import { Observable } from 'rxjs';
 import { Pokemon, PokemonSpecies } from '../models/pokemonApiFetchResult';
 
@@ -8,13 +8,8 @@ import { Pokemon, PokemonSpecies } from '../models/pokemonApiFetchResult';
   providedIn: 'root',
 })
 export class PokeApiService {
-  public pokemonData: PokemonData[] = [];
 
   constructor(private readonly http: HttpClient) {}
-
-  getPokemonAtLogin(from: number, to: number) {
-    
-  }
 
   getPokemons(): Observable<PokemonResult> {
     return this.http.get<PokemonResult>(

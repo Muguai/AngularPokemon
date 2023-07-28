@@ -49,6 +49,5 @@ export class PaginationComponent implements OnInit {
 
   reset(){
     this.isDisabled = false;
-
   }
 }

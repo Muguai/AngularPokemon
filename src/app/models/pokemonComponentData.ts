@@ -29,7 +29,7 @@ export type PokemonResult = {
     type: Type[]
     pokeDexEntry: string
   }
-
+  
   // Very ugly to copy in these twice. need to fix later
   export type Ability = {
     ability: Ability2

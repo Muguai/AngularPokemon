@@ -40,11 +40,11 @@
       (mouseover)="canFlip = false"
       (mouseout)="canFlip = true"
       (click)="removePokemon()">
-        <img src="/assets/images/delete.png">
+        <img draggable="false"src="/assets/images/delete.png">
     </button>
   </div>
   
-  <!-- ALT Card back-->
+  <!-- Card back-->
   <div class="card card-back" (click)="onBackButtonClick()">
     <div [style.background]="getGradientStyle()" id="poke-details-img-background">
       <div class="pokemon-details-img-container">

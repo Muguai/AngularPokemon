@@ -14,6 +14,7 @@ import { PokemonData } from '../models/pokemonComponentData';
 export class UserService {
   private _user!: User;
 
+  //We couldnt figure out how to do with .env variables in angular. So this will do for now
   private apiKey: string =
     'QVfU8lGxPO22tNQJzTQIpEh85dZfyq3v7tQ8mvtDfwblpTTrgQLYnXv0RMdi7dah';
 
@@ -29,8 +30,6 @@ export class UserService {
 
   constructor(private readonly http: HttpClient) {
     const user: any = sessionStorage.getItem(this.STORAGE_KEY_USER);
-
-    console.log(sessionStorage.getItem(this.STORAGE_KEY_USER));
 
     if (user) {
       this._user = JSON.parse(user);
@@ -65,9 +64,7 @@ export class UserService {
 
   getUserDetails(): User {
     const user: any = sessionStorage.getItem(this.STORAGE_KEY_USER);
-
-    console.log(sessionStorage.getItem(this.STORAGE_KEY_USER));
-
+    
     if (user) {
       this._user = JSON.parse(user);
     }
