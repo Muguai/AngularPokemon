@@ -1,6 +1,27 @@
-#brush-image-container {
+#top-container {
+    margin-bottom: 70px;
+}
+
+#top-container, #trainer-welcoming-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#trainer-welcoming-container {
+    margin-bottom: 120px;
+    margin-top: 50px;
+    font-weight: bold;
+}
+
+#trainer-welcoming-container h2 {
+    color: #c8ce77;
+    margin-bottom: 40px;
+    font-size: 2.2rem;
+}
+
+#trainer-welcoming-container p {
+    color: black;
 }
 
 .brushImage{

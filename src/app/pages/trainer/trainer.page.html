@@ -2,6 +2,11 @@
 (click)="logoutClick()"
 >Logout</button> 
 <div id="brush-image-container"> 
+<div id="top-container">
+    <div id="trainer-welcoming-container">
+        <h2>Welcome Ash!</h2>
+        <p>Here you can find all your catched Pokémons</p>
+    </div>
     <img class="brushImage"[src]="isPixel ? '/assets/images/pixelBrush.png' : '/assets/images/handDrawnBrush.png'"alt="Change Art" 
     (click)="changeArt()"
     />
