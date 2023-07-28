@@ -29,10 +29,9 @@ export class PokemonCardListComponent implements OnInit{
   }
   
   ngOnInit(): void {
-    this.totalPages = Math.ceil(this.maxPokemon / this.itemsPerPage);
-    console.log(this.totalPages);
     this.fetchPokemonData();
   }
+
 
   fetchPokemonData() {
     let offset = (this.currentPage - 1) * this.itemsPerPage;

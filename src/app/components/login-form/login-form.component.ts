@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { PokeApiService } from 'src/app/services/poke-api.service';
 import { UserService } from 'src/app/services/user.service';
+import { STORAGE_KEY_USER } from 'src/app/const/storage-keys';
 
 @Component({
   selector: 'app-login-form',
@@ -14,29 +15,29 @@ export class LoginFormComponent{
   userName?: string = '';
   animateLoad: boolean = false;
 
-
-  constructor(
-    private readonly router: Router,
-    private readonly userService: UserService
-  ) {
+  constructor(private readonly router: Router,
+              private readonly userService: UserService) {
   }
 
 
-  async login(form: NgForm) {
+
+  async formLogin(form: NgForm) {
     this.animateLoad = true;
-    
-    this.userService.getUser(form.value.trainerName).subscribe({
+    const username = form.value.trainerName
+
+    this.userService.getUser(username).subscribe({
       next: (user) => {
         console.log("Username ", user[0]);
         if (user.length == 0) {
-          console.log("--- User doesn't exist --- create user---> ", form.value.trainerName);
+          console.log("--- User doesn't exist --- create user---> ", username);
           this.userService.postUser(JSON.stringify({
-            username: form.value.trainerName,
+            username: username,
             pokemon: [],
           })).subscribe({
             next: (user) => {
-              console.log(user);   
+              console.log("New User", user);   
               this.userService.setUser(user);
+              sessionStorage.setItem(STORAGE_KEY_USER, JSON.stringify(user))
               this.router.navigateByUrl('trainer');
             },
             error: (error) => {
@@ -48,6 +49,7 @@ export class LoginFormComponent{
         } else {
           this.userService.setUser(user[0]);
           console.log('--- User already exist --- Login in --->', user);
+          sessionStorage.setItem(STORAGE_KEY_USER, JSON.stringify(user[0]))
           this.router.navigateByUrl('trainer');
         }
       },

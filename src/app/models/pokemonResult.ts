@@ -1,4 +1,4 @@
-/// Ignore this for now
+
 export type PokemonResult = {
     count: number
     next: string
@@ -10,15 +10,11 @@ export type PokemonResult = {
     name: string
     url: string
   }
-
-  /// -----------------
-
   
   export type PokemonData = {
     name: string 
     id: number
     sprite: string
-    altSprite: string
     additionalInfoUrl: string
   }
 
@@ -55,8 +51,7 @@ export type PokemonResult = {
  export const defaultPokemonData: PokemonData = {
     name: "MissingNo" ,
     id: -1,
-    sprite:  "assets/images/MissingNo.png",  
-    altSprite:  "assets/images/MissingNo.png",
+    sprite:  "assets/images/MissingNo.png",
     additionalInfoUrl: ""
   };
 
@@ -70,7 +65,7 @@ export type PokemonResult = {
 
   const defaultAblity: Ability = {
     ability: {
-      name: "Loading..",
+      name: "Default",
       url: "",
     },
     is_hidden: false,
@@ -80,7 +75,7 @@ export type PokemonResult = {
   const defaultType: Type = {
     slot: 1,
     type: {
-      name: "Loading...",
+      name: "normal",
       url: "",
     },
   };

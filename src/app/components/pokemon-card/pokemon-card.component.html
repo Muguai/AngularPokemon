@@ -33,9 +33,12 @@
         'poke-ball-dot-drawn': !isPixel
       }"></div>
     </button>
+    <!--Remove button only visible at trainer page-->
     <button 
       *ngIf=trainerRoute 
       class="card-button delete-button"
+      (mouseover)="canFlip = false"
+      (mouseout)="canFlip = true"
       (click)="removePokemon()">
         <img src="/assets/images/delete.png">
     </button>

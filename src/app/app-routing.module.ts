@@ -4,16 +4,14 @@ import { LoginPage } from './pages/login/login.page';
 import { TrainerPage } from './pages/trainer/trainer.page';
 import { PokedexPage } from './pages/pokedex/pokedex.page';
 import { AuthGuard } from './guards/auth.guard';
+import { logingFormGuard } from './guards/loging-form.guard';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'login'
-  },
-  {
-    path: 'login',
-    component: LoginPage
+    component: LoginPage,
+    canActivate: [logingFormGuard],
   },
   {
     path: 'trainer',
