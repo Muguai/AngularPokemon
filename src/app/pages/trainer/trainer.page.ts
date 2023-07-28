@@ -10,7 +10,10 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class TrainerPage {
 
+  username:string = "Bro";
+
   constructor(private readonly userService:UserService, private readonly router:Router  ){
+    this.username = userService.getUserDetails().username;
   }
 
 }

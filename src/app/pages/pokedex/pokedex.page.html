@@ -1,14 +1,17 @@
 <app-pokemon-search-form
-(searchMade)="onSearchMade($event)" (resetSearchClick)="resetSearch()"></app-pokemon-search-form>
+  (searchMade)="onSearchMade($event)"
+  (resetSearchClick)="resetSearch()"
+></app-pokemon-search-form>
 <app-pokemon-card-list
-[currentPage]="currentPage"
-[totalPages]="totalPages"
-[itemsPerPage]="itemsPerPage"
-[maxPokemon]="maxPokemon"></app-pokemon-card-list>
+  [currentPage]="currentPage"
+  [totalPages]="totalPages"
+  [itemsPerPage]="itemsPerPage"
+  [maxPokemon]="maxPokemon"
+></app-pokemon-card-list>
 <app-pagination
-[currentPage]="currentPage"
-[totalPages]="totalPages"
-[itemsPerPage]="itemsPerPage"
-[maxPokemon]="maxPokemon"
-(pageChanged)="onPageChanged($event)"
- ></app-pagination>
+  [currentPage]="currentPage"
+  [totalPages]="totalPages"
+  [itemsPerPage]="itemsPerPage"
+  [maxPokemon]="maxPokemon"
+  (pageChanged)="onPageChanged($event)"
+></app-pagination>
