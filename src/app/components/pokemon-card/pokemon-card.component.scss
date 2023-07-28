@@ -52,11 +52,10 @@
   position: absolute;
   backface-visibility: hidden;
   border-radius: 5px;
-  //border-radius:5%;
+
   height: 450px;
   height: 100%;
   width: 350px;
-  height: 100%;
 }
 
 .card-container:hover {
@@ -69,10 +68,7 @@
 }
 
 .card-front {
-  // background-color: #255786;
-  //background-color: #4991d4;
   background: linear-gradient(to bottom right, #4991d4, #296092);
-  //border: 10px solid #58B9EF;
   border: 10px solid #c8ce77; //8ea04d
   aspect-ratio: 7/9;
 }
@@ -110,11 +106,8 @@
   transform: translate(-50%, -50%);
 
   color: #ffcc00;
-  //text-shadow: #2D6AB3;
   text-shadow: 2px 0 #2D6AB3, -2px 0 #2D6AB3, 0 2px #2D6AB3, 0 -2px #2D6AB3,
              1px 1px #2D6AB3, -1px -1px #2D6AB3, 1px -1px #2D6AB3, -1px 1px #2D6AB3;
-  //text-shadow: -2.5px 0 #2D6AB3, 0 2.5px #2D6AB3, 2.5px 0 #2D6AB3, 0 -2.5px #2D6AB3;
-  //-webkit-text-stroke: 1px #2D6AB3;
 }
 
 .card-button {
@@ -219,6 +212,15 @@ img.catched {
   color: rgba(105, 105, 105, 0.5);
 }
 
+#entries-button {
+  background-color: transparent;
+  border: none;
+}
+
+#entries-button:hover {
+  scale: 1.1;
+}
+
 // Second row
 
 #poke-details-second-row {
@@ -251,6 +253,8 @@ img.catched {
 
 
 
+
+
 .poke-ball-button.disabled{
   filter: brightness(0.6);
   pointer-events: none;
@@ -268,13 +272,11 @@ img.catched {
   background-image: url('../../../assets/images/AltPokeballClosed2.png');
 }
 .poke-ball-button-pixel.animate {
-  //  animation: throw-ball 2s 1, wiggle 1s 3 2s;
   animation: buttonAnimation 3s 1, buttonAnimation2 1s 3 3s,
     buttonAnimation3 1s 1 6.5s;
   pointer-events: none;
 }
 .poke-ball-button-drawn.animate {
-  //  animation: throw-ball 2s 1, wiggle 1s 3 2s;
   animation: altButtonAnimation 3s 1, buttonAnimation2 1s 3 3s,
     buttonAnimation3 1s 1 6.5s;
   pointer-events: none;

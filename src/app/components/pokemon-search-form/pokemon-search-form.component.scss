@@ -52,17 +52,11 @@
 #search-container input:focus {
     background: transparent;
     outline: none;
-    // outline-color: #58B9EF;
-    //border-color: #58B9EF;
+
 }
 
-// #search-container input:-webkit-autofill{
-//     background-color: transparent;
-//     -webkit-
-// }
 
 #search-container button {
-    // background: linear-gradient(to right, #58B9EF, #0077B9);
     background: linear-gradient(to top right, #5000b9, #58B9EF);
     border: 2px solid #5000b9;
     width: 100px;

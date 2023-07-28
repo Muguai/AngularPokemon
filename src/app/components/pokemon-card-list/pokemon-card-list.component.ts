@@ -1,8 +1,7 @@
-import { Component, OnChanges, Input, OnInit, SimpleChanges  } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PokeApiService } from 'src/app/services/poke-api.service';
-import { PokemonResult, Result, PokemonData } from 'src/app/models/pokemonComponentData';
-import { switchMap, forkJoin, map, of } from 'rxjs';
-import { MetricConverterService } from 'src/app/services/metric-converter.service';
+import { PokemonResult, PokemonData } from 'src/app/models/pokemonComponentData';
+import { map } from 'rxjs';
 import { Router } from '@angular/router';
 import { spriteUrl, altSpriteUrl} from 'src/app/const/pokeUrl';
 

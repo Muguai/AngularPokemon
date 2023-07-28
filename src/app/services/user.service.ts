@@ -24,7 +24,6 @@ export class UserService {
 
   private httpHeaders: HttpHeaders = new HttpHeaders({
     'Content-Type': 'application/json',
-
     'x-api-key': this.apiKey,
   });
 
@@ -35,8 +34,6 @@ export class UserService {
 
     if (user) {
       this._user = JSON.parse(user);
-    } else {
-      //route to login
     }
   }
 

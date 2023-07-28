@@ -2,19 +2,17 @@
 <header>
  
 <img id="pokemon-logo" src="../../assets/images/PokemonLogo.png">
-<!-- <div class="header-nav"> -->
   <nav *ngIf=!loginUrl class="header-nav">
     <div class="catalogue">
-      <!-- routerLinkActive="active" ariaCurrentWhenActive="page" -->
         <a class="catalogue" routerLink="/pokedex" routerLinkActive="active" ariaCurrentWhenActive="page">
           <img src="../../assets/images/PokemonsLogo.png">
-          <p>Catalogue</p>
+          <p>Pokédex</p>
         </a>
     </div>
     <div *ngIf=!loginUrl class="trainer">
         <a class="trainer" routerLink="/trainer">
           <img src="../../assets/images/PokeballLogo.png">
-          <p>Pokémons</p>
+          <p>Trainer</p>
         </a>
     </div>
     <div class="art-change">

@@ -81,11 +81,11 @@
           <p [ngClass]="{ 'loading-dots': isLoading }" >{{ isLoading ? '' : data.id }}{{ isLoading ? '' : '#' }}</p>
           <h5>Id</h5>
         </div>
-        <button
+        <button id="entries-button"
         (mouseover)="canFlip = false"
         (mouseout)="canFlip = true"
         (click)="getPokedexEntries()">
-          ->
+          <i class="bi bi-arrow-right"></i>
         </button>
       </div>
       <div id="poke-details-second-row">
