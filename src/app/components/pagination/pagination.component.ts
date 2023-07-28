@@ -9,6 +9,7 @@ export class PaginationComponent implements OnInit {
   @Input() currentPage: number = 1;
   @Input() totalPages: number = 10;
   @Input() itemsPerPage: number = 10;
+  @Input() maxPokemon: number = 1008;
 
   
   maxButtons: number = 6;

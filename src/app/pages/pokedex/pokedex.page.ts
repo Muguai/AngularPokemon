@@ -17,7 +17,7 @@ export class PokedexPage {
   public currentPage: number = 1;
   public totalPages: number = 20 ;
   
-  public itemsPerPage: number = 39;
+  public itemsPerPage: number = 40;
   public maxPokemon: number = 1008;
   constructor(){
     this.totalPages = Math.ceil(this.maxPokemon / this.itemsPerPage);
