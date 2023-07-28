@@ -1,4 +1,4 @@
-
+/// Ignore this for now
 export type PokemonResult = {
     count: number
     next: string
@@ -10,6 +10,9 @@ export type PokemonResult = {
     name: string
     url: string
   }
+
+  /// -----------------
+
   
   export type PokemonData = {
     name: string 
@@ -65,7 +68,7 @@ export type PokemonResult = {
 
   const defaultAblity: Ability = {
     ability: {
-      name: "Default",
+      name: "Loading..",
       url: "",
     },
     is_hidden: false,
@@ -75,7 +78,7 @@ export type PokemonResult = {
   const defaultType: Type = {
     slot: 1,
     type: {
-      name: "normal",
+      name: "Loading...",
       url: "",
     },
   };

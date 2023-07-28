@@ -20,9 +20,7 @@ export class PokedexPage {
   public itemsPerPage: number = 39;
   public maxPokemon: number = 1008;
   constructor(){
-    
     this.totalPages = Math.ceil(this.maxPokemon / this.itemsPerPage);
-    console.log(this.totalPages);
   }
 
   onSearchMade(event: PokemonData[]){
