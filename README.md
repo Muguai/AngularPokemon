@@ -1,31 +1,29 @@
-# AngularTest
+# Pokedex website
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.5.
+A pokedex website done in Angular.
 
-## Bootstrap installation
+## Gifs/Screenshots
 
+###Login
+![LoginAngularAssignment](https://github.com/Muguai/AngularPokemon/assets/37656342/9ee88454-9623-48b9-80cd-24c2dc72f303)
+
+###Pokedex
+![PokedexAngularAssignment](https://github.com/Muguai/AngularPokemon/assets/37656342/484b3581-df51-4eb4-970a-ce3897082d06)
+
+###Catch and release pokemon :O
+![CatchReleaseAngularAssignment](https://github.com/Muguai/AngularPokemon/assets/37656342/cce544c0-d7ac-4e6d-9064-8a836abd8f82)
+
+
+
+## Installation
+required installation (aside from Angular)
+
+```
 ng add @ng-bootstrap/ng-bootstrap
+npm install node
+npm install rxjs
+```
 
-## Development server
+## Made by
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Nathalie Levenfalk & Fredrik Hammar
