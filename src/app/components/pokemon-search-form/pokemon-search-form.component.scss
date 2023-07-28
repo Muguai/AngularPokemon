@@ -1,5 +1,73 @@
-#resetImage{
+#reset-image{
     width: 40px;
     height: 40px;
     cursor: pointer;
+}
+
+#reset-image:hover {
+    content: url('/assets/images/refreshHover.png');
+}
+
+#search-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin: 100px 0 50px 0;
+}
+
+#search-form-container h3 {
+    font-size: 1rem;
+    padding-left: 10px;
+}
+
+#search-form {
+    display: flex;
+    flex-direction: column; 
+}
+
+#search-container {
+    display: flex;
+    align-items: center;
+}
+
+#search-container input, #search-container button {
+    height: 50px;
+    border-radius: 40px;
+    margin: 5px 10px;
+    color: white;
+}
+
+#search-container input {
+    background-color: transparent;
+    width: 500px;
+    padding: 20px;
+    border: 1px solid white;
+}
+
+#search-container input::placeholder {
+    color: rgb(165, 165, 165);
+}
+
+#search-container input:focus {
+    background: transparent;
+    outline: none;
+    // outline-color: #58B9EF;
+    //border-color: #58B9EF;
+}
+
+// #search-container input:-webkit-autofill{
+//     background-color: transparent;
+//     -webkit-
+// }
+
+#search-container button {
+    // background: linear-gradient(to right, #58B9EF, #0077B9);
+    background: linear-gradient(to top right, #5000b9, #58B9EF);
+    border: 1px solid #5000b9;
+    width: 100px;
+}
+
+#search-container button:hover {
+    background: none;
 }

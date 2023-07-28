@@ -1,31 +1,33 @@
-<div>
+<div id="search-form-container">
     <form
       #searchForm="ngForm"
       (ngSubmit)="search(searchForm)"
-      class="login"
+      id="search-form"
     >
-      <h3>Search</h3>
-      <!-- <p>Enter your trainer name:</p> -->        
-      <img id="resetImage"src="/assets/images/reset.png" alt="R"
-      (click)="resetSearch()"
-      />
-      <div>
-        <input
-          type="text"
-          ngModel
-          name="searchBar"
-          #searchBar="ngModel"
-          placeholder="Pokemon Name"
+      <!-- <h3>Search</h3> -->
+      
+      <div id="search-container">
+        <div>
+          <input
+            type="text"
+            ngModel
+            name="searchBar"
+            #searchBar="ngModel"
+            placeholder="Pokemon Name"
+          />
+          <p *ngIf="searchBar.errors?.['required']" >
+            Input is required to search
+          </p>
+        </div>
+        <button
+          type="submit"
+          [disabled]="searchForm.form.invalid"
+        >
+          search
+        </button>
+        <img id="reset-image"src="/assets/images/refresh.png" alt="R"
+        (click)="resetSearch()"
         />
-        <p *ngIf="searchBar.errors?.['required']" >
-          Input is required to search
-        </p>
       </div>
-      <button
-        type="submit"
-        [disabled]="searchForm.form.invalid"
-      >
-        search
-      </button>
     </form>
-  </div>
+</div>
