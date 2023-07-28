@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { PokemonCardListComponent } from './pokemon-card-list.component';
 
 describe('PokemonCardListComponent', () => {

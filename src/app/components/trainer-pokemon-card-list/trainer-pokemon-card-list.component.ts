@@ -1,8 +1,5 @@
-import { Component, OnChanges, OnInit, SimpleChanges  } from '@angular/core';
-import { PokeApiService } from 'src/app/services/poke-api.service';
-import { PokemonResult, Result, PokemonData } from 'src/app/models/pokemonComponentData';
-import { switchMap, forkJoin, map, of } from 'rxjs';
-import { MetricConverterService } from 'src/app/services/metric-converter.service';
+import { Component, OnInit } from '@angular/core';
+import { PokemonData } from 'src/app/models/pokemonComponentData';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
@@ -11,9 +8,7 @@ import { STORAGE_KEY_USER } from 'src/app/const/storage-keys';
 @Component({
   selector: 'app-trainer-pokemon-card-list',
   templateUrl: './trainer-pokemon-card-list.component.html',
-  styleUrls: ['./trainer-pokemon-card-list.component.scss',
-              // '/pokemon-card-list.component.scss'
-            ]
+  styleUrls: ['./trainer-pokemon-card-list.component.scss']
 })
 
 export class TrainerPokemonCardListComponent implements OnInit{

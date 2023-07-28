@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm, NgModel } from '@angular/forms';
+import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from 'src/app/models/user';
-import { PokeApiService } from 'src/app/services/poke-api.service';
 import { UserService } from 'src/app/services/user.service';
 import { STORAGE_KEY_USER } from 'src/app/const/storage-keys';
 
@@ -58,8 +56,6 @@ export class LoginFormComponent{
         console.log(error);
       }
     });
-    //this.pokeApiService.getPokemonAtLogin(0, 40);
-    //localStorage.setItem('username', this.userName!);
   }
 
   userNameChange(event: any): void {
