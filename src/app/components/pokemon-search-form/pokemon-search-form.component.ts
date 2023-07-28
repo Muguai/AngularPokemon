@@ -21,6 +21,12 @@ export class PokemonSearchFormComponent {
   }
 
   search (form: NgForm){
+    if(form.value.searchBar.length == 0 || form.value.searchBar == ""){
+      this.resetSearch();
+      return;
+    }
+
+
     this.pokeApiService.getPokemons()
     .pipe(
       map((responses: PokemonResult)=> {

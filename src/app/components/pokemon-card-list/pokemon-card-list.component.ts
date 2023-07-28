@@ -4,7 +4,6 @@ import { PokemonResult, Result, PokemonData } from 'src/app/models/pokemonCompon
 import { switchMap, forkJoin, map, of } from 'rxjs';
 import { MetricConverterService } from 'src/app/services/metric-converter.service';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-pokemon-card-list',
@@ -18,22 +17,17 @@ export class PokemonCardListComponent implements OnInit{
   @Input() itemsPerPage: number = 39;
   @Input() maxPokemon: number = 1008;
   private speciesUrl: string = "https://pokeapi.co/api/v2/pokemon-species/";
-  private spriteUrl: string =   "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/"
- // private spriteUrl: string = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
+  private spriteUrl: string = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
 
   pokedexRoute: Boolean = false;
   trainerRoute: Boolean = false;
 
-  constructor(private readonly pokeApiService:PokeApiService, 
-    public readonly route: Router,
-    public userService: UserService){
+  constructor(private readonly pokeApiService:PokeApiService, public readonly route: Router){
     this.pokedexRoute = (this.route.url === '/pokedex')
     this.trainerRoute = (this.route.url === '/trainer')
   }
   
   ngOnInit(): void {
-    this.totalPages = Math.ceil(this.maxPokemon / this.itemsPerPage);
-    console.log(this.totalPages);
     this.fetchPokemonData();
   }
 
