@@ -1,10 +1,10 @@
 <div id="top-container">
+    <img class="brushImage"[src]="isPixel ? '/assets/images/pixelBrush.png' : '/assets/images/handDrawnBrush.png'"alt="Change Art" 
+    (click)="changeArt()"
+    />
     <div id="trainer-welcoming-container">
         <h2>Welcome Ash!</h2>
         <p>Here you can find all your catched Pokémons</p>
     </div>
-    <img class="brushImage"[src]="isPixel ? '/assets/images/pixelBrush.png' : '/assets/images/handDrawnBrush.png'"alt="Change Art" 
-    (click)="changeArt()"
-    />
 </div>
 <app-trainer-pokemon-card-list></app-trainer-pokemon-card-list>

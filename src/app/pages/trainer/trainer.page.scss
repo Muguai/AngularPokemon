@@ -28,8 +28,11 @@
     width: 94px;
     height: 106px; 
     cursor: pointer;
+    align-self: end;
+    margin: 0 50px;
 }
+
 .brushImage:hover {
-    filter: drop-shadow(2px 2px 0 white) drop-shadow(-2px 2px 0 white)
-      drop-shadow(2px -2px 0 white) drop-shadow(-2px -2px 0 white);
+    filter: drop-shadow(2px 2px 0 rgba(255, 255, 255, 0.5)) drop-shadow(-2px 2px 0 rgba(255, 255, 255, 0.5))
+      drop-shadow(2px -2px 0 rgba(255, 255, 255, 0.5)) drop-shadow(-2px -2px 0 rgba(255, 255, 255, 0.5));
 }
