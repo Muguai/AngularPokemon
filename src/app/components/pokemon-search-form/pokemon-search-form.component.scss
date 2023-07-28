@@ -2,11 +2,10 @@
     width: 40px;
     height: 40px;
     cursor: pointer;
-    filter: brightness(0) invert(1);
 }
 
 #reset-image:hover {
-    filter: grayscale(1) invert(1);
+    content: url('/assets/images/refreshHover.png');
 }
 
 #search-form-container {
@@ -14,7 +13,7 @@
     justify-content: center;
     align-items: center;
     color: white;
-    margin-bottom: 5%;
+    margin: 100px 0 50px 0;
 }
 
 #search-form-container h3 {
@@ -52,13 +51,20 @@
 
 #search-container input:focus {
     background: transparent;
-    outline-color: #58B9EF;
-    border-color: #58B9EF;
+    outline: none;
+    // outline-color: #58B9EF;
+    //border-color: #58B9EF;
 }
 
+// #search-container input:-webkit-autofill{
+//     background-color: transparent;
+//     -webkit-
+// }
+
 #search-container button {
-    background: linear-gradient(to right, #58B9EF, #0077B9);
-    border: 1px solid #58B9EF;
+    // background: linear-gradient(to right, #58B9EF, #0077B9);
+    background: linear-gradient(to top right, #5000b9, #58B9EF);
+    border: 1px solid #5000b9;
     width: 100px;
 }
 
