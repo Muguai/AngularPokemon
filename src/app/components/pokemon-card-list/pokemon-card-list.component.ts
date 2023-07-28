@@ -15,7 +15,7 @@ export class PokemonCardListComponent implements OnInit{
   public pokemonData:PokemonData[] = [];
   @Input() currentPage: number = 1;
   @Input() totalPages: number = 10;
-  @Input() itemsPerPage: number = 39;
+  @Input() itemsPerPage: number = 40;
   @Input() maxPokemon: number = 1008;
 
   pokedexRoute: Boolean = false;

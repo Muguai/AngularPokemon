@@ -5,7 +5,11 @@
     class="page-number-button"
     [class.active]="pageNumber === currentPage"
     (click)="goToPage(pageNumber)">
-    {{  (((pageNumber - 1)  * itemsPerPage) + 1) + "-" + pageNumber * itemsPerPage }} 
+    {{
+      (((pageNumber - 1) * itemsPerPage) + 1) +
+      "-" +
+      (pageNumber * itemsPerPage > maxPokemon ? maxPokemon : pageNumber * itemsPerPage)
+    }}
     </button>
     <button id="next-button" class="pagination-button" (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages"><img src='../../../assets/images/RightArrow.png' alt="Next"></button>
     <button id="last-button" class="pagination-button" (click)="goToPage(totalPages)" [disabled]="currentPage === totalPages"><img src='../../../assets/images/RightDoubleArrows.png' alt="Last"></button>
