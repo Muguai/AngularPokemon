@@ -31,6 +31,7 @@ export class PokemonCardListComponent implements OnInit{
     this.fetchPokemonData();
   }
 
+
   fetchPokemonData() {
     let offset = (this.currentPage - 1) * this.itemsPerPage;
     let limit = this.itemsPerPage;
