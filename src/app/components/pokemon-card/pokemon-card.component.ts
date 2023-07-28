@@ -8,6 +8,8 @@ import { PokeApiService } from 'src/app/services/poke-api.service';
 import { UserService } from 'src/app/services/user.service';
 import { UpdateCardService } from 'src/app/services/update-card.service';
 import { Subscription } from 'rxjs';
+import { speciesUrl } from 'src/app/const/pokeUrl';
+
 
 interface storeAdditionalData {
   name: string;
@@ -154,11 +156,11 @@ export class PokemonCardComponent implements OnInit {
 
   getPokedexEntryInfo(){
 
-    if(this.data.additionalInfoUrl.startsWith()){
+    if(!this.data.additionalInfoUrl.startsWith(speciesUrl)){
       console.log("Already got Pokedex entry");
       return;
     }
-
+    /*
     this.pokeApi.getPokemonDataFromUrl(this.data.additionalInfoUrl)
     .pipe(
       map((response: Pokemon) => {
@@ -193,6 +195,7 @@ export class PokemonCardComponent implements OnInit {
         console.log(error);
       },
     });
+    */
   }
 
   isCatched(): boolean {
