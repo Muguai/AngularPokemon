@@ -158,11 +158,7 @@ export class PokemonCardComponent implements OnInit {
 
   isCatched(): boolean {
     for (let pokemon of this.userService.getUserDetails().pokemon){
-      console.log(this.data)
-      console.log(pokemon.id +  " VS " + this.data.id);
-
       if (pokemon.id === this.data.id){
-        console.log("yes its caught");
         return true
       }
     }
@@ -171,7 +167,7 @@ export class PokemonCardComponent implements OnInit {
   }
 
   catchPokemon() {
-    console.log('Catching ' + this.data.name);
+    console.log('Catching ' + this.data);
 
     this.userService.postPokemon(this.data).subscribe({
       next: (updatedUser: User) => { 
@@ -186,11 +182,9 @@ export class PokemonCardComponent implements OnInit {
   }
 
   removePokemon() {
-    console.log("Clicking remove" + this.data.name)
     this.userService.removePokemon(this.data, this.userService.getUserDetails().pokemon).subscribe({
           next: (updatedUser: User) => {
             this.removePokemonFromList.emit(this.data);
-            console.log("could remove ",updatedUser);
             this.userService.setUser(updatedUser)
           },
           error: (error: any) => {
