@@ -1,5 +1,5 @@
 [build]
-  # Set the maximum budget for the CSS file (adjust the size as needed).
+  # Set the maximum budget for SCSS files.
   [build.budgets]
     type = "scss"
     maximumFileSize = "8kb" # Adjust this value according to your requirements.
