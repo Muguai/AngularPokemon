@@ -35,7 +35,7 @@ export class LoginFormComponent{
             pokemon: [],
           })).subscribe({
             next: (user) => {
-              console.log(user);   
+              console.log("New User", user);   
               this.userService.setUser(user);
               sessionStorage.setItem(STORAGE_KEY_USER, JSON.stringify(user))
               this.router.navigateByUrl('trainer');
