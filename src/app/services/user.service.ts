@@ -12,13 +12,23 @@ export class UserService {
   private apiKey: string =
     'QVfU8lGxPO22tNQJzTQIpEh85dZfyq3v7tQ8mvtDfwblpTTrgQLYnXv0RMdi7dah';
     private API_URL: string = 'https://fh-noroff-assignment-api-production.up.railway.app'
+    STORAGE_KEY_USER: string = 'trainer-user'
 
     private httpHeaders: HttpHeaders = new HttpHeaders({
       'Content-Type': 'application/json',
       'x-api-key': this.apiKey,
     });
 
-  constructor(private readonly http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {
+    const user: any = sessionStorage.getItem(this.STORAGE_KEY_USER)
+    console.log(sessionStorage.getItem(this.STORAGE_KEY_USER))
+    if(user) {
+      this._user = JSON.parse(user);
+    }else{
+      //route to login
+    }
+
+  }
 
   getUser(name: string): Observable<User[]> {
     
@@ -31,6 +41,7 @@ export class UserService {
   }
 
   postUser(newUser: string): Observable<User> {
+    
     return this.http.post<User>(
       `${this.API_URL}/trainers`,
       newUser,
@@ -40,9 +51,17 @@ export class UserService {
 
 
   setUser(user: User): void{
+    sessionStorage.setItem(this.STORAGE_KEY_USER, JSON.stringify(user));
     this._user = user;
   }
   getUserDetails(): User {
+    
+    const user: any = sessionStorage.getItem(this.STORAGE_KEY_USER)
+    console.log(sessionStorage.getItem(this.STORAGE_KEY_USER))
+    if(user) {
+      this._user = JSON.parse(user);
+    }
+  
     return this._user;
   }
 
@@ -54,11 +73,11 @@ export class UserService {
   }
 
   removePokemon(catchedPokemon: PokemonData, userPokemons: PokemonData[]): Observable<User> {
+    let i = 0;
     for(let pokemon of userPokemons) {
       if(pokemon.id === catchedPokemon.id)
-        userPokemons.splice(pokemon.id, 1)
-      else
-        console.log("No such pokemon to remove")
+        userPokemons.splice(i, 1)
+      i++
     }
       return this.http.patch<User>(`${this.API_URL}/trainers/${this._user.id}`,
       JSON.stringify({pokemon: userPokemons,}),

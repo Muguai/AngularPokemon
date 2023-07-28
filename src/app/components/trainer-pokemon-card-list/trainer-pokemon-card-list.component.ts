@@ -6,6 +6,8 @@ import { switchMap, forkJoin, map, of } from 'rxjs';
 import { MetricConverterService } from 'src/app/services/metric-converter.service';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/models/user';
+import { STORAGE_KEY_USER } from 'src/app/const/storage-keys';
 
 @Component({
   selector: 'app-trainer-pokemon-card-list',
@@ -16,6 +18,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 
 export class TrainerPokemonCardListComponent implements OnInit{
+  public user!: User;
   public pokemonData:PokemonData[] = [];
 
   pokedexRoute: Boolean = false;
@@ -32,7 +35,19 @@ export class TrainerPokemonCardListComponent implements OnInit{
   }
 
   getTrainerPokemons() {
-    this.pokemonData = this.userService.getUserDetails().pokemon
+    const userData = sessionStorage.getItem(STORAGE_KEY_USER)
+    if (userData) {
+      this.user = JSON.parse(userData);
+      this.pokemonData = this.user.pokemon;
+    }
+  }
+
+  removePokemonVisuals(event: PokemonData){
+    for(let i = 0; i < this.pokemonData.length; i++){
+      if(this.pokemonData[i].name === event.name)
+        this.pokemonData.splice(i, 1);
+    }
+
   }
 
 }

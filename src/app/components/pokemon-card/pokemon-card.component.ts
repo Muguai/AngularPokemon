@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef, OnInit, EventEmitter, Output } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { map } from 'rxjs';
 import { Pokemon } from 'src/app/models/pokemonApiFetchResult';
@@ -25,6 +25,9 @@ export class PokemonCardComponent implements OnInit {
 
   @Input() data: PokemonData = defaultPokemonData;
   @Input() additionalData: AdditionalPokemonData = defaultAdditionalPokemonData;
+
+  @Output() removePokemonFromList: EventEmitter<PokemonData> = new EventEmitter<PokemonData>();
+
 
   canFlip: boolean;
   animateDot: boolean;
@@ -152,12 +155,12 @@ export class PokemonCardComponent implements OnInit {
   }
 
   catchPokemon() {
-    this.animateButton = true;
-    this.animateImage = true;
     console.log('Catching ' + this.data.name);
 
     this.userService.postPokemon(this.data).subscribe({
-      next: (updatedUser: User) => {
+      next: (updatedUser: User) => { 
+        this.animateButton = true;
+        this.animateImage = true;
         this.userService.setUser(updatedUser)
       },
       error: (error: any)  => {
@@ -168,22 +171,17 @@ export class PokemonCardComponent implements OnInit {
 
   removePokemon() {
     console.log("Clicking remove" + this.data.name)
-    this.userService.getUser(this.userService.getUserDetails().username).subscribe({
-      next: (user: User[]) => {
-        this.userService.removePokemon(this.data, user[0].pokemon).subscribe({
+    this.userService.removePokemon(this.data, this.userService.getUserDetails().pokemon).subscribe({
           next: (updatedUser: User) => {
-            console.log("could remove");
+            this.removePokemonFromList.emit(this.data);
+            console.log("could remove ",updatedUser);
             this.userService.setUser(updatedUser)
           },
           error: (error: any) => {
             console.log(error)
           }
         })
-      },
-      error: (error: any) => {
-        console.log(error)
-      }
-    })
+      
   }
 
   onAnimationEnd(event: AnimationEvent) {
