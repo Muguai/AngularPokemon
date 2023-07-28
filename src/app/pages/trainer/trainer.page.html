@@ -1,5 +1,5 @@
 <div id="brush-image-container">
-    <img class="brushImage"[src]="!isPixel ? '/assets/images/pixelBrush.png' : '/assets/images/handDrawnBrush.png'"alt="Change Art" 
+    <img class="brushImage"[src]="isPixel ? '/assets/images/pixelBrush.png' : '/assets/images/handDrawnBrush.png'"alt="Change Art" 
     (click)="changeArt()"
     />
 </div>
