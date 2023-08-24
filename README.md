@@ -6,15 +6,15 @@ A pokedex website done in Angular.
 
 ### Login
 
-![LoginAngularAssignment](https://github.com/Muguai/AngularPokemon/assets/37656342/9ee88454-9623-48b9-80cd-24c2dc72f303)
+![LoginAngularAssignment](https://github.com/Muguai/AngularPokemon/assets/37656342/7060f78e-a86a-4a18-8df8-4b91ef9e40ef)
 
 ### Pokedex
 
-![PokedexAngularAssignment](https://github.com/Muguai/AngularPokemon/assets/37656342/484b3581-df51-4eb4-970a-ce3897082d06)
+![PokedexAngularAssignment](https://github.com/Muguai/AngularPokemon/assets/37656342/20a8fd00-4144-43d9-b938-e05d46a996b8)
 
 ### Catch and release pokemon :O
 
-![CatchReleaseAngularAssignment](https://github.com/Muguai/AngularPokemon/assets/37656342/cce544c0-d7ac-4e6d-9064-8a836abd8f82)
+![CatchReleaseAngularAssignment](https://github.com/Muguai/AngularPokemon/assets/37656342/ea2098b0-964a-4ffb-88b6-9f7eab46434c)
 
 ### PokeCard
 
