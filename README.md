@@ -20,27 +20,27 @@ A pokedex website done in Angular.
 
 #### CardFront
 
-![cardFront](https://github.com/Muguai/AngularPokemon/assets/37656342/c852db31-cc2d-48d4-a44c-c0919f33d3f6)
+![cardFront](https://github.com/Muguai/AngularPokemon/assets/37656342/2188c88b-9f34-4d5c-8d4e-ae3b229d9d00)
 
 #### CardBack
 
-![cardBack](https://github.com/Muguai/AngularPokemon/assets/37656342/2ca85b7a-cbdb-42bd-847b-66283993bdb8)
+![Uploading cardBack.gif…]()
 
 #### Card Catch Animation
 
-![cardAnim](https://github.com/Muguai/AngularPokemon/assets/37656342/65a201eb-8a31-44a5-bb1b-15839519fddf)
+![cardAnim](https://github.com/Muguai/AngularPokemon/assets/37656342/f3473b8a-b927-4ab3-bc24-d0ec51ef1851)
 
 ### Search Bar
 
-![Search](https://github.com/Muguai/AngularPokemon/assets/37656342/335bb3c9-db4e-473f-b837-a78587d434a3)
+![Search](https://github.com/Muguai/AngularPokemon/assets/37656342/692335df-f193-4ad8-a51c-e70df0f9f516)
 
 ### Pagination
 
-![Pagination](https://github.com/Muguai/AngularPokemon/assets/37656342/62a168a7-863a-4ae6-ae5b-c25d74c43380)
+![Pagination](https://github.com/Muguai/AngularPokemon/assets/37656342/d7bb7aaf-5b75-41f1-a58b-156bcbf3b7be)
 
 ### Switch between art styles
 
-![ArtChange](https://github.com/Muguai/AngularPokemon/assets/37656342/4af11567-db2a-4c56-8c8b-b3baccdb1eb9)
+![ArtChange](https://github.com/Muguai/AngularPokemon/assets/37656342/12715ba8-6eff-48f6-85fb-76fc725654f9)
 
 
 
