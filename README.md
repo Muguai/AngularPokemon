@@ -24,7 +24,7 @@ A pokedex website done in Angular.
 
 #### CardBack
 
-![Uploading cardBack.gif…]()
+![cardBack](https://github.com/Muguai/AngularPokemon/assets/37656342/824fdd34-4f17-4317-aed1-0bb180466d89)
 
 #### Card Catch Animation
 
